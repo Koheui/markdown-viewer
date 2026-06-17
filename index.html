@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📝</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Markdown Preview Styler — 美しくデザインするマークダウンビューア</title>
+    <!-- Google Fonts for App UI -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Webfont Link Element Placeholder -->
+    <link id="dynamic-webfont" rel="stylesheet" href="">
+    <!-- Dynamic styles injected for Markdown Preview -->
+    <style id="dynamic-preview-styles"></style>
+  </head>
+  <body class="dark-theme">
+    <div id="app" class="app-container">
+      <!-- ヘッダー -->
+      <header class="app-header">
+        <div class="logo">
+          <span class="logo-icon">M</span>
+          <span class="logo-text">Markdown<span class="text-accent">Styler</span></span>
+        </div>
+        <div class="header-actions">
+          <button id="btn-load-sample" class="btn btn-secondary" title="サンプルテキストを読み込む">
+            <i data-lucide="file-text"></i>
+            <span class="btn-text">サンプル</span>
+          </button>
+          <button id="btn-reset-styles" class="btn btn-secondary" title="スタイル設定を初期化">
+            <i data-lucide="rotate-ccw"></i>
+            <span class="btn-text">初期化</span>
+          </button>
+          <button id="btn-theme-toggle" class="btn btn-icon btn-theme" title="テーマ切り替え" aria-label="テーマ切り替え">
+            <i data-lucide="sun" class="sun-icon"></i>
+            <i data-lucide="moon" class="moon-icon"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- メインエリア -->
+      <main class="app-main">
+        <!-- 上段エリア (エディタ ＆ プレビュー) -->
+        <div class="main-top-section">
+          <!-- エディターパネル (入力) -->
+          <section id="panel-editor" class="panel panel-editor active">
+            <div class="panel-header">
+              <div class="panel-title">
+                <i data-lucide="edit-3"></i>
+                <span>マークダウン入力</span>
+              </div>
+              <div class="panel-subtitle">その場で編集可能</div>
+              <div class="panel-actions">
+                <button id="btn-clear-editor" class="btn btn-ghost btn-sm" title="マークダウンをクリア">
+                  <i data-lucide="trash-2"></i>
+                  <span class="btn-text">クリア</span>
+                </button>
+              </div>
+            </div>
+            <div class="panel-body">
+              <textarea id="markdown-input" placeholder="# ここにマークダウンを入力してください...&#10;&#10;**太字** や *斜体*、[リンク](https://example.com) などが使えます。"></textarea>
+            </div>
+          </section>
+
+          <!-- 縦リサイザー (左右分割用) -->
+          <div class="resizer resizer-x" id="resizer-x"></div>
+
+          <!-- プレビューパネル (表示) -->
+          <section id="panel-preview" class="panel panel-preview">
+            <div class="panel-header">
+              <div class="panel-title">
+                <i data-lucide="eye"></i>
+                <span>ライブプレビュー</span>
+              </div>
+              <div class="panel-subtitle">リアルタイム反映</div>
+            </div>
+            <div class="panel-body scrollable">
+              <!-- プレビュー領域 (最大幅を適用するラッパー) -->
+              <div class="preview-wrapper">
+                <div id="preview-content" class="markdown-body">
+                  <!-- レンダリングされたHTMLがここに入る -->
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- 横リサイザー (上下分割用) -->
+        <div class="resizer resizer-y" id="resizer-y"></div>
+
+        <!-- スタイルコントロールパネル (設定 - 下部) -->
+        <section id="panel-styles" class="panel panel-styles">
+          <div class="panel-header">
+            <div class="panel-title">
+              <i data-lucide="sliders"></i>
+              <span>スタイルカスタマイズ</span>
+            </div>
+            <div class="panel-actions">
+              <button id="btn-copy-css" class="btn btn-accent btn-sm" title="CSSをクリップボードにコピー">
+                <i data-lucide="copy"></i>
+                <span>CSSコピー</span>
+              </button>
+              <button id="btn-copy-html" class="btn btn-secondary btn-sm" title="HTMLをクリップボードにコピー">
+                <i data-lucide="code"></i>
+                <span>HTMLコピー</span>
+              </button>
+            </div>
+          </div>
+          <div class="panel-body scrollable">
+            <!-- 共通・フォントファミリー設定 (全体) -->
+            <div class="control-group global-font-group">
+              <label for="style-font-family">
+                <i data-lucide="type"></i> フォントファミリー (全体)
+              </label>
+              <select id="style-font-family" class="form-select"></select>
+            </div>
+
+            <!-- アセンクトカラー設定 -->
+            <div class="control-group global-accent-group">
+              <label for="style-accent-color">
+                <i data-lucide="palette"></i> アクセントカラー
+              </label>
+              <div class="color-picker-row">
+                <div class="color-picker-wrapper">
+                  <input type="color" id="style-accent-color" class="form-color" />
+                </div>
+                <input type="text" id="style-accent-color-hex" class="form-input color-hex-input" placeholder="#6366f1" maxlength="7" />
+              </div>
+            </div>
+
+            <hr class="separator" />
+
+            <!-- 対象要素のタブ切り替え -->
+            <div class="element-selector-group">
+              <span class="toolbar-label"><i data-lucide="layout-grid"></i> 対象要素</span>
+              <div class="element-selector">
+                <button class="selector-tab active" data-element="h1">H1</button>
+                <button class="selector-tab" data-element="h2">H2</button>
+                <button class="selector-tab" data-element="h3">H3</button>
+                <button class="selector-tab" data-element="p">本文</button>
+                <button class="selector-tab" data-element="strong">太字</button>
+              </div>
+            </div>
+
+            <!-- 動的に切り替わる設定コンテンツ -->
+            <div class="style-editor-content">
+              <div id="controls-container">
+                <!-- 文字サイズ -->
+                <div class="control-group" id="group-font-size">
+                  <div class="control-label-row">
+                    <label for="style-font-size"><i data-lucide="type"></i> 文字サイズ</label>
+                    <span class="control-value" id="val-font-size">16px</span>
+                  </div>
+                  <input type="range" id="style-font-size" class="form-range" min="12" max="64" step="1" />
+                </div>
+
+                <!-- 文字色 -->
+                <div class="control-group" id="group-color">
+                  <label for="style-color"><i data-lucide="palette"></i> 文字色</label>
+                  <div class="color-picker-row">
+                    <div class="color-picker-wrapper">
+                      <input type="color" id="style-color" class="form-color" />
+                    </div>
+                    <input type="text" id="style-color-hex" class="form-input color-hex-input" placeholder="#000000" maxlength="7" />
+                  </div>
+                </div>
+
+                <!-- フォントの太さ -->
+                <div class="control-group" id="group-font-weight">
+                  <label><i data-lucide="bold"></i> フォントの太さ</label>
+                  <div class="btn-group-toggle" id="style-font-weight">
+                    <button class="btn-toggle" data-weight="300">Light</button>
+                    <button class="btn-toggle" data-weight="400">Regular</button>
+                    <button class="btn-toggle" data-weight="600">Medium</button>
+                    <button class="btn-toggle" data-weight="700">Bold</button>
+                  </div>
+                </div>
+
+                <!-- 下余白 (Margin Bottom) -->
+                <div class="control-group" id="group-margin-bottom">
+                  <div class="control-label-row">
+                    <label for="style-margin-bottom"><i data-lucide="space"></i> 下余白 (Margin Bottom)</label>
+                    <span class="control-value" id="val-margin-bottom">16px</span>
+                  </div>
+                  <input type="range" id="style-margin-bottom" class="form-range" min="0" max="60" step="1" />
+                </div>
+
+                <!-- H1, H2用: 下線(Border Bottom)設定 -->
+                <div class="border-settings-container" id="group-border-settings">
+                  <hr class="separator" />
+                  
+                  <div class="control-group">
+                    <span class="toolbar-label"><i data-lucide="underline"></i> 下線の表示</span>
+                    <label class="toggle-switch-label" for="style-border-show">
+                      <input type="checkbox" id="style-border-show" class="form-checkbox" />
+                    </label>
+                  </div>
+
+                  <div class="border-details" id="border-details-fields">
+                    <div class="control-group">
+                      <label for="style-border-color">下線の色</label>
+                      <div class="color-picker-row">
+                        <div class="color-picker-wrapper">
+                          <input type="color" id="style-border-color" class="form-color" />
+                        </div>
+                        <input type="text" id="style-border-color-hex" class="form-input color-hex-input" placeholder="#e5e7eb" maxlength="7" />
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <div class="control-label-row">
+                        <label for="style-border-width">下線の太さ</label>
+                        <span class="control-value" id="val-border-width">2px</span>
+                      </div>
+                      <input type="range" id="style-border-width" class="form-range" min="1" max="10" step="1" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- モバイル用ボトムナビゲーション -->
+      <nav class="app-nav">
+        <button class="nav-item active" data-target="panel-editor">
+          <i data-lucide="edit-3"></i>
+          <span>入力</span>
+        </button>
+        <button class="nav-item" data-target="panel-preview">
+          <i data-lucide="eye"></i>
+          <span>プレビュー</span>
+        </button>
+        <button class="nav-item" data-target="panel-styles">
+          <i data-lucide="sliders"></i>
+          <span>スタイル</span>
+        </button>
+      </nav>
+
+      <!-- トースト通知 -->
+      <div id="toast" class="toast">
+        <i data-lucide="check-circle-2"></i>
+        <span id="toast-message">コピーしました！</span>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

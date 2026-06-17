@@ -1,0 +1,1464 @@
+/* ==========================================================================
+   CSS Variables & Design System (Monochrome Base + 1 Accent Color)
+   ========================================================================== */
+:root {
+  /* Common variables */
+  --font-sans: 'Outfit', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-slow: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 9999px;
+
+  /* Touch optimization default heights */
+  --touch-target-height: 46px;
+}
+
+/* Light Theme Variables */
+.light-theme {
+  --bg-app: #f5f5f7;
+  --bg-panel: rgba(255, 255, 255, 0.75);
+  --bg-panel-hover: rgba(255, 255, 255, 0.85);
+  --bg-input: #ffffff;
+  --bg-input-hover: #fafafa;
+  --border-color: rgba(0, 0, 0, 0.08);
+  --border-color-hover: rgba(0, 0, 0, 0.15);
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-muted: #9ca3af;
+  
+  /* Accent Color (Indigo) */
+  --accent: #4f46e5;
+  --accent-hover: #4338ca;
+  --accent-fade: rgba(79, 70, 229, 0.06);
+  --accent-fade-hover: rgba(79, 70, 229, 0.1);
+  --accent-border: rgba(79, 70, 229, 0.2);
+  --accent-focus: rgba(79, 70, 229, 0.3);
+
+  /* Toast & Navs */
+  --toast-bg: #1f2937;
+  --toast-text: #ffffff;
+  --nav-bg: rgba(255, 255, 255, 0.85);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.08);
+  
+  /* Scrollbar */
+  --scrollbar-thumb: rgba(0, 0, 0, 0.15);
+}
+
+/* Dark Theme Variables (Default) */
+.dark-theme {
+  --bg-app: #09090b;
+  --bg-panel: rgba(20, 20, 23, 0.65);
+  --bg-panel-hover: rgba(25, 25, 28, 0.75);
+  --bg-input: #121215;
+  --bg-input-hover: #161619;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-color-hover: rgba(255, 255, 255, 0.15);
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+  
+  /* Accent Color (Indigo) */
+  --accent: #6366f1;
+  --accent-hover: #4f46e5;
+  --accent-fade: rgba(99, 102, 241, 0.08);
+  --accent-fade-hover: rgba(99, 102, 241, 0.15);
+  --accent-border: rgba(99, 102, 241, 0.3);
+  --accent-focus: rgba(99, 102, 241, 0.4);
+
+  /* Toast & Navs */
+  --toast-bg: #f3f4f6;
+  --toast-text: #111827;
+  --nav-bg: rgba(18, 18, 20, 0.85);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.4);
+  
+  /* Scrollbar */
+  --scrollbar-thumb: rgba(255, 255, 255, 0.15);
+}
+
+/* ==========================================================================
+   Base resets & layouts
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body, button, input, select, textarea, span, label {
+  font-family: var(--font-sans);
+}
+
+body {
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  height: 100dvh;
+  overflow: hidden;
+  transition: background-color var(--transition-slow), color var(--transition-fast);
+}
+
+/* Scrollbar customization */
+.scrollable::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.scrollable::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollable::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: var(--radius-pill);
+}
+
+/* ==========================================================================
+   App Container
+   ========================================================================== */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  position: relative;
+}
+
+/* ==========================================================================
+   Header Styles
+   ========================================================================== */
+.app-header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  background-color: var(--bg-panel);
+  border-bottom: 1px solid var(--border-color);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 100;
+  transition: background-color var(--transition-slow), border-color var(--transition-slow);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-icon {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--accent);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 10px var(--accent-border);
+  transition: background-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.logo-text {
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: -0.5px;
+}
+
+.text-accent {
+  color: var(--accent);
+  transition: color var(--transition-fast);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ==========================================================================
+   Buttons UI
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 14px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.btn-sm {
+  height: 32px;
+  padding: 0 10px;
+  font-size: 0.8rem;
+  gap: 4px;
+}
+
+.btn-ghost {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--text-secondary);
+}
+.btn-ghost:hover {
+  background-color: var(--bg-input);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+.btn-ghost:active {
+  transform: scale(0.95);
+}
+
+@keyframes danger-flash {
+  0%   { background-color: transparent; color: var(--text-secondary); }
+  30%  { background-color: #ef444420; color: #ef4444; border-color: #ef444440; }
+  100% { background-color: transparent; color: var(--text-secondary); }
+}
+.btn-danger-flash {
+  animation: danger-flash 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+
+.btn-secondary {
+  background-color: var(--bg-input);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+.btn-secondary:hover {
+  background-color: var(--bg-input-hover);
+  border-color: var(--border-color-hover);
+}
+.btn-secondary:active {
+  transform: scale(0.97);
+}
+
+.btn-accent {
+  background-color: var(--accent);
+  color: #ffffff;
+  box-shadow: 0 4px 12px var(--accent-border);
+}
+.btn-accent:hover {
+  background-color: var(--accent-hover);
+  box-shadow: 0 6px 16px var(--accent-border);
+}
+.btn-accent:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 6px var(--accent-border);
+}
+
+.btn-icon {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: var(--radius-sm);
+}
+
+.btn-theme {
+  position: relative;
+  background-color: var(--bg-input);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+  overflow: hidden;
+}
+.btn-theme:hover {
+  background-color: var(--bg-input-hover);
+  border-color: var(--border-color-hover);
+}
+
+/* Sun/Moon Toggle Icons Animations */
+.btn-theme i {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  transition: transform var(--transition-slow), opacity var(--transition-fast);
+}
+
+.dark-theme .sun-icon {
+  transform: rotate(90deg) scale(0);
+  opacity: 0;
+}
+.dark-theme .moon-icon {
+  transform: rotate(0) scale(1);
+  opacity: 1;
+}
+.light-theme .sun-icon {
+  transform: rotate(0) scale(1);
+  opacity: 1;
+}
+.light-theme .moon-icon {
+  transform: rotate(-90deg) scale(0);
+  opacity: 0;
+}
+
+/* ==========================================================================
+   Main Application Area
+   ========================================================================== */
+.app-main {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  height: calc(100dvh - 60px - 60px); /* Adjusting header + mobile bottom nav */
+}
+
+/* Panel Design (Glassmorphism & Flex) */
+.panel {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  background-color: var(--bg-app);
+  z-index: 10;
+}
+
+.panel.active {
+  display: flex;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  min-height: 36px;
+}
+
+.panel-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.panel-title i {
+  color: var(--accent);
+  width: 18px;
+  height: 18px;
+  transition: color var(--transition-fast);
+}
+
+.panel-subtitle {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.panel-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.panel-body {
+  flex: 1;
+  position: relative;
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-sm);
+  transition: background-color var(--transition-slow), border-color var(--transition-slow), box-shadow var(--transition-slow);
+}
+.panel-body.scrollable {
+  overflow-y: auto;
+}
+
+/* Panel Body Hover effect */
+.panel-body:hover {
+  background-color: var(--bg-panel-hover);
+  border-color: var(--border-color-hover);
+  box-shadow: var(--shadow-md);
+}
+
+/* ==========================================================================
+   Panel 1: Editor Panel Specifics
+   ========================================================================== */
+#markdown-input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: 'Consolas', 'Monaco', 'Courier New', 'Noto Sans JP', monospace;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  resize: none;
+  outline: none;
+  overflow-y: auto;
+  transition: color var(--transition-fast);
+}
+
+#markdown-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Panel 2: Style Customize Panel Specifics
+   ========================================================================== */
+.global-font-group {
+  margin-bottom: 14px;
+}
+
+.separator {
+  border: 0;
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 16px 0;
+  transition: background-color var(--transition-slow);
+}
+
+/* Selector tabs for Markdown tags */
+.element-selector {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 4px;
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  padding: 3px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 20px;
+  transition: all var(--transition-slow);
+}
+
+.selector-tab {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  height: 36px;
+  border-radius: calc(var(--radius-sm) - 2px);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.selector-tab:hover {
+  color: var(--text-primary);
+  background-color: var(--bg-panel);
+}
+
+.selector-tab.active {
+  background-color: var(--accent);
+  color: #ffffff;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Form Controls Settings with Mobile Touch Target (min height 44px) */
+.control-group {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.control-group label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.control-group label i {
+  width: 14px;
+  height: 14px;
+  color: var(--text-secondary);
+}
+
+.control-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.control-value {
+  font-size: 0.8rem;
+  font-family: monospace;
+  font-weight: 600;
+  color: var(--accent);
+  background-color: var(--accent-fade);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+/* Dropdown styling */
+.form-select {
+  height: var(--touch-target-height);
+  width: 100%;
+  padding: 0 12px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  outline: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.form-select:hover {
+  border-color: var(--border-color-hover);
+  background-color: var(--bg-input-hover);
+}
+.form-select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-focus);
+}
+
+/* Range input styling */
+.form-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 20px;
+  background: transparent;
+  outline: none;
+  margin: 5px 0;
+  cursor: pointer;
+  display: block;
+}
+
+.form-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--bg-panel);
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  margin-top: -8px; /* (4px - 20px) / 2 = -8px (perfect vertical centering) */
+  transition: transform 0.1s, background-color var(--transition-fast);
+}
+.form-range::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+.form-range::-webkit-slider-thumb:active {
+  transform: scale(1.3);
+  background: var(--accent-hover);
+}
+
+/* Track: visible gray runway behind the thumb */
+.form-range::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--border-color);
+  border: none;
+  transition: background var(--transition-fast);
+}
+.form-range::-moz-range-track {
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--border-color);
+  border: none;
+  transition: background var(--transition-fast);
+}
+.form-range::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--bg-panel);
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.1s, background-color var(--transition-fast);
+}
+.form-range::-moz-range-thumb:hover {
+  transform: scale(1.15);
+}
+.form-range::-moz-range-thumb:active {
+  transform: scale(1.3);
+  background: var(--accent-hover);
+}
+
+/* Color picker styling */
+.color-picker-row {
+  display: flex;
+  gap: 8px;
+}
+
+.color-picker-wrapper {
+  position: relative;
+  width: var(--touch-target-height);
+  height: var(--touch-target-height);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  background-color: var(--bg-input);
+  transition: border-color var(--transition-fast);
+}
+.color-picker-wrapper:hover {
+  border-color: var(--border-color-hover);
+}
+
+.form-color {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: 60px;
+  height: 60px;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  background: none;
+}
+
+.form-input {
+  height: var(--touch-target-height);
+  flex: 1;
+  padding: 0 12px;
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: all var(--transition-fast);
+}
+.form-input:hover {
+  border-color: var(--border-color-hover);
+  background-color: var(--bg-input-hover);
+}
+.form-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-focus);
+}
+
+/* Font Weight selector button group */
+.btn-group-toggle {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  padding: 3px;
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition-fast);
+}
+
+.btn-toggle {
+  height: 36px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  border-radius: calc(var(--radius-sm) - 2px);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-toggle:hover {
+  color: var(--text-primary);
+  background-color: var(--bg-panel);
+}
+
+.btn-toggle.active {
+  background-color: var(--accent);
+  color: #ffffff;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Underline toggle checkbox (styled toggle switch) */
+.toggle-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.form-checkbox {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: var(--border-color-hover);
+  border-radius: 9999px;
+  outline: none;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.form-checkbox::before {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  top: 3px;
+  left: 3px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  transition: transform var(--transition-normal);
+}
+
+.form-checkbox:checked {
+  background-color: var(--accent);
+}
+
+.form-checkbox:checked::before {
+  transform: translateX(20px);
+}
+
+/* Border width details block */
+.border-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height var(--transition-normal), opacity var(--transition-fast);
+}
+
+.border-details.show {
+  max-height: 200px;
+  opacity: 1;
+  margin-top: 14px;
+}
+
+/* ==========================================================================
+   Panel 3: Preview Panel & Markdown Body
+   ========================================================================== */
+.preview-wrapper {
+  max-width: 850px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 8px 0;
+}
+
+/* Markdown body render elements reset and style container */
+.markdown-body {
+  color: inherit;
+  font-family: inherit;
+  line-height: 1.6;
+}
+
+/* Apply transitional styling for live styles manipulation */
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body p,
+.markdown-body strong {
+  transition: font-size 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              margin 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-width 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              font-family 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              font-weight 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Markdown elements layout rules */
+.markdown-body h1 {
+  display: block;
+  width: 100%;
+  padding-bottom: 8px;
+}
+
+.markdown-body h2 {
+  display: block;
+  width: 100%;
+  padding-bottom: 6px;
+}
+
+.markdown-body h3 {
+  display: block;
+}
+
+.markdown-body p {
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px dashed var(--accent);
+  transition: all var(--transition-fast);
+}
+
+.markdown-body a:hover {
+  color: var(--accent-hover);
+  border-bottom-style: solid;
+}
+
+.markdown-body ul, 
+.markdown-body ol {
+  margin-left: 20px;
+  margin-bottom: 16px;
+}
+
+.markdown-body li {
+  margin-bottom: 4px;
+  line-height: 1.6;
+}
+
+.markdown-body code {
+  font-family: monospace;
+  background-color: var(--bg-input);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: var(--accent);
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-fast);
+}
+
+.markdown-body pre {
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  overflow-x: auto;
+  margin-bottom: 16px;
+}
+
+.markdown-body pre code {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  color: var(--text-primary);
+  font-size: 0.85em;
+}
+
+.markdown-body blockquote {
+  border-left: 4px solid var(--accent);
+  padding-left: 16px;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin: 16px 0;
+}
+
+/* Custom Interactive Pulse Highlight for editing feedback */
+@keyframes element-pulse {
+  0% {
+    box-shadow: 0 0 0 2px var(--accent), 0 0 12px var(--accent-border);
+    border-radius: 4px;
+    background-color: var(--accent-fade);
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent, 0 0 0 transparent;
+    border-radius: 0px;
+    background-color: transparent;
+  }
+}
+
+.preview-pulse-active {
+  animation: element-pulse 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ==========================================================================
+   Resizer (Column drag bars) & Containers
+   ========================================================================== */
+.main-top-section {
+  display: contents; /* Bypasses container wrapper on mobile tab switches */
+}
+
+.resizer {
+  display: none;
+}
+
+/* ==========================================================================
+   Mobile Bottom Navigation
+   ========================================================================== */
+.app-nav {
+  height: 60px;
+  background-color: var(--nav-bg);
+  border-top: 1px solid var(--border-color);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 100;
+  transition: background-color var(--transition-slow), border-color var(--transition-slow);
+}
+
+.nav-item {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.nav-item i {
+  width: 20px;
+  height: 20px;
+  transition: transform var(--transition-fast);
+}
+
+.nav-item:hover {
+  color: var(--text-primary);
+}
+
+.nav-item.active {
+  color: var(--accent);
+}
+
+.nav-item.active i {
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Toast Notification (Bounce Physics)
+   ========================================================================== */
+@keyframes toast-in {
+  0% {
+    transform: translate(-50%, -100px) scale(0.9);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, 24px) scale(1.06);
+    opacity: 1;
+  }
+  75% {
+    transform: translate(-50%, 16px) scale(0.98);
+  }
+  100% {
+    transform: translate(-50%, 20px) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes toast-out {
+  0% {
+    transform: translate(-50%, 20px) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -100px) scale(0.9);
+    opacity: 0;
+  }
+}
+
+.toast {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -100px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: var(--radius-pill);
+  background-color: var(--toast-bg);
+  color: var(--toast-text);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-lg);
+  pointer-events: none;
+  opacity: 0;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.toast i {
+  width: 18px;
+  height: 18px;
+  color: var(--accent);
+}
+
+.toast.show {
+  animation: toast-in 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.toast.hide {
+  animation: toast-out 0.3s cubic-bezier(0.36, 0.07, 0.19, 0.97) forwards;
+}
+
+/* ==========================================================================
+   Responsive Desktop View Layout (Width >= 1024px)
+   ========================================================================== */
+@media (min-width: 1024px) {
+  /* Header adjustments */
+  .app-header {
+    height: 70px;
+    padding: 0 24px;
+  }
+  
+  .logo-text {
+    font-size: 1.3rem;
+  }
+  
+  .btn-text {
+    display: inline !important;
+  }
+
+  /* Main desktop layout (Upper/Lower Split like IDE Terminal) */
+  .app-main {
+    height: calc(100vh - 70px);
+    display: grid;
+    grid-template-rows: 1fr 6px 300px; /* Overwritten dynamically by JS */
+    gap: 0;
+    padding: 20px;
+    background-color: var(--bg-app);
+  }
+
+  .main-top-section {
+    grid-row: 1;
+    display: grid;
+    grid-template-columns: 1fr 6px 1fr; /* Overwritten dynamically by JS */
+    min-height: 0; /* Allow children to shrink and scroll */
+    gap: 0;
+  }
+
+  /* Resizer handles visible only on desktop */
+  .resizer {
+    display: block !important;
+    background-color: transparent;
+    transition: background-color var(--transition-fast);
+    z-index: 50;
+    position: relative;
+  }
+
+  .resizer:hover,
+  .resizer.dragging {
+    background-color: var(--accent);
+  }
+
+  /* Vertical Resizer (X-axis) */
+  .resizer-x {
+    width: 6px;
+    height: 100%;
+    cursor: col-resize;
+  }
+  .resizer-x::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -8px;
+    right: -8px;
+    cursor: col-resize;
+    z-index: 10;
+  }
+
+  /* Horizontal Resizer (Y-axis) */
+  .resizer-y {
+    height: 6px;
+    width: 100%;
+    cursor: row-resize;
+    grid-row: 2;
+  }
+  .resizer-y::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -8px;
+    bottom: -8px;
+    cursor: row-resize;
+    z-index: 10;
+  }
+
+  /* Force all panels to display concurrently in desktop view */
+  .panel {
+    display: flex !important;
+    position: relative !important;
+    min-height: 0 !important;   /* critical: allows flex children to scroll */
+    height: 100% !important;
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  /* Editor panel: panel-body stays hidden — textarea scrolls itself */
+  .panel-editor .panel-body {
+    overflow: hidden !important;
+  }
+
+  /* Preview panel: the body itself scrolls */
+  .panel-preview .panel-body {
+    overflow-y: auto !important;
+  }
+
+  .panel-styles {
+    grid-row: 3;
+    min-height: 0;
+  }
+
+  .panel-header {
+    margin-bottom: 10px;
+    flex-shrink: 0;
+  }
+
+  .panel-body {
+    padding: 14px 20px;
+  }
+
+  /* ----------------------------------------------------------------
+     Styles panel – Unified horizontal toolbar
+     Rule: every item = [tiny label on top] + [control on bottom]
+     Container is top-aligned so all items share the same baseline.
+  ----------------------------------------------------------------- */
+  /* Force correct UI font family for all elements in styles panel */
+  .panel-styles,
+  .panel-styles select,
+  .panel-styles button,
+  .panel-styles input,
+  .panel-styles span,
+  .panel-styles label {
+    font-family: var(--font-sans) !important;
+  }
+
+  .panel-styles .panel-body {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start; /* align all items to the top to align labels perfectly */
+    gap: 0;
+    padding: 14px 24px;      /* vertical and horizontal padding for nice layout */
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  /* Shared tiny label style used above every control */
+  .panel-styles .toolbar-label,
+  #controls-container .control-group > label,
+  #controls-container .control-label-row label {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 0.72rem;   /* increased from 0.68rem for readability */
+    color: var(--text-secondary);
+    white-space: nowrap;
+    margin-bottom: 4px;
+    line-height: 1;
+  }
+
+  .panel-styles .toolbar-label i,
+  #controls-container .control-group > label i,
+  #controls-container .control-label-row label i {
+    width: 11px;
+    height: 11px;
+    flex-shrink: 0;
+  }
+
+  /* Vertical divider between sections */
+  .panel-styles .toolbar-divider {
+    width: 1px;
+    align-self: stretch;
+    background: var(--border-color);
+    flex-shrink: 0;
+    margin: 4px 14px;
+  }
+
+  /* Hide all separator <hr> elements in desktop toolbar */
+  .panel-styles .separator {
+    display: none;
+  }
+
+  /* ── Font family ─────────────────────────────────────── */
+  .panel-styles .global-font-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
+    min-width: 140px;
+    max-width: 175px;
+    margin-bottom: 0;
+    margin-right: 16px;
+  }
+
+  /* Label for font-family group (uses <label> not .toolbar-label) */
+  .panel-styles .global-font-group > label {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 0.72rem;   /* increased from 0.68rem */
+    color: var(--text-secondary);
+    white-space: nowrap;
+    margin-bottom: 4px;
+    line-height: 1;
+  }
+
+  .panel-styles .global-font-group > label i {
+    width: 11px;
+    height: 11px;
+    flex-shrink: 0;
+  }
+
+  .panel-styles .global-font-group .form-select {
+    width: 100%;
+    height: 30px;
+    font-size: 0.78rem;
+    padding: 0 6px;
+    min-width: 0;
+  }
+
+  /* ── Accent Color ────────────────────────────────────── */
+  .panel-styles .global-accent-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
+    margin-bottom: 0;
+    margin-right: 16px;
+  }
+
+  .panel-styles .global-accent-group > label {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    margin-bottom: 4px;
+    line-height: 1;
+  }
+
+  .panel-styles .global-accent-group > label i {
+    width: 11px;
+    height: 11px;
+    flex-shrink: 0;
+  }
+
+  /* ── Element selector (H1 … 太字) ───────────────────── */
+  .element-selector-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
+    margin-right: 16px;
+  }
+
+  .panel-styles .element-selector {
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
+    background: none;
+    border: none;
+    padding: 0;
+    margin-bottom: 0;
+  }
+
+  .panel-styles .selector-tab {
+    height: 30px;
+    min-width: 34px;
+    padding: 0 9px;
+    border-radius: var(--radius-sm);
+    font-size: 0.78rem;   /* matched to dropdown select font-size */
+    font-weight: 500;     /* matched to regular buttons font weight */
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+  }
+
+  .panel-styles .selector-tab.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+
+  /* ── Controls area (scrollable flex row) ───────────────── */
+  .style-editor-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start; /* align items to the top */
+    flex: 1;
+    min-width: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  #controls-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start; /* align items to the top */
+    gap: 0;
+    flex-wrap: nowrap;
+  }
+
+  /* Each control group: label on top, control on bottom */
+  #controls-container .control-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
+    margin-bottom: 0;
+    margin-right: 16px;
+    min-width: 0;
+  }
+
+  /* Slider controls */
+  .panel-styles .form-range {
+    width: 90px;
+    height: 20px;
+    margin: 5px 0 0 0;
+  }
+
+  /* Value badge inline with label */
+  .control-label-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 4px;
+  }
+
+  .control-value {
+    font-size: 0.68rem;
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    padding: 1px 4px;
+    font-variant-numeric: tabular-nums;
+    color: var(--accent);
+    min-width: 32px;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  /* Font weight toggle row */
+  #controls-container .btn-group-toggle {
+    display: flex;
+    gap: 2px;
+  }
+
+  #controls-container .btn-toggle {
+    height: 30px;
+    padding: 0 7px;
+    font-size: 0.72rem;
+    border-radius: 4px;
+  }
+
+  /* Color picker */
+  .panel-styles .color-picker-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .panel-styles .color-picker-wrapper {
+    width: 30px;
+    height: 30px;
+  }
+
+  .panel-styles .form-color {
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .panel-styles .color-hex-input {
+    width: 68px;
+    height: 30px;
+    font-size: 0.72rem;
+    padding: 0 6px;
+  }
+
+  /* ── Border toggle: toggle left, detail fields inline to the right ─ */
+  .border-settings-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start; /* align items to the top */
+    flex-shrink: 0;
+    margin-bottom: 0;
+    margin-right: 0;
+  }
+
+  .border-settings-container .separator {
+    display: none;
+  }
+
+  /* The label is now a span.toolbar-label (above), so toggle-switch-label
+     wraps only the checkbox for click area */
+  .toggle-switch-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    height: 30px;
+  }
+
+  /* First control-group inside (the toggle itself) */
+  .border-settings-container > .control-group {
+    margin-right: 14px;
+    flex-shrink: 0;
+  }
+
+  /* ── Border detail fields: appear INLINE to the right of the toggle ─ */
+  .border-details {
+    display: none;           /* hidden by default */
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0;
+    padding-left: 12px;
+    border-left: 1px solid var(--border-color);
+    overflow: visible;       /* override base overflow:hidden */
+    max-height: none;        /* override base max-height:0 */
+    opacity: 1;              /* override base opacity:0 */
+  }
+
+  .border-details.show {
+    display: flex;           /* reveal inline */
+    margin-top: 0;           /* override base margin-top:14px */
+  }
+
+  .border-details .control-group {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    margin-right: 14px;
+    margin-bottom: 0;
+  }
+
+  .border-details .control-group label {
+    margin-bottom: 4px !important;
+  }
+
+  /* Hide mobile bottom tab bar */
+  .app-nav {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  /* Hide header action text on mobile to save space */
+  .btn-text {
+    display: none;
+  }
+  
+  .btn {
+    padding: 0 10px;
+  }
+}
