@@ -24,34 +24,65 @@ import { fontOptions, defaultStyles } from './defaultStyles.js';
 // ==========================================================================
 // Default Sample Markdown (Japanese)
 // ==========================================================================
-const sampleMarkdown = `# 📝 Markdown Preview Styler へようこそ！
+const sampleMarkdown = `# 【見やすさ劇的改善】Markdown（マークダウン）が読みづらい？ブログや資料を見やすく綺麗に整えるデザインのコツ
 
-これは、貼り付けたマークダウンテキストをその場で**美しくリッチテキストとして表示**し、さらにフォントや文字サイズ、見出しの装飾などをUIから動的にカスタマイズできる特別なエディタです。
+Notionやブログ、社内ドキュメントを**Markdown（マークダウン）**で書いているけれど、「文字がぎっしり詰まっていて読みづらい」「なぜか単調で内容が頭に入ってこない」と感じていませんか？
+実は、デフォルト状態のMarkdownは余白や装飾が不足していることが多く、それが読者の途中離脱や理解の妨げ（直帰率の悪化）に繋がっています。
+
+この「**Markdown Viewer**」を使えば、フォントの種類やサイズ、行間、見出しのデザインをスライダーを動かすだけで直感的に調整でき、あなたの文章を劇的に読みやすく改善できます。
 
 ---
 
-## 🎨 特徴と使い方
+## 🎨 Markdown Viewer でできること
 
-1. **リアルタイムプレビュー**: 左側のエディタでテキストを書き換えると、即座にこのプレビューに反映されます。
-2. **スタイルカスタマイズ**: 中央（スマホでは「スタイル」タブ）のコントローラーで、\`H1\`、\`H2\`、\`H3\`、\`本文(p)\`、\`太字(strong)\` などのサイズ・カラー・太さを自由に変更できます。
-3. **和文フォント対応**: システムフォントや Google Fonts（Noto Sans JPなど）から選んで、全体のイメージを瞬時に変更できます。
-4. **CSSエクスポート**: デザインが完成したら、「CSSコピー」をクリックしてご自身のWebサイトやブログに貼り付けることができます。
+1. **リアルタイム見やすさ確認**: 左側のエディターに入力した文章が、即座に右側のプレビューに美しいレイアウトで反映されます。
+2. **直感的な余白・サイズ調整**: 中央（スマホでは「スタイル」タブ）のコントローラーで、\`H1\` \`H2\` \`H3\` \`本文(p)\` \`太字(strong)\` のフォントサイズや行間、下余白を自由にスライド調整できます。
+3. **見出しの境界線デザイン**: \`H1\` \`H2\` にスッキリとした下線（境界線）を表示・カスタマイズでき、セクションの区切りを視覚的にわかりやすくします。
+4. **フォントで全体の印象をチェンジ**: Noto Sans JP などの読みやすい和文フォントから、洗練された英語フォントまで、全体の書体を一瞬で切り替えられます。
+5. **ブログやサイトへの簡単適用**: デザインが完成したら、「CSSコピー」または「HTMLコピー」をクリックしてブログ（はてなブログ、WordPress、Qiita、Zennなど）に貼り付けるだけで反映できます。
 
-### 🚀 インタラクティブな操作体験
+---
 
-スタイルを変更すると、プレビュー側の対応する要素が**一瞬フワッと光ります**。ライト／ダークテーマの切り替えも、右上のアイコンからスムーズに切り替えられます。
+## 🧠 なぜデフォルトのMarkdownは読みづらいのか？（3つの原因）
 
-> **引用の例**:
-> このように、引用マークダウン（\`>\`）も美しくスタイリングされます。
+文章の読みやすさは、Webサイトの成果（滞在時間やコンバージョン率）に直結する重要なSEO要素です。デフォルトの見た目が読みづらいのには以下の原因があります。
 
-コードブロックやリンクもサポートしています：
-\`\`\`javascript
-// CSSを動的にインジェクションするコード
-const styleTag = document.getElementById('dynamic-preview-styles');
-styleTag.innerHTML = generateCSS(currentStyles, selectedFontValue);
+### 1. 見出しの境界線が曖昧
+文章の段落（セクション）が切り替わる際、見出しの文字サイズが本文とあまり変わらなかったり、仕切り線がなかったりすると、読者はどこがテーマの区切りなのか迷子になってしまいます。
+
+### 2. 余白（マージン）の不足
+段落と段落の間や、見出しの上の余白が詰まっていると、目が滑ってしまい、読者はストレスを感じて読むのをやめてしまいます（直帰や離脱の原因）。
+
+### 3. フォントが用途に合っていない
+硬すぎるゴシック体や標準のシステムフォントのままだと、文章全体が冷たい印象になり、長文を読み進める意欲が低下しがちです。
+
+---
+
+## 🚀 見やすさを劇的にアップさせる3つのデザイン黄金比
+
+本ツールを使って、以下の「見やすさの黄金ルール」を取り入れてみましょう。
+
+* **本文のフォントサイズと行高**: 本文は \`16px\`、行高は \`1.8\`（文字の高さの1.8倍）に設定するのが、最も目が疲れにくいとされています。
+* **見出しの下線装飾**: \`H1\` や \`H2\` の下に線を引き、少しフォントを太くすることで、読者が「ここから新しいテーマが始まる」と瞬時に理解できます。
+* **余白を十分に空ける**: 見出しの下余白（Margin Bottom）を \`16px〜24px\` 程度あけることで、テキストのブロックが綺麗に区切られます。
+
+\`\`\`css
+/* 見やすさを追求したCSSデザインの例 */
+.markdown-body h1 {
+  font-size: 28px;
+  color: #6366f1;
+  border-bottom: 3px solid #6366f1;
+  margin-bottom: 20px;
+}
+.markdown-body p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #f3f4f6;
+}
 \`\`\`
 
-さあ、自由にテキストを入力して、あなただけの美しいスタイルを見つけてください！
+> **💡 ワンポイントアドバイス**:
+> 読みやすさは、読者の信頼と滞在時間の増加に直結します。ぜひ、様々なパラメータを動かして「最高に読みやすいスタイル」を見つけてください！
 `;
 
 // ==========================================================================
@@ -176,7 +207,12 @@ function generateCSS() {
    ========================================== */
 .markdown-body {
   font-family: ${fontValue};
-  line-height: 1.6;
+  line-height: 1.8;
+  background-color: ${styles.global.backgroundColor || '#ffffff'};
+  color: ${styles.global.textColor || '#1f2937'};
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 `;
 
@@ -298,6 +334,11 @@ function updateControlsUI() {
   const accentColor = currentStyles.global.accentColor || (appTheme === 'light-theme' ? '#4f46e5' : '#6366f1');
   document.getElementById('style-accent-color').value = accentColor;
   document.getElementById('style-accent-color-hex').value = accentColor.toUpperCase();
+
+  // Global Canvas Background Color UI Sync
+  const bgColor = currentStyles.global.backgroundColor || '#ffffff';
+  document.getElementById('style-bg-color').value = bgColor;
+  document.getElementById('style-bg-color-hex').value = bgColor.toUpperCase();
 
   // Font Size (Show/Hide & Set value)
   if (settings.fontSize !== undefined) {
@@ -433,6 +474,29 @@ function bindEvents() {
     if (/^#[0-9A-F]{6}$/i.test(hex) || /^#[0-9A-F]{3}$/i.test(hex)) {
       currentStyles.global.accentColor = hex;
       accentColorPicker.value = hex;
+      applyStyles();
+      saveState();
+    }
+  });
+
+  // 2c. Global Canvas Background Color Picker change
+  const bgColorPicker = document.getElementById('style-bg-color');
+  const bgColorHex = document.getElementById('style-bg-color-hex');
+
+  bgColorPicker.addEventListener('input', (e) => {
+    const hex = e.target.value;
+    currentStyles.global.backgroundColor = hex;
+    bgColorHex.value = hex.toUpperCase();
+    applyStyles();
+    saveState();
+  });
+
+  bgColorHex.addEventListener('input', (e) => {
+    let hex = e.target.value;
+    if (hex.charAt(0) !== '#') hex = '#' + hex;
+    if (/^#[0-9A-F]{6}$/i.test(hex) || /^#[0-9A-F]{3}$/i.test(hex)) {
+      currentStyles.global.backgroundColor = hex;
+      bgColorPicker.value = hex;
       applyStyles();
       saveState();
     }

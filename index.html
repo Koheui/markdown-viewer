@@ -4,7 +4,24 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📝</text></svg>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Markdown Preview Styler — 美しくデザインするマークダウンビューア</title>
+    <title>Markdown Viewer — 美しくデザインする・読みやすく整えるマークダウンビューア</title>
+    <meta name="description" content="Markdown Viewer（マークダウンビューア）は、マークダウンテキストをリアルタイムでプレビューしながら、見出し（H1〜H3）や本文、太字、引用などのフォントサイズや文字色、下線を直感的にカスタマイズし、ブログやサイト用のCSS/HTMLを簡単に出力できる無料のオンラインツールです。はてなブログ、WordPress、Qiita、Zennなどの装飾に最適です。" />
+    <meta name="keywords" content="Markdown,マークダウン,ビューア,CSS,カスタマイズ,プレビュー,デザイン,ブログ,装飾,はてなブログ,WordPress,Qiita,Zenn,エディタ" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://markdown-viewer.net/" />
+    <meta property="og:title" content="Markdown Viewer — 美しくデザインする・読みやすく整えるマークダウンビューア" />
+    <meta property="og:description" content="マークダウンテキストをリアルタイムでプレビューしながら、直感的にフォントや配色をカスタマイズして、ブログ用のCSS/HTMLを簡単に出力できるツールです。" />
+    <meta property="og:image" content="https://markdown-viewer.net/og-image.png" />
+    <meta property="og:site_name" content="Markdown Viewer" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://markdown-viewer.net/" />
+    <meta property="twitter:title" content="Markdown Viewer — 美しくデザインする・読みやすく整えるマークダウンビューア" />
+    <meta property="twitter:description" content="マークダウンテキストをリアルタイムでプレビューしながら、直感的にフォントや配色をカスタマイズして、ブログ用のCSS/HTMLを簡単に出力できるツールです。" />
+
     <!-- Google Fonts for App UI -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,15 +30,18 @@
     <link id="dynamic-webfont" rel="stylesheet" href="">
     <!-- Dynamic styles injected for Markdown Preview -->
     <style id="dynamic-preview-styles"></style>
+    
+    <!-- Google AdSense (Replace ca-pub-XXXXXXXXXXXXXXXX with your AdSense Publisher ID) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
   </head>
   <body class="dark-theme">
     <div id="app" class="app-container">
       <!-- ヘッダー -->
       <header class="app-header">
-        <div class="logo">
+        <h1 class="logo">
           <span class="logo-icon">M</span>
-          <span class="logo-text">Markdown<span class="text-accent">Styler</span></span>
-        </div>
+          <span class="logo-text">Markdown<span class="text-accent">Viewer</span></span>
+        </h1>
         <div class="header-actions">
           <button id="btn-load-sample" class="btn btn-secondary" title="サンプルテキストを読み込む">
             <i data-lucide="file-text"></i>
@@ -77,9 +97,23 @@
             <div class="panel-body scrollable">
               <!-- プレビュー領域 (最大幅を適用するラッパー) -->
               <div class="preview-wrapper">
-                <div id="preview-content" class="markdown-body">
-                  <!-- レンダリングされたHTMLがここに入る -->
-                </div>
+                 <div id="preview-content" class="markdown-body">
+                   <!-- レンダリングされたHTMLがここに入る -->
+                 </div>
+
+                 <!-- Google AdSense - Preview Bottom Display Ad (Replace Publisher/Slot IDs as needed) -->
+                 <div class="adsense-container preview-bottom-ad">
+                   <span class="ad-label">SPONSOR</span>
+                   <ins class="adsbygoogle"
+                        style="display:block; text-align:center;"
+                        data-ad-layout="in-article"
+                        data-ad-format="fluid"
+                        data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                        data-ad-slot="ZZZZZZZZZZ"></ins>
+                   <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                   </script>
+                 </div>
               </div>
             </div>
           </section>
@@ -125,6 +159,19 @@
                   <input type="color" id="style-accent-color" class="form-color" />
                 </div>
                 <input type="text" id="style-accent-color-hex" class="form-input color-hex-input" placeholder="#6366f1" maxlength="7" />
+              </div>
+            </div>
+
+            <!-- キャンバス背景色設定 -->
+            <div class="control-group global-bg-group">
+              <label for="style-bg-color">
+                <i data-lucide="palette"></i> キャンバス背景色
+              </label>
+              <div class="color-picker-row">
+                <div class="color-picker-wrapper">
+                  <input type="color" id="style-bg-color" class="form-color" />
+                </div>
+                <input type="text" id="style-bg-color-hex" class="form-input color-hex-input" placeholder="#ffffff" maxlength="7" />
               </div>
             </div>
 
@@ -216,6 +263,20 @@
                   </div>
                 </div>
               </div>
+            </div>
+
+            <!-- Google AdSense - Sidebar Display Ad (Replace Publisher/Slot IDs as needed) -->
+            <div class="adsense-container panel-ad">
+              <span class="ad-label">SPONSOR</span>
+              <ins class="adsbygoogle"
+                   style="display:block"
+                   data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                   data-ad-slot="YYYYYYYYYY"
+                   data-ad-format="auto"
+                   data-full-width-responsive="true"></ins>
+              <script>
+                   (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
             </div>
           </div>
         </section>

@@ -1033,6 +1033,8 @@ body {
     gap: 0;
     padding: 20px;
     background-color: var(--bg-app);
+    min-width: 0;
+    max-width: 100%;
   }
 
   .main-top-section {
@@ -1040,6 +1042,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 6px 1fr; /* Overwritten dynamically by JS */
     min-height: 0; /* Allow children to shrink and scroll */
+    min-width: 0;  /* Allow children to shrink and scroll */
     gap: 0;
   }
 
@@ -1097,6 +1100,7 @@ body {
     display: flex !important;
     position: relative !important;
     min-height: 0 !important;   /* critical: allows flex children to scroll */
+    min-width: 0 !important;    /* critical: allows panels to shrink without overflow */
     height: 100% !important;
     width: 100% !important;
     padding: 0 !important;
@@ -1115,6 +1119,7 @@ body {
   .panel-styles {
     grid-row: 3;
     min-height: 0;
+    min-width: 0;
   }
 
   .panel-header {
@@ -1461,4 +1466,47 @@ body {
   .btn {
     padding: 0 10px;
   }
+}
+
+/* ==========================================================================
+   Google AdSense Container Styles
+   ========================================================================== */
+.adsense-container {
+  position: relative;
+  background-color: var(--bg-input);
+  border: 1px dashed var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  text-align: center;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.adsense-container:hover {
+  border-color: var(--accent-border);
+  background-color: var(--bg-input-hover);
+}
+
+.ad-label {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.panel-ad {
+  margin-top: 24px;
+  width: 100%;
+}
+
+.preview-bottom-ad {
+  margin-top: 40px;
+  width: 100%;
 }
