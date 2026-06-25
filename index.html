@@ -167,7 +167,8 @@
             </div>
           </div>
           <div class="panel-body scrollable">
-            <!-- 共通・フォントファミリー設定 (全体) -->
+            <div class="styles-controls-row">
+              <!-- 共通・フォントファミリー設定 (全体) -->
             <div class="control-group global-font-group">
               <label for="style-font-family">
                 <i data-lucide="type"></i> フォントファミリー (全体)
@@ -291,21 +292,25 @@
               </div>
             </div>
 
-            <!-- Google AdSense - Sidebar Display Ad (Replace Publisher/Slot IDs as needed) -->
-            <div class="adsense-container panel-ad">
-              <span class="ad-label">SPONSOR</span>
-              <ins class="adsbygoogle"
-                   style="display:block"
-                   data-ad-client="ca-pub-9357019958045811"
-                   data-ad-slot="YYYYYYYYYY"
-                   data-ad-format="auto"
-                   data-full-width-responsive="true"></ins>
-            </div>
+            </div> <!-- closing styles-controls-row -->
 
-            <footer class="app-footer">
-              <span class="footer-text">© 2026 Markdown Viewer</span>
-              <a href="#" id="btn-privacy-policy" class="footer-link">プライバシーポリシー・免責事項</a>
-            </footer>
+            <div class="styles-footer-ad-container">
+              <!-- Google AdSense - Sidebar Display Ad (Replace Publisher/Slot IDs as needed) -->
+              <div class="adsense-container panel-ad">
+                <span class="ad-label">SPONSOR</span>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-9357019958045811"
+                     data-ad-slot="YYYYYYYYYY"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+              </div>
+
+              <footer class="app-footer">
+                <span class="footer-text">© 2026 Markdown Viewer</span>
+                <a href="#" id="btn-privacy-policy" class="footer-link">プライバシーポリシー・免責事項</a>
+              </footer>
+            </div>
           </div>
         </section>
       </main>
@@ -330,6 +335,15 @@
       <div id="toast" class="toast">
         <i data-lucide="check-circle-2"></i>
         <span id="toast-message">コピーしました！</span>
+      </div>
+
+      <!-- ドラッグ＆ドロップ オーバーレイ -->
+      <div id="drag-drop-overlay" class="drag-drop-overlay">
+        <div class="drag-drop-content">
+          <i data-lucide="file-up" class="drag-drop-icon"></i>
+          <h2 class="drag-drop-title">ファイルをここにドロップ</h2>
+          <p class="drag-drop-subtitle">.md または .txt ファイルに対応しています</p>
+        </div>
       </div>
     </div>
 

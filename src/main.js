@@ -17,7 +17,8 @@ import {
   Space, 
   Palette, 
   CheckCircle2,
-  LayoutGrid
+  LayoutGrid,
+  FileUp
 } from 'lucide';
 import { fontOptions, defaultStyles, defaultLightStyles, defaultDarkStyles } from './defaultStyles.js';
 
@@ -205,7 +206,8 @@ function initIcons() {
       Space,
       Palette,
       CheckCircle2,
-      LayoutGrid
+      LayoutGrid,
+      FileUp
     }
   });
 }
@@ -1142,6 +1144,86 @@ function initAdSense() {
 }
 
 // ==========================================================================
+// Drag and Drop File Import Logic
+// ==========================================================================
+function initDragAndDrop() {
+  const overlay = document.getElementById('drag-drop-overlay');
+  if (!overlay) return;
+
+  // Prevent default behaviors for drag & drop across the window
+  ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+    window.addEventListener(eventName, (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+    }, false);
+  });
+
+  // Track drag target depth to handle window leaving/entering accurately without flickering
+  let dragCounter = 0;
+
+  window.addEventListener('dragenter', (e) => {
+    // Only trigger if files are being dragged
+    if (e.dataTransfer && e.dataTransfer.types && Array.from(e.dataTransfer.types).includes('Files')) {
+      dragCounter++;
+      overlay.classList.add('show');
+    }
+  });
+
+  window.addEventListener('dragleave', (e) => {
+    if (e.dataTransfer && e.dataTransfer.types && Array.from(e.dataTransfer.types).includes('Files')) {
+      dragCounter--;
+      if (dragCounter <= 0) {
+        dragCounter = 0;
+        overlay.classList.remove('show');
+      }
+    }
+  });
+
+  // Handle dragleave directly on the overlay backdrop
+  overlay.addEventListener('dragleave', () => {
+    dragCounter = 0;
+    overlay.classList.remove('show');
+  });
+
+  overlay.addEventListener('dragover', (e) => {
+    e.preventDefault();
+  });
+
+  overlay.addEventListener('drop', (e) => {
+    e.preventDefault();
+    dragCounter = 0;
+    overlay.classList.remove('show');
+
+    const files = e.dataTransfer.files;
+    if (files && files.length > 0) {
+      const file = files[0];
+      const fileName = file.name;
+      const extension = fileName.split('.').pop().toLowerCase();
+      
+      // Allow markdown, text files or generic text mime-types
+      if (extension === 'md' || extension === 'txt' || file.type.startsWith('text/')) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const content = event.target.result;
+          const editor = document.getElementById('markdown-input');
+          if (editor) {
+            editor.value = content;
+            renderMarkdown();
+            saveState();
+            // Automatically focus and scroll to editor
+            editor.focus();
+            showToast(`ファイル「${fileName}」を読み込みました！`);
+          }
+        };
+        reader.readAsText(file);
+      } else {
+        showToast('エラー: .md または .txt ファイルのみ対応しています');
+      }
+    }
+  });
+}
+
+// ==========================================================================
 // App Startup Initialization
 // ==========================================================================
 function initApp() {
@@ -1173,6 +1255,9 @@ function initApp() {
 
   // Create Lucide Icons elements
   initIcons();
+
+  // Initialize Drag & Drop functionality
+  initDragAndDrop();
 
   // Lazy init AdSense slots
   setTimeout(initAdSense, 50);

@@ -1148,12 +1148,56 @@ body {
 
   .panel-styles .panel-body {
     display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 14px 24px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .styles-controls-row {
+    display: flex;
     flex-direction: row;
-    align-items: flex-start; /* align all items to the top to align labels perfectly */
+    align-items: flex-start;
     gap: 0;
-    padding: 14px 24px;      /* vertical and horizontal padding for nice layout */
+    flex-shrink: 0;
+    width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
+    padding-bottom: 6px;
+  }
+
+  .styles-footer-ad-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    width: 100%;
+    margin-top: 6px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 12px;
+    flex-shrink: 0;
+  }
+
+  .styles-footer-ad-container .panel-ad {
+    margin-top: 0 !important;
+    width: auto !important;
+    flex: 1;
+    max-width: 640px;
+    min-height: 80px !important;
+    height: 80px;
+    padding: 6px 16px !important;
+  }
+
+  .styles-footer-ad-container .app-footer {
+    margin-top: 0 !important;
+    padding: 0 !important;
+    border-top: none !important;
+    align-items: flex-end !important;
+    text-align: right;
+    flex-shrink: 0;
   }
 
   /* Shared tiny label style used above every control */
@@ -1659,4 +1703,98 @@ body {
 .modal-body-content a:hover {
   text-decoration: underline;
 }
+
+/* ==========================================================================
+   Drag & Drop Full-screen Overlay Styles
+   ========================================================================== */
+.drag-drop-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 3000; /* Higher than modal (2000) */
+  background-color: rgba(9, 9, 11, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-fast) ease;
+}
+
+.light-theme .drag-drop-overlay {
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.drag-drop-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.drag-drop-content {
+  width: 90%;
+  max-width: 500px;
+  padding: 40px 20px;
+  border: 2px dashed var(--accent);
+  border-radius: var(--radius-lg);
+  background: var(--bg-panel);
+  box-shadow: 0 0 30px var(--accent-fade);
+  text-align: center;
+  transform: scale(0.9);
+  transition: transform var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  /* Disable pointer-events inside content container so dragleave is only triggered by the parent wrapper */
+  pointer-events: none;
+}
+
+.drag-drop-overlay.show .drag-drop-content {
+  transform: scale(1);
+  animation: pulse-border 2s infinite alternate;
+}
+
+.drag-drop-icon {
+  width: 64px;
+  height: 64px;
+  color: var(--accent);
+  animation: bounce-icon 2s infinite ease-in-out;
+}
+
+.drag-drop-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 8px;
+}
+
+.drag-drop-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+@keyframes bounce-icon {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-border {
+  0% {
+    border-color: var(--accent);
+    box-shadow: 0 0 20px var(--accent-fade);
+  }
+  100% {
+    border-color: var(--accent-hover);
+    box-shadow: 0 0 40px var(--accent-fade-hover);
+  }
+}
+
 
