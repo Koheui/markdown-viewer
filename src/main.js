@@ -19,7 +19,7 @@ import {
   CheckCircle2,
   LayoutGrid
 } from 'lucide';
-import { fontOptions, defaultStyles } from './defaultStyles.js';
+import { fontOptions, defaultStyles, defaultLightStyles, defaultDarkStyles } from './defaultStyles.js';
 
 // ==========================================================================
 // Default Sample Markdown (Japanese)
@@ -150,36 +150,41 @@ function loadState() {
   // Load input text
   document.getElementById('markdown-input').value = (savedText && savedText.trim()) ? savedText : sampleMarkdown;
 
+  // Load theme preference first to determine base styles
+  if (savedTheme) {
+    appTheme = savedTheme;
+  } else {
+    appTheme = 'dark-theme';
+  }
+
+  const baseDefault = appTheme === 'dark-theme' ? defaultDarkStyles : defaultLightStyles;
+
   // Load custom styles state
   if (savedStyles) {
     try {
       currentStyles = JSON.parse(savedStyles);
       // Ensure missing structure properties from default are filled (in case schema updates)
-      Object.keys(defaultStyles).forEach(tag => {
+      Object.keys(baseDefault).forEach(tag => {
         if (!currentStyles[tag]) {
-          currentStyles[tag] = JSON.parse(JSON.stringify(defaultStyles[tag]));
+          currentStyles[tag] = JSON.parse(JSON.stringify(baseDefault[tag]));
         } else {
-          Object.keys(defaultStyles[tag]).forEach(prop => {
+          Object.keys(baseDefault[tag]).forEach(prop => {
             if (currentStyles[tag][prop] === undefined) {
-              currentStyles[tag][prop] = defaultStyles[tag][prop];
+              currentStyles[tag][prop] = baseDefault[tag][prop];
             }
           });
         }
       });
     } catch (e) {
       console.error('Error parsing saved styles, fallback to default', e);
-      currentStyles = JSON.parse(JSON.stringify(defaultStyles));
+      currentStyles = JSON.parse(JSON.stringify(baseDefault));
     }
   } else {
-    currentStyles = JSON.parse(JSON.stringify(defaultStyles));
+    currentStyles = JSON.parse(JSON.stringify(baseDefault));
   }
 
-  // Load theme preference
-  if (savedTheme) {
-    appTheme = savedTheme;
-  } else {
-    appTheme = 'dark-theme';
-  }
+  // Ensure colors are properly synced with theme (cleans up stale cached/localstorage light styles in dark mode)
+  syncColorsWithTheme(appTheme);
 
   // Load resizable columns and panels sizes
   if (savedSizes) {
@@ -679,7 +684,7 @@ function bindEvents() {
 
   // Reset styles button (Reset to default)
   document.getElementById('btn-reset-styles').addEventListener('click', () => {
-    currentStyles = JSON.parse(JSON.stringify(defaultStyles));
+    currentStyles = JSON.parse(JSON.stringify(appTheme === 'dark-theme' ? defaultDarkStyles : defaultLightStyles));
     applyStyles();
     updateControlsUI();
     saveState();
@@ -698,8 +703,6 @@ function bindEvents() {
   const themeToggle = document.getElementById('btn-theme-toggle');
   themeToggle.addEventListener('click', () => {
     const body = document.body;
-    const prevDefault = appTheme === 'dark-theme' ? '#6366f1' : '#4f46e5';
-    const newDefault = appTheme === 'dark-theme' ? '#4f46e5' : '#6366f1';
 
     if (appTheme === 'dark-theme') {
       body.classList.remove('dark-theme');
@@ -711,10 +714,8 @@ function bindEvents() {
       appTheme = 'dark-theme';
     }
 
-    // Toggle default accent color if user has not customized it
-    if (currentStyles.global.accentColor === prevDefault || !currentStyles.global.accentColor) {
-      currentStyles.global.accentColor = newDefault;
-    }
+    // Automatically check and convert colors for better readability/contrast
+    syncColorsWithTheme(appTheme);
 
     applyStyles();
     updateControlsUI();
@@ -932,6 +933,85 @@ function applyAccentColor(hex) {
   root.style.setProperty('--accent-fade-hover', `rgba(${r}, ${g}, ${b}, 0.15)`);
   root.style.setProperty('--accent-border', `rgba(${r}, ${g}, ${b}, 0.3)`);
   root.style.setProperty('--accent-focus', `rgba(${r}, ${g}, ${b}, 0.4)`);
+}
+
+function isColorDark(hex) {
+  if (!hex) return false;
+  const rgb = hexToRgb(hex);
+  if (!rgb) return false;
+  // YIQ luminance calculation
+  const yiq = ((rgb.r * 299) + (rgb.g * 587) + (rgb.b * 114)) / 1000;
+  return yiq < 128;
+}
+
+function syncColorsWithTheme(theme) {
+  const isDarkTheme = theme === 'dark-theme';
+  
+  // Adjust global background color if it conflicts with the theme mode
+  const isBgDark = isColorDark(currentStyles.global.backgroundColor);
+  if (isDarkTheme && !isBgDark) {
+    currentStyles.global.backgroundColor = '#18181b';
+  } else if (!isDarkTheme && isBgDark) {
+    currentStyles.global.backgroundColor = '#ffffff';
+  }
+
+  const nextBgDark = isColorDark(currentStyles.global.backgroundColor);
+
+  // Helper to ensure color has proper contrast with background
+  const adjustColorContrast = (currentColor, targetDarkHex, targetLightHex) => {
+    const isCurrentDark = isColorDark(currentColor);
+    if (nextBgDark && isCurrentDark) {
+      // Background is dark, but text is also dark -> change to light hex
+      return targetLightHex;
+    } else if (!nextBgDark && !isCurrentDark) {
+      // Background is light, but text is also light -> change to dark hex
+      return targetDarkHex;
+    }
+    return currentColor;
+  };
+
+  // Sync global text color
+  currentStyles.global.textColor = adjustColorContrast(
+    currentStyles.global.textColor, 
+    '#1f2937', // Light theme dark text
+    '#e4e4e7'  // Dark theme light text
+  );
+
+  // Sync element-specific colors
+  const tags = ['h1', 'h2', 'h3', 'p', 'strong'];
+  const darkDefaults = {
+    h1: '#f4f4f5',
+    h2: '#e4e4e7',
+    h3: '#d4d4d8',
+    p: '#a1a1aa',
+    strong: '#ffffff'
+  };
+  const lightDefaults = {
+    h1: '#111827',
+    h2: '#1f2937',
+    h3: '#374151',
+    p: '#4b5563',
+    strong: '#000000'
+  };
+
+  tags.forEach(tag => {
+    if (currentStyles[tag]) {
+      if (currentStyles[tag].color !== undefined) {
+        currentStyles[tag].color = adjustColorContrast(
+          currentStyles[tag].color,
+          lightDefaults[tag],
+          darkDefaults[tag]
+        );
+      }
+      if (currentStyles[tag].borderBottomColor !== undefined) {
+        currentStyles[tag].borderBottomColor = adjustColorContrast(
+          currentStyles[tag].borderBottomColor,
+          '#e5e7eb', // Light border
+          '#27272a'  // Dark border
+        );
+      }
+    }
+  });
 }
 
 // ==========================================================================

@@ -7,7 +7,7 @@ export const fontOptions = [
   { id: 'kosugi-maru', name: 'Kosugi Maru (Google)', value: "'Kosugi Maru', sans-serif", importUrl: 'https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap' }
 ];
 
-export const defaultStyles = {
+export const defaultLightStyles = {
   global: {
     fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif",
     backgroundColor: '#ffffff',
@@ -50,3 +50,50 @@ export const defaultStyles = {
     fontWeight: '700'
   }
 };
+
+export const defaultDarkStyles = {
+  global: {
+    fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif",
+    backgroundColor: '#18181b', // zinc-900 (gentle dark background)
+    textColor: '#e4e4e7', // zinc-200
+    accentColor: '#6366f1'
+  },
+  h1: {
+    fontSize: 32, // px
+    color: '#f4f4f5', // zinc-100
+    fontWeight: '700',
+    marginBottom: 16, // px
+    borderBottomShow: true,
+    borderBottomColor: '#27272a', // zinc-800
+    borderBottomWidth: 2 // px
+  },
+  h2: {
+    fontSize: 24, // px
+    color: '#e4e4e7', // zinc-200
+    fontWeight: '600',
+    marginBottom: 12, // px
+    borderBottomShow: true,
+    borderBottomColor: '#27272a',
+    borderBottomWidth: 1 // px
+  },
+  h3: {
+    fontSize: 20, // px
+    color: '#d4d4d8', // zinc-300
+    fontWeight: '600',
+    marginBottom: 8 // px
+  },
+  p: {
+    fontSize: 16, // px
+    color: '#a1a1aa', // zinc-400
+    fontWeight: '400',
+    marginBottom: 16, // px
+    lineHeight: 1.7
+  },
+  strong: {
+    color: '#ffffff',
+    fontWeight: '700'
+  }
+};
+
+export const defaultStyles = defaultLightStyles;
+
