@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ja">
+<html lang="en">
   <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5Y58TXJ0TX"></script>
@@ -13,23 +13,23 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📝</text></svg>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Markdown Viewer — インストール不要。無料でテキストを美しく整えるマークダウンビューワー</title>
-    <meta name="description" content="【インストール不要＆完全無料】コピペやドラッグ＆ドロップするだけで、Markdownをその場ですぐ美しくプレビューできるオンラインビューア。フォントや余白、見出し下線を直感的に調整し、ブログ用のCSS/HTMLも簡単に出力できます。" />
-    <meta name="keywords" content="Markdown,マークダウン,ビューア,CSS,カスタマイズ,プレビュー,デザイン,ブログ,装飾,はてなブログ,WordPress,Qiita,Zenn,エディタ,オンライン,インストール不要" />
+    <title>Online Markdown Viewer — Preview & Customize Markdown CSS Instantly</title>
+    <meta name="description" content="【No Install & Free】Online Markdown viewer & previewer. Paste or drag-and-drop your .md files to instantly render and customize styling. Export ready-to-use HTML and custom CSS." />
+    <meta name="keywords" content="Markdown,viewer,preview,CSS,customizer,online,editor,editor styling" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://markdown-viewer.net/" />
-    <meta property="og:title" content="Markdown Viewer — インストール不要。無料でテキストを美しく整えるマークダウンビューワー" />
-    <meta property="og:description" content="【インストール不要＆完全無料】コピペやドラッグ＆ドロップするだけで、Markdownをその場ですぐ美しくプレビューできるオンラインビューア。" />
+    <meta property="og:url" content="https://markdown-viewer.net/en/" />
+    <meta property="og:title" content="Online Markdown Viewer — Preview & Customize Markdown CSS Instantly" />
+    <meta property="og:description" content="【No Install & Free】Online Markdown viewer & previewer. Paste or drag-and-drop your .md files to instantly render." />
     <meta property="og:image" content="https://markdown-viewer.net/og-image.png" />
     <meta property="og:site_name" content="Markdown Viewer" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://markdown-viewer.net/" />
-    <meta property="twitter:title" content="Markdown Viewer — インストール不要。無料でテキストを美しく整えるマークダウンビューワー" />
-    <meta property="twitter:description" content="【インストール不要＆完全無料】コピペやドラッグ＆ドロップするだけで、Markdownをその場ですぐ美しくプレビューできるオンラインビューア。" />
+    <meta property="twitter:url" content="https://markdown-viewer.net/en/" />
+    <meta property="twitter:title" content="Online Markdown Viewer — Preview & Customize Markdown CSS Instantly" />
+    <meta property="twitter:description" content="【No Install & Free】Online Markdown viewer & previewer. Paste or drag-and-drop your .md files to instantly render." />
 
     <!-- Google Fonts for App UI -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,7 +42,7 @@
     
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9357019958045811" crossorigin="anonymous"></script>
-    <link rel="canonical" href="https://markdown-viewer.net/" />
+    <link rel="canonical" href="https://markdown-viewer.net/en/" />
     <link rel="alternate" hreflang="ja" href="https://markdown-viewer.net/" />
     <link rel="alternate" hreflang="en" href="https://markdown-viewer.net/en/" />
     <link rel="alternate" hreflang="x-default" href="https://markdown-viewer.net/en/" />
@@ -53,15 +53,15 @@
       "@context": "https://schema.org",
       "@type": "WebApplication",
       "name": "Markdown Viewer",
-      "url": "https://markdown-viewer.net/",
-      "description": "【インストール不要＆完全無料】コピペやドラッグ＆ドロップするだけで、Markdownをその場ですぐ美しくプレビューできるオンラインビューア。フォントや余白、見出し下線を直感的に調整し、ブログ用のCSS/HTMLも簡単に出力できます。",
+      "url": "https://markdown-viewer.net/en/",
+      "description": "【No Install & Free】Online Markdown viewer & previewer. Paste or drag-and-drop your .md files to instantly render and customize styling. Export ready-to-use HTML and custom CSS.",
       "applicationCategory": "DeveloperApplication",
       "operatingSystem": "All",
       "browserRequirements": "Requires JavaScript. Requires HTML5.",
       "offers": {
         "@type": "Offer",
         "price": "0.00",
-        "priceCurrency": "JPY"
+        "priceCurrency": "USD"
       }
     }
     </script>
@@ -75,19 +75,19 @@
           <span class="logo-text">Markdown<span class="text-accent">Viewer</span></span>
         </h1>
         <div class="header-actions">
-          <a href="/en/" class="btn btn-secondary btn-lang" title="Switch to English">
+          <a href="/" class="btn btn-secondary btn-lang" title="日本語に切り替え">
             <i data-lucide="languages"></i>
-            <span class="btn-text">EN</span>
+            <span class="btn-text">JA</span>
           </a>
-          <button id="btn-load-sample" class="btn btn-secondary" title="サンプルテキストを読み込む">
+          <button id="btn-load-sample" class="btn btn-secondary" title="Load sample markdown text">
             <i data-lucide="file-text"></i>
-            <span class="btn-text">サンプル</span>
+            <span class="btn-text">Sample</span>
           </button>
-          <button id="btn-reset-styles" class="btn btn-secondary" title="スタイル設定を初期化">
+          <button id="btn-reset-styles" class="btn btn-secondary" title="Reset style configurations">
             <i data-lucide="rotate-ccw"></i>
-            <span class="btn-text">初期化</span>
+            <span class="btn-text">Reset</span>
           </button>
-          <button id="btn-theme-toggle" class="btn btn-icon btn-theme" title="テーマ切り替え" aria-label="テーマ切り替え">
+          <button id="btn-theme-toggle" class="btn btn-icon btn-theme" title="Toggle Theme" aria-label="Toggle Theme">
             <i data-lucide="sun" class="sun-icon"></i>
             <i data-lucide="moon" class="moon-icon"></i>
           </button>
@@ -103,18 +103,18 @@
             <div class="panel-header">
               <div class="panel-title">
                 <i data-lucide="edit-3"></i>
-                <span>マークダウン入力</span>
+                <span>Markdown Input</span>
               </div>
-              <div class="panel-subtitle">その場で編集可能</div>
+              <div class="panel-subtitle">Editable in real-time</div>
               <div class="panel-actions">
-                <button id="btn-clear-editor" class="btn btn-ghost btn-sm" title="マークダウンをクリア">
+                <button id="btn-clear-editor" class="btn btn-ghost btn-sm" title="Clear Editor">
                   <i data-lucide="trash-2"></i>
-                  <span class="btn-text">クリア</span>
+                  <span class="btn-text">Clear</span>
                 </button>
               </div>
             </div>
             <div class="panel-body">
-              <textarea id="markdown-input" placeholder="# ここにマークダウンを入力してください...&#10;&#10;**太字** や *斜体*、[リンク](https://example.com) などが使えます。"></textarea>
+              <textarea id="markdown-input" placeholder="# Enter markdown here...&#10;&#10;Supports **bold**, *italic*, [links](https://example.com) and more."></textarea>
             </div>
           </section>
 
@@ -126,9 +126,9 @@
             <div class="panel-header">
               <div class="panel-title">
                 <i data-lucide="eye"></i>
-                <span>ライブプレビュー</span>
+                <span>Live Preview</span>
               </div>
-              <div class="panel-subtitle">リアルタイム反映</div>
+              <div class="panel-subtitle">Real-time render</div>
             </div>
             <div class="panel-body scrollable">
               <!-- プレビュー領域 (最大幅を適用するラッパー) -->
@@ -137,7 +137,7 @@
                    <!-- レンダリングされたHTMLがここに入る -->
                  </div>
 
-                 <!-- Google AdSense - Preview Bottom Display Ad (Replace Publisher/Slot IDs as needed) -->
+                 <!-- Google AdSense - Preview Bottom Display Ad -->
                  <div class="adsense-container preview-bottom-ad">
                    <span class="ad-label">SPONSOR</span>
                    <ins class="adsbygoogle"
@@ -160,16 +160,16 @@
           <div class="panel-header">
             <div class="panel-title">
               <i data-lucide="sliders"></i>
-              <span>スタイルカスタマイズ</span>
+              <span>Style Settings</span>
             </div>
             <div class="panel-actions">
-              <button id="btn-copy-css" class="btn btn-accent btn-sm" title="CSSをクリップボードにコピー">
+              <button id="btn-copy-css" class="btn btn-accent btn-sm" title="Copy CSS to Clipboard">
                 <i data-lucide="copy"></i>
-                <span>CSSコピー</span>
+                <span>Copy CSS</span>
               </button>
-              <button id="btn-copy-html" class="btn btn-secondary btn-sm" title="HTMLをクリップボードにコピー">
+              <button id="btn-copy-html" class="btn btn-secondary btn-sm" title="Copy HTML to Clipboard">
                 <i data-lucide="code"></i>
-                <span>HTMLコピー</span>
+                <span>Copy HTML</span>
               </button>
             </div>
           </div>
@@ -178,7 +178,7 @@
               <!-- 共通・フォントファミリー設定 (全体) -->
             <div class="control-group global-font-group">
               <label for="style-font-family">
-                <i data-lucide="type"></i> フォントファミリー (全体)
+                <i data-lucide="type"></i> Font Family (Global)
               </label>
               <select id="style-font-family" class="form-select"></select>
             </div>
@@ -186,7 +186,7 @@
             <!-- アセンクトカラー設定 -->
             <div class="control-group global-accent-group">
               <label for="style-accent-color">
-                <i data-lucide="palette"></i> アクセントカラー
+                <i data-lucide="palette"></i> Accent Color
               </label>
               <div class="color-picker-row">
                 <div class="color-picker-wrapper">
@@ -199,7 +199,7 @@
             <!-- キャンバス背景色設定 -->
             <div class="control-group global-bg-group">
               <label for="style-bg-color">
-                <i data-lucide="palette"></i> キャンバス背景色
+                <i data-lucide="palette"></i> Canvas Background
               </label>
               <div class="color-picker-row">
                 <div class="color-picker-wrapper">
@@ -213,13 +213,13 @@
 
             <!-- 対象要素のタブ切り替え -->
             <div class="element-selector-group">
-              <span class="toolbar-label"><i data-lucide="layout-grid"></i> 対象要素</span>
+              <span class="toolbar-label"><i data-lucide="layout-grid"></i> Target Element</span>
               <div class="element-selector">
                 <button class="selector-tab active" data-element="h1">H1</button>
                 <button class="selector-tab" data-element="h2">H2</button>
                 <button class="selector-tab" data-element="h3">H3</button>
-                <button class="selector-tab" data-element="p">本文</button>
-                <button class="selector-tab" data-element="strong">太字</button>
+                <button class="selector-tab" data-element="p">Paragraph</button>
+                <button class="selector-tab" data-element="strong">Bold</button>
               </div>
             </div>
 
@@ -229,7 +229,7 @@
                 <!-- 文字サイズ -->
                 <div class="control-group" id="group-font-size">
                   <div class="control-label-row">
-                    <label for="style-font-size"><i data-lucide="type"></i> 文字サイズ</label>
+                    <label for="style-font-size"><i data-lucide="type"></i> Font Size</label>
                     <span class="control-value" id="val-font-size">16px</span>
                   </div>
                   <input type="range" id="style-font-size" class="form-range" min="12" max="64" step="1" />
@@ -237,7 +237,7 @@
 
                 <!-- 文字色 -->
                 <div class="control-group" id="group-color">
-                  <label for="style-color"><i data-lucide="palette"></i> 文字色</label>
+                  <label for="style-color"><i data-lucide="palette"></i> Text Color</label>
                   <div class="color-picker-row">
                     <div class="color-picker-wrapper">
                       <input type="color" id="style-color" class="form-color" />
@@ -248,7 +248,7 @@
 
                 <!-- フォントの太さ -->
                 <div class="control-group" id="group-font-weight">
-                  <label><i data-lucide="bold"></i> フォントの太さ</label>
+                  <label><i data-lucide="bold"></i> Font Weight</label>
                   <div class="btn-group-toggle" id="style-font-weight">
                     <button class="btn-toggle" data-weight="300">Light</button>
                     <button class="btn-toggle" data-weight="400">Regular</button>
@@ -260,7 +260,7 @@
                 <!-- 下余白 (Margin Bottom) -->
                 <div class="control-group" id="group-margin-bottom">
                   <div class="control-label-row">
-                    <label for="style-margin-bottom"><i data-lucide="space"></i> 下余白 (Margin Bottom)</label>
+                    <label for="style-margin-bottom"><i data-lucide="space"></i> Margin Bottom</label>
                     <span class="control-value" id="val-margin-bottom">16px</span>
                   </div>
                   <input type="range" id="style-margin-bottom" class="form-range" min="0" max="60" step="1" />
@@ -271,7 +271,7 @@
                   <hr class="separator" />
                   
                   <div class="control-group">
-                    <span class="toolbar-label"><i data-lucide="underline"></i> 下線の表示</span>
+                    <span class="toolbar-label"><i data-lucide="underline"></i> Show Border Bottom</span>
                     <label class="toggle-switch-label" for="style-border-show">
                       <input type="checkbox" id="style-border-show" class="form-checkbox" />
                     </label>
@@ -279,7 +279,7 @@
 
                   <div class="border-details" id="border-details-fields">
                     <div class="control-group">
-                      <label for="style-border-color">下線の色</label>
+                      <label for="style-border-color">Border Color</label>
                       <div class="color-picker-row">
                         <div class="color-picker-wrapper">
                           <input type="color" id="style-border-color" class="form-color" />
@@ -289,7 +289,7 @@
                     </div>
                     <div class="control-group">
                       <div class="control-label-row">
-                        <label for="style-border-width">下線の太さ</label>
+                        <label for="style-border-width">Border Width</label>
                         <span class="control-value" id="val-border-width">2px</span>
                       </div>
                       <input type="range" id="style-border-width" class="form-range" min="1" max="10" step="1" />
@@ -302,7 +302,7 @@
             </div> <!-- closing styles-controls-row -->
 
             <div class="styles-footer-ad-container">
-              <!-- Google AdSense - Sidebar Display Ad (Replace Publisher/Slot IDs as needed) -->
+              <!-- Google AdSense - Sidebar Display Ad -->
               <div class="adsense-container panel-ad">
                 <span class="ad-label">SPONSOR</span>
                 <ins class="adsbygoogle"
@@ -315,7 +315,7 @@
 
               <footer class="app-footer">
                 <span class="footer-text">© 2026 Markdown Viewer</span>
-                <a href="#" id="btn-privacy-policy" class="footer-link">プライバシーポリシー・免責事項</a>
+                <a href="#" id="btn-privacy-policy" class="footer-link">Privacy Policy</a>
               </footer>
             </div>
           </div>
@@ -326,30 +326,30 @@
       <nav class="app-nav">
         <button class="nav-item active" data-target="panel-editor">
           <i data-lucide="edit-3"></i>
-          <span>入力</span>
+          <span>Input</span>
         </button>
         <button class="nav-item" data-target="panel-preview">
           <i data-lucide="eye"></i>
-          <span>プレビュー</span>
+          <span>Preview</span>
         </button>
         <button class="nav-item" data-target="panel-styles">
           <i data-lucide="sliders"></i>
-          <span>スタイル</span>
+          <span>Style</span>
         </button>
       </nav>
 
       <!-- トースト通知 -->
       <div id="toast" class="toast">
         <i data-lucide="check-circle-2"></i>
-        <span id="toast-message">コピーしました！</span>
+        <span id="toast-message">Copied!</span>
       </div>
 
       <!-- ドラッグ＆ドロップ オーバーレイ -->
       <div id="drag-drop-overlay" class="drag-drop-overlay">
         <div class="drag-drop-content">
           <i data-lucide="file-up" class="drag-drop-icon"></i>
-          <h2 class="drag-drop-title">ファイルをここにドロップ</h2>
-          <p class="drag-drop-subtitle">.md または .txt ファイルに対応しています</p>
+          <h2 class="drag-drop-title">Drop File Here</h2>
+          <p class="drag-drop-subtitle">Supports .md or .txt files</p>
         </div>
       </div>
     </div>
@@ -359,23 +359,23 @@
       <div class="modal-overlay" id="modal-privacy-overlay"></div>
       <div class="modal-content scrollable">
         <div class="modal-header">
-          <h2>プライバシーポリシー・免責事項</h2>
-          <button id="btn-close-privacy" class="btn-close" aria-label="閉じる">&times;</button>
+          <h2>Privacy Policy</h2>
+          <button id="btn-close-privacy" class="btn-close" aria-label="Close">&times;</button>
         </div>
         <div class="modal-body-content">
-          <h3>1. 広告の配信について</h3>
-          <p>当サイトでは、第三者配信の広告サービス「Google AdSense（グーグルアドセンス）」を利用しています。広告配信事業者は、ユーザーの興味に応じた商品やサービスの広告を表示するため、当サイトや他サイトへのアクセスに関する情報「Cookie」（氏名、住所、メールアドレス、電話番号は含まれません）を使用することがあります。</p>
-          <p>Googleによるパーソナライズ広告の無効化や設定については、Googleの<a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">広告に関するポリシーと規約</a>をご参照ください。</p>
+          <h3>1. About Advertisements</h3>
+          <p>This website uses the third-party advertising service "Google AdSense". Advertising distributors may use "Cookies" (which do not include name, address, email address, or phone number) regarding access to this site and other sites in order to display advertisements for products and services of interest to users.</p>
+          <p>Please refer to Google's <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Advertising Policies and Terms</a> for information on disabling and setting up personalized advertising by Google.</p>
 
-          <h3>2. 免責事項</h3>
-          <p>当サイトで生成されたコード（CSS・HTML等）や、当サイトで提供するすべての情報により生じたトラブルやいかなる損失・損害についても、当サイトおよび運営者は一切の責任を負いません。本ツールの利用結果については、お客様ご自身の責任においてご判断ください。</p>
-          <p>また、当サイトからリンクやバナーなどによって他のサイトに移動された場合、移動先サイトで提供される情報、サービス等について一切の責任を負いません。</p>
+          <h3>2. Disclaimer</h3>
+          <p>The site and its administrators accept no responsibility for any trouble, loss, or damage caused by the codes (CSS, HTML, etc.) generated by this site or any information provided on this site. Please judge the use of this tool at your own risk.</p>
+          <p>In addition, when you move to other sites by links, banners, etc. from this site, we do not take any responsibility for the information, services, etc. provided at the destination site.</p>
 
-          <h3>3. 著作権・肖像権について</h3>
-          <p>当サイトに掲載されているすべてのコンテンツ（文章、画像、デザイン等）の著作権・肖像権は、当サイトの所有者または各権利所有者に帰属します。無断転載・複製・二次利用等は固く禁じます。</p>
+          <h3>3. Copyright and Portrait Rights</h3>
+          <p>The copyright and portrait rights of all contents (text, images, design, etc.) posted on this site belong to the owner of this site or the respective right holders. Unauthorized reproduction, duplication, secondary use, etc. are strictly prohibited.</p>
           
-          <h3>4. プライバシーポリシーの変更について</h3>
-          <p>当サイトは、個人情報に関して適用される日本の法令を遵守するとともに、本ポリシーの内容を適宜見直し、その改善に努めます。修正された最新のプライバシーポリシーは常に本ページにて開示されます。</p>
+          <h3>4. Changes to Privacy Policy</h3>
+          <p>This site complies with Japanese laws and regulations applicable to personal information, and will review the content of this policy from time to time and strive to improve it. The latest modified privacy policy will always be disclosed on this page.</p>
         </div>
       </div>
     </div>
