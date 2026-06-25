@@ -763,6 +763,34 @@ function bindEvents() {
       document.getElementById(targetPanelId).classList.add('active');
     });
   });
+
+  // 8. Privacy Policy Modal Event Listeners
+  const privacyBtn = document.getElementById('btn-privacy-policy');
+  const privacyModal = document.getElementById('modal-privacy');
+  const closePrivacyBtn = document.getElementById('btn-close-privacy');
+  const privacyOverlay = document.getElementById('modal-privacy-overlay');
+
+  if (privacyBtn && privacyModal && closePrivacyBtn && privacyOverlay) {
+    const openModal = (e) => {
+      e.preventDefault();
+      privacyModal.classList.add('show');
+    };
+
+    const closeModal = () => {
+      privacyModal.classList.remove('show');
+    };
+
+    privacyBtn.addEventListener('click', openModal);
+    closePrivacyBtn.addEventListener('click', closeModal);
+    privacyOverlay.addEventListener('click', closeModal);
+
+    // Close on Escape key press
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && privacyModal.classList.contains('show')) {
+        closeModal();
+      }
+    });
+  }
 }
 
 // ==========================================================================

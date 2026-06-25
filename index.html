@@ -33,6 +33,7 @@
     
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9357019958045811" crossorigin="anonymous"></script>
+    <link rel="canonical" href="https://markdown-viewer.net/" />
   </head>
   <body class="dark-theme">
     <div id="app" class="app-container">
@@ -278,6 +279,11 @@
                    (adsbygoogle = window.adsbygoogle || []).push({});
               </script>
             </div>
+
+            <footer class="app-footer">
+              <span class="footer-text">© 2026 Markdown Viewer</span>
+              <a href="#" id="btn-privacy-policy" class="footer-link">プライバシーポリシー・免責事項</a>
+            </footer>
           </div>
         </section>
       </main>
@@ -302,6 +308,32 @@
       <div id="toast" class="toast">
         <i data-lucide="check-circle-2"></i>
         <span id="toast-message">コピーしました！</span>
+      </div>
+    </div>
+
+    <!-- プライバシーポリシー モーダル -->
+    <div id="modal-privacy" class="modal">
+      <div class="modal-overlay" id="modal-privacy-overlay"></div>
+      <div class="modal-content scrollable">
+        <div class="modal-header">
+          <h2>プライバシーポリシー・免責事項</h2>
+          <button id="btn-close-privacy" class="btn-close" aria-label="閉じる">&times;</button>
+        </div>
+        <div class="modal-body-content">
+          <h3>1. 広告の配信について</h3>
+          <p>当サイトでは、第三者配信の広告サービス「Google AdSense（グーグルアドセンス）」を利用しています。広告配信事業者は、ユーザーの興味に応じた商品やサービスの広告を表示するため、当サイトや他サイトへのアクセスに関する情報「Cookie」（氏名、住所、メールアドレス、電話番号は含まれません）を使用することがあります。</p>
+          <p>Googleによるパーソナライズ広告の無効化や設定については、Googleの<a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">広告に関するポリシーと規約</a>をご参照ください。</p>
+
+          <h3>2. 免責事項</h3>
+          <p>当サイトで生成されたコード（CSS・HTML等）や、当サイトで提供するすべての情報により生じたトラブルやいかなる損失・損害についても、当サイトおよび運営者は一切の責任を負いません。本ツールの利用結果については、お客様ご自身の責任においてご判断ください。</p>
+          <p>また、当サイトからリンクやバナーなどによって他のサイトに移動された場合、移動先サイトで提供される情報、サービス等について一切の責任を負いません。</p>
+
+          <h3>3. 著作権・肖像権について</h3>
+          <p>当サイトに掲載されているすべてのコンテンツ（文章、画像、デザイン等）の著作権・肖像権は、当サイトの所有者または各権利所有者に帰属します。無断転載・複製・二次利用等は固く禁じます。</p>
+          
+          <h3>4. プライバシーポリシーの変更について</h3>
+          <p>当サイトは、個人情報に関して適用される日本の法令を遵守するとともに、本ポリシーの内容を適宜見直し、その改善に努めます。修正された最新のプライバシーポリシーは常に本ページにて開示されます。</p>
+        </div>
       </div>
     </div>
 
