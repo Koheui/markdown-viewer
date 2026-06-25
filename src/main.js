@@ -525,7 +525,13 @@ function applyStyles() {
 function renderMarkdown() {
   const inputVal = document.getElementById('markdown-input').value;
   const outputEl = document.getElementById('preview-content');
-  outputEl.innerHTML = marked.parse(inputVal);
+  
+  // Preprocess markdown to fix bold/italic rendering issues with double-byte characters
+  const preprocessedVal = inputVal
+    .replace(/([^\x00-\x7F])(\*+)/g, '$1\u200b$2')
+    .replace(/(\*+)([^\x00-\x7F])/g, '$1\u200b$2');
+
+  outputEl.innerHTML = marked.parse(preprocessedVal);
 }
 
 // ==========================================================================
