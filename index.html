@@ -70,8 +70,8 @@
     <div id="app" class="app-container">
       <!-- ヘッダー -->
       <header class="app-header">
-        <h1 class="logo">
-          <span class="logo-icon">M</span>
+        <h1 class="logo" aria-label="Markdownビューアー - 無料オンラインツール">
+          <span class="logo-icon" aria-hidden="true">M</span>
           <span class="logo-text">Markdown<span class="text-accent">Viewer</span></span>
         </h1>
         <div class="header-actions">
@@ -312,6 +312,43 @@
                      data-ad-format="auto"
                      data-full-width-responsive="true"></ins>
               </div>
+
+              <!-- SEO Content Section: visually hidden but crawlable -->
+              <section class="seo-content" aria-label="このツールについて">
+                <h2>Markdownビューアーとは — ブラウザで使える無料オンラインツール</h2>
+                <p>Markdown Viewerは、インストール不要・登録不要でMarkdown（マークダウン）をリアルタイムにプレビューできる無料のオンラインビューアーです。コピペするだけ、またはファイルをドロップするだけで、.mdや.txtファイルをその場ですぐ美しく表示します。</p>
+
+                <h2>使い方</h2>
+                <ol>
+                  <li>Markdownテキストを左のエリアにコピー＆ペーストする、またはファイル（.md / .txt）をドロップする</li>
+                  <li>右のプレビューパネルにリアルタイムで整形された内容が表示される</li>
+                  <li>フォントやカラー、見出しのスタイルをカスタマイズし、CSSやHTMLをコピーする</li>
+                </ol>
+
+                <h2>主な機能</h2>
+                <ul>
+                  <li><strong>リアルタイムプレビュー</strong>：入力と同時に整形結果を確認できる</li>
+                  <li><strong>ファイルのドラッグ＆ドロップ</strong>：.mdおよび.txtファイルに対応</li>
+                  <li><strong>スタイルカスタマイズ</strong>：フォント・余白・見出し装飾を直感的に調整可能</li>
+                  <li><strong>CSS / HTML出力</strong>：ブログ（はてなブログ・WordPress・Qiita・Zenn）用のコードをワンクリックでコピー</li>
+                  <li><strong>完全無料・データ送信なし</strong>：すべての処理はブラウザ内で完結。外部サーバーにデータは送られない</li>
+                  <li><strong>日本語・英語対応</strong>：日本語UIと英語UI（/en/）を切り替え可能</li>
+                </ul>
+
+                <h2>よくある質問</h2>
+                <dl>
+                  <dt>このMarkdownビューアーは無料ですか？</dt>
+                  <dd>はい、完全無料です。会員登録・ログインも一切不要です。</dd>
+                  <dt>入力したMarkdownはどこかに保存・送信されますか？</dt>
+                  <dd>いいえ。すべての処理はお使いのブラウザ内で完結します。入力内容は外部サーバーに送信されません。</dd>
+                  <dt>対応しているMarkdown記法は？</dt>
+                  <dd>見出し（#）、太字（**）、斜体（*）、リスト、コードブロック、テーブル、リンク、画像など、標準的なMarkdown記法に幅広く対応しています。</dd>
+                  <dt>スマートフォンやタブレットでも使えますか？</dt>
+                  <dd>はい。モバイル対応のレスポンシブデザインで、スマートフォン・タブレットでも快適に利用できます。</dd>
+                  <dt>はてなブログやWordPressのブログ記事に使えますか？</dt>
+                  <dd>はい。スタイルをカスタマイズして「CSSコピー」「HTMLコピー」ボタンを使えば、ブログ記事用の整形済みHTMLとスタイルシートをそのままコピーできます。</dd>
+                </dl>
+              </section>
 
               <footer class="app-footer">
                 <span class="footer-text">© 2026 Markdown Viewer</span>

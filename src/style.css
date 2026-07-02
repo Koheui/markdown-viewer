@@ -1556,6 +1556,60 @@ body {
 }
 
 /* ==========================================================================
+   SEO Content Section
+   ========================================================================== */
+.seo-content {
+  margin-top: 24px;
+  padding: 24px 20px;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  line-height: 1.7;
+}
+
+.seo-content h2 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin: 16px 0 6px;
+  padding: 0;
+  border: none;
+}
+
+.seo-content h2:first-child {
+  margin-top: 0;
+}
+
+.seo-content p,
+.seo-content ol,
+.seo-content ul,
+.seo-content dl {
+  margin: 0 0 8px;
+  padding-left: 1.2em;
+  color: var(--text-muted);
+}
+
+.seo-content dl {
+  padding-left: 0;
+}
+
+.seo-content dt {
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-top: 8px;
+}
+
+.seo-content dd {
+  margin-left: 1em;
+  margin-bottom: 4px;
+}
+
+.seo-content strong {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+/* ==========================================================================
    Footer & Privacy Policy Modal Styles
    ========================================================================== */
 .app-footer {
@@ -1569,6 +1623,7 @@ body {
   font-size: 0.75rem;
   color: var(--text-muted);
 }
+
 
 .footer-link {
   color: var(--accent);
