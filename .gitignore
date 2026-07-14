@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# 投稿用記事ドラフト（未公開原稿のためリポジトリに含めない）
+articles
