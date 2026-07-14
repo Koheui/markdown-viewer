@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5Y58TXJ0TX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-5Y58TXJ0TX');
+    </script>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Markdown記法一覧【チートシート】書き方を表示例つきで解説 | Markdown Viewer</title>
+    <meta name="description" content="Markdown（マークダウン）の書き方を記法一覧のチートシートで解説。見出し・改行・太字・リスト・表（テーブル）・リンク・画像・コードブロックなど、コピペで使える例と表示結果をセットで紹介。書いたMarkdownはその場で無料プレビューできます。" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://markdown-viewer.net/guide/markdown-syntax/" />
+    <meta property="og:title" content="Markdown記法一覧【チートシート】書き方を表示例つきで解説" />
+    <meta property="og:description" content="見出し・改行・太字・リスト・表・リンク・画像・コードブロックなど、Markdownの書き方をコピペで使える例と表示結果をセットで解説。" />
+    <meta property="og:image" content="https://markdown-viewer.net/og-image.png" />
+    <meta property="og:site_name" content="Markdown Viewer" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://markdown-viewer.net/guide/markdown-syntax/" />
+    <meta property="twitter:title" content="Markdown記法一覧【チートシート】書き方を表示例つきで解説" />
+    <meta property="twitter:description" content="見出し・改行・太字・リスト・表・リンク・画像・コードブロックなど、Markdownの書き方をコピペで使える例と表示結果をセットで解説。" />
+
+    <link rel="canonical" href="https://markdown-viewer.net/guide/markdown-syntax/" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9357019958045811" crossorigin="anonymous"></script>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Markdown記法一覧【チートシート】書き方を表示例つきで解説",
+      "description": "Markdown（マークダウン）の書き方を記法一覧のチートシートで解説。見出し・改行・太字・リスト・表・リンク・画像・コードブロックなど、コピペで使える例と表示結果をセットで紹介。",
+      "image": "https://markdown-viewer.net/og-image.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Markdown Viewer",
+        "url": "https://markdown-viewer.net/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Markdown Viewer",
+        "url": "https://markdown-viewer.net/"
+      },
+      "datePublished": "2026-07-14",
+      "dateModified": "2026-07-14",
+      "mainEntityOfPage": "https://markdown-viewer.net/guide/markdown-syntax/"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Markdown Viewer",
+          "item": "https://markdown-viewer.net/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Markdownの書き方ガイド",
+          "item": "https://markdown-viewer.net/guide/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Markdown記法一覧（チートシート）",
+          "item": "https://markdown-viewer.net/guide/markdown-syntax/"
+        }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="/guide.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a href="/" class="logo">
+          <span class="logo-icon">M</span>
+          <span>Markdown<span class="text-accent">Viewer</span></span>
+        </a>
+        <a href="/" class="header-cta">ビューアーで試す →</a>
+      </div>
+    </header>
+
+    <main>
+      <nav class="breadcrumb" aria-label="パンくずリスト">
+        <a href="/">Markdown Viewer</a> › <a href="/guide/">書き方ガイド</a> › Markdown記法一覧（チートシート）
+      </nav>
+
+      <article>
+        <h1>Markdown記法一覧【チートシート】<br>書き方を表示例つきで解説</h1>
+        <p class="lead">
+          Markdown（マークダウン）は、<code>#</code> や <code>**</code> などの記号を使って、テキストだけで見出しや表・リンクを表現できる軽量マークアップ言語です。このページでは、よく使うMarkdownの書き方を「入力例」と「表示結果」のセットで一覧にまとめました。書き方を試したいときは、<a href="/">インストール不要の無料Markdownビューアー</a>にコピペすれば、その場でプレビューできます。
+        </p>
+
+        <div class="table-wrapper">
+          <table>
+            <caption style="text-align:left; font-weight:700; margin-bottom:8px;">Markdown記法 早見表</caption>
+            <thead>
+              <tr><th>やりたいこと</th><th>書き方</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>見出し</td><td><code># 見出し1</code> 〜 <code>###### 見出し6</code></td></tr>
+              <tr><td>改行</td><td>行末に半角スペース2つ、または空行を挟む</td></tr>
+              <tr><td>太字</td><td><code>**太字**</code></td></tr>
+              <tr><td>斜体</td><td><code>*斜体*</code></td></tr>
+              <tr><td>打ち消し線</td><td><code>~~打ち消し~~</code></td></tr>
+              <tr><td>箇条書きリスト</td><td><code>- 項目</code></td></tr>
+              <tr><td>番号付きリスト</td><td><code>1. 項目</code></td></tr>
+              <tr><td>チェックリスト</td><td><code>- [ ] 未完了</code> / <code>- [x] 完了</code></td></tr>
+              <tr><td>表（テーブル）</td><td><code>| 列1 | 列2 |</code> と <code>| --- | --- |</code></td></tr>
+              <tr><td>リンク</td><td><code>[表示テキスト](URL)</code></td></tr>
+              <tr><td>画像</td><td><code>![代替テキスト](画像URL)</code></td></tr>
+              <tr><td>インラインコード</td><td><code>`code`</code></td></tr>
+              <tr><td>コードブロック</td><td><code>```言語名</code> 〜 <code>```</code></td></tr>
+              <tr><td>引用</td><td><code>&gt; 引用文</code></td></tr>
+              <tr><td>水平線</td><td><code>---</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <nav class="toc" aria-label="目次">
+          <div class="toc-title">目次</div>
+          <ol>
+            <li><a href="#heading">見出しの書き方</a></li>
+            <li><a href="#linebreak">改行の書き方</a></li>
+            <li><a href="#emphasis">太字・斜体・打ち消し線</a></li>
+            <li><a href="#list">リスト（箇条書き・番号付き・チェックリスト）</a></li>
+            <li><a href="#table">表（テーブル）の書き方</a></li>
+            <li><a href="#link">リンクの書き方</a></li>
+            <li><a href="#image">画像の挿入</a></li>
+            <li><a href="#code">コードの書き方（インライン・コードブロック）</a></li>
+            <li><a href="#quote">引用の書き方</a></li>
+            <li><a href="#hr">水平線（区切り線）</a></li>
+            <li><a href="#faq">よくある質問</a></li>
+          </ol>
+        </nav>
+
+        <h2 id="heading">見出しの書き方</h2>
+        <p>行頭に <code>#</code> を付けると見出しになります。<code>#</code> の数が多いほど階層が深く（文字が小さく）なり、<code>#</code> 1個の見出し1（H1）から <code>#</code> 6個の見出し6（H6）まで使えます。<code>#</code> のあとには半角スペースが必要です。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre># 見出し1
+## 見出し2
+### 見出し3</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <h1>見出し1</h1>
+              <h2>見出し2</h2>
+              <h3>見出し3</h3>
+            </div>
+          </div>
+        </div>
+        <div class="note">ブログ記事では、記事タイトルがH1になるため、本文中の見出しは <code>##</code>（H2）から使うのが一般的です。</div>
+
+        <h2 id="linebreak">改行の書き方</h2>
+        <p>Markdownでは、単純にEnterで改行しただけでは表示上は改行されません。改行するには次の2つの方法があります。</p>
+        <ul style="padding-left: 24px; margin-bottom: 16px;">
+          <li><strong>行末に半角スペースを2つ</strong>入れて改行する（同じ段落内での改行）</li>
+          <li><strong>空行を1行挟む</strong>（新しい段落として分ける）</li>
+        </ul>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>1行目（行末にスペース2つ）␣␣
+2行目
+
+空行を挟むと新しい段落</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <p style="margin-bottom:8px;">1行目（行末にスペース2つ）<br>2行目</p>
+              <p style="margin-bottom:0;">空行を挟むと新しい段落</p>
+            </div>
+          </div>
+        </div>
+        <div class="note"><code>␣</code> は半角スペースを表しています。ツールによっては <code>&lt;br&gt;</code> タグでの改行にも対応しています。</div>
+
+        <h2 id="emphasis">太字・斜体・打ち消し線</h2>
+        <p>文字を <code>*</code>（アスタリスク）や <code>~</code>（チルダ）で囲むと、文字を強調できます。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>**太字**
+*斜体*
+***太字かつ斜体***
+~~打ち消し線~~</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <p style="margin-bottom:4px;"><strong>太字</strong></p>
+              <p style="margin-bottom:4px;"><em>斜体</em></p>
+              <p style="margin-bottom:4px;"><strong><em>太字かつ斜体</em></strong></p>
+              <p style="margin-bottom:0;"><del>打ち消し線</del></p>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="list">リスト（箇条書き・番号付き・チェックリスト）</h2>
+        <p>行頭に <code>-</code> を付けると箇条書きリスト、<code>1.</code> のように数字を付けると番号付きリストになります。行頭を半角スペース4つ（またはタブ）で字下げすると、入れ子（ネスト）にできます。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>- 項目A
+- 項目B
+    - 項目B-1
+
+1. 手順1
+2. 手順2
+
+- [x] 完了したタスク
+- [ ] 未完了のタスク</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <ul>
+                <li>項目A</li>
+                <li>項目B
+                  <ul><li>項目B-1</li></ul>
+                </li>
+              </ul>
+              <ol>
+                <li>手順1</li>
+                <li>手順2</li>
+              </ol>
+              <ul style="list-style:none; padding-left: 4px;">
+                <li><input type="checkbox" checked disabled> 完了したタスク</li>
+                <li><input type="checkbox" disabled> 未完了のタスク</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="table">表（テーブル）の書き方</h2>
+        <p>表は <code>|</code>（パイプ）で列を区切り、2行目に <code>---</code> を並べたヘッダー区切り行を書きます。区切り行の <code>:</code> の位置で、列の文字寄せ（左寄せ・中央寄せ・右寄せ）を指定できます。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>| 商品名 | 価格 | 在庫 |
+| :--- | :---: | ---: |
+| りんご | 150円 | 20 |
+| バナナ | 100円 | 8 |</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <div class="table-wrapper" style="margin: 8px 0;">
+                <table style="min-width: 0;">
+                  <thead>
+                    <tr><th style="text-align:left;">商品名</th><th style="text-align:center;">価格</th><th style="text-align:right;">在庫</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td style="text-align:left;">りんご</td><td style="text-align:center;">150円</td><td style="text-align:right;">20</td></tr>
+                    <tr><td style="text-align:left;">バナナ</td><td style="text-align:center;">100円</td><td style="text-align:right;">8</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="note"><code>:---</code> は左寄せ、<code>:---:</code> は中央寄せ、<code>---:</code> は右寄せです。表の書き方はズレやすいので、<a href="/">Markdownビューアー</a>でプレビューしながら書くのがおすすめです。</div>
+
+        <h2 id="link">リンクの書き方</h2>
+        <p>リンクは <code>[表示テキスト](URL)</code> の形式で書きます。URLをそのまま貼るだけでリンクになるツールもあります。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>[Markdown Viewer](https://markdown-viewer.net/)
+
+タイトル付きリンク:
+[公式サイト](https://markdown-viewer.net/ "Markdown Viewer")</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <p style="margin-bottom:8px;"><a href="https://markdown-viewer.net/">Markdown Viewer</a></p>
+              <p style="margin-bottom:0;">タイトル付きリンク:<br><a href="https://markdown-viewer.net/" title="Markdown Viewer">公式サイト</a></p>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="image">画像の挿入</h2>
+        <p>画像はリンクの書き方の先頭に <code>!</code> を付けた <code>![代替テキスト](画像URL)</code> の形式で挿入します。代替テキスト（alt属性）は、画像が表示できないときや音声読み上げで使われる説明文です。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>![サイトのロゴ](/favicon.svg)</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <img src="/favicon.svg" alt="サイトのロゴ" class="demo-img" width="64" height="64">
+            </div>
+          </div>
+        </div>
+
+        <h2 id="code">コードの書き方（インライン・コードブロック）</h2>
+        <p>文章中の短いコードは <code>`</code>（バッククォート）1つで囲みます。複数行のコードは <code>```</code>（バッククォート3つ）で囲んだ「コードブロック」にします。<code>```</code> の直後に言語名（<code>js</code>、<code>python</code> など）を書くと、対応ツールではシンタックスハイライトが付きます。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>インラインコードは `const x = 1;` のように書く
+
+```js
+function hello() {
+  console.log("Hello, Markdown!");
+}
+```</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <p style="margin-bottom:8px;">インラインコードは <code>const x = 1;</code> のように書く</p>
+              <pre>function hello() {
+  console.log("Hello, Markdown!");
+}</pre>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="quote">引用の書き方</h2>
+        <p>行頭に <code>&gt;</code> を付けると引用になります。<code>&gt;&gt;</code> と重ねると、引用の中の引用（ネスト）を表現できます。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>> これは引用文です。
+>> 引用の中の引用も書けます。</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <blockquote>
+                これは引用文です。
+                <blockquote style="margin-top:4px;">引用の中の引用も書けます。</blockquote>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="hr">水平線（区切り線）</h2>
+        <p>ハイフン3つ以上（<code>---</code>）だけの行を書くと、水平線（区切り線）になります。<code>***</code> や <code>___</code> でも同じです。前後に空行を入れると確実です。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>前の段落
+
+---
+
+次の段落</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <p style="margin-bottom:8px;">前の段落</p>
+              <hr>
+              <p style="margin-bottom:0;">次の段落</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta-box">
+          <p><strong>書き方を覚えたら、実際に試してみましょう。</strong><br>コピペするだけでその場でプレビュー。フォントや見出しのデザインも自由にカスタマイズできます。</p>
+          <a href="/" class="cta-button">無料のMarkdownビューアーを開く</a>
+        </div>
+
+        <h2 id="faq">よくある質問</h2>
+        <h3>MarkdownとHTMLの違いは？</h3>
+        <p>Markdownは「書きやすさ」を重視した記法で、最終的にはHTMLに変換されて表示されます。HTMLより記号が少なくシンプルに書けるのが特長です。逆に、細かいデザイン指定はHTML/CSSの方が得意なので、Markdownで書いてHTMLに変換し、CSSで装飾する使い方が一般的です。</p>
+        <h3>Markdownはどこで使えますか？</h3>
+        <p>GitHub、Notion、Slack、Qiita、Zenn、はてなブログ、WordPress（プラグインまたはブロックエディタ）、VS Codeなど、多くのサービス・ツールが対応しています。ただし、対応している記法の範囲はサービスごとに少しずつ異なります。</p>
+        <h3>書いたMarkdownをブログ用のHTMLに変換したい</h3>
+        <p><a href="/">Markdown Viewer</a>にMarkdownを貼り付けると、整形済みのHTMLとCSSをワンクリックでコピーできます。はてなブログやWordPressの記事にそのまま利用できます。</p>
+
+        <h2>関連ガイド</h2>
+        <ul style="padding-left: 24px;">
+          <li><a href="/guide/markdown-table/">Markdownの表（テーブル）の書き方</a> — 寄せ・セル内改行・結合の代替方法まで</li>
+          <li><a href="/guide/markdown-linebreak/">Markdownで改行できない・されない時の対処法</a></li>
+          <li><a href="/guide/markdown-link-image/">Markdownのリンク・画像の書き方</a> — サイズ指定・別タブ・画像リンク</li>
+        </ul>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p><a href="/">Markdown Viewer — インストール不要の無料マークダウンビューアー</a> ｜ <a href="/guide/">書き方ガイド一覧</a></p>
+      <p>© 2026 Markdown Viewer</p>
+    </footer>
+  </body>
+</html>

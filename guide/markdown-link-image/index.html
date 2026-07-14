@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5Y58TXJ0TX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-5Y58TXJ0TX');
+    </script>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Markdownのリンク・画像の書き方 — サイズ指定・別タブ・画像リンクも解説 | Markdown Viewer</title>
+    <meta name="description" content="Markdown（マークダウン）のリンクと画像の書き方を解説。基本の記法から、画像のサイズ指定、リンクを新しいタブで開く方法、画像にリンクを付ける方法、画像が表示されない原因まで。コピペで使える例と表示結果つき。" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://markdown-viewer.net/guide/markdown-link-image/" />
+    <meta property="og:title" content="Markdownのリンク・画像の書き方 — サイズ指定・別タブ・画像リンクも解説" />
+    <meta property="og:description" content="リンクと画像の基本記法、画像のサイズ指定、新しいタブで開く方法、画像リンク、表示されない原因の解決まで。例つきで解説。" />
+    <meta property="og:image" content="https://markdown-viewer.net/og-image.png" />
+    <meta property="og:site_name" content="Markdown Viewer" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://markdown-viewer.net/guide/markdown-link-image/" />
+    <meta property="twitter:title" content="Markdownのリンク・画像の書き方 — サイズ指定・別タブ・画像リンクも解説" />
+    <meta property="twitter:description" content="リンクと画像の基本記法、画像のサイズ指定、新しいタブで開く方法、画像リンク、表示されない原因の解決まで。例つきで解説。" />
+
+    <link rel="canonical" href="https://markdown-viewer.net/guide/markdown-link-image/" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9357019958045811" crossorigin="anonymous"></script>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Markdownのリンク・画像の書き方 — サイズ指定・別タブ・画像リンクも解説",
+      "description": "Markdownのリンクと画像の書き方を解説。基本の記法から、画像のサイズ指定、リンクを新しいタブで開く方法、画像にリンクを付ける方法、画像が表示されない原因まで。",
+      "image": "https://markdown-viewer.net/og-image.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Markdown Viewer",
+        "url": "https://markdown-viewer.net/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Markdown Viewer",
+        "url": "https://markdown-viewer.net/"
+      },
+      "datePublished": "2026-07-15",
+      "dateModified": "2026-07-15",
+      "mainEntityOfPage": "https://markdown-viewer.net/guide/markdown-link-image/"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Markdown Viewer", "item": "https://markdown-viewer.net/" },
+        { "@type": "ListItem", "position": 2, "name": "Markdownの書き方ガイド", "item": "https://markdown-viewer.net/guide/" },
+        { "@type": "ListItem", "position": 3, "name": "リンク・画像の書き方", "item": "https://markdown-viewer.net/guide/markdown-link-image/" }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="/guide.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a href="/" class="logo">
+          <span class="logo-icon">M</span>
+          <span>Markdown<span class="text-accent">Viewer</span></span>
+        </a>
+        <a href="/" class="header-cta">ビューアーで試す →</a>
+      </div>
+    </header>
+
+    <main>
+      <nav class="breadcrumb" aria-label="パンくずリスト">
+        <a href="/">Markdown Viewer</a> › <a href="/guide/">書き方ガイド</a> › リンク・画像の書き方
+      </nav>
+
+      <article>
+        <h1>Markdownのリンク・画像の書き方<br>サイズ指定・別タブ・画像リンクも解説</h1>
+        <p class="lead">
+          Markdown（マークダウン）のリンクは <code>[テキスト](URL)</code>、画像は先頭に <code>!</code> を付けた <code>![代替テキスト](URL)</code> で書きます。この2つはセットで覚えるのが近道です。このページでは基本から、画像のサイズ指定・新しいタブで開く方法・画像リンクなどの応用、表示されないときの解決法までまとめました。<a href="/">無料のMarkdownビューアー</a>に貼り付ければ、その場で表示を確認できます。
+        </p>
+
+        <nav class="toc" aria-label="目次">
+          <div class="toc-title">目次</div>
+          <ol>
+            <li><a href="#link-basic">リンクの基本の書き方</a></li>
+            <li><a href="#link-advanced">リンクの応用（タイトル・自動リンク・ページ内リンク）</a></li>
+            <li><a href="#link-blank">リンクを新しいタブで開く</a></li>
+            <li><a href="#image-basic">画像の基本の書き方</a></li>
+            <li><a href="#image-size">画像のサイズを指定する</a></li>
+            <li><a href="#image-link">画像にリンクを付ける（画像リンク）</a></li>
+            <li><a href="#trouble">リンク・画像が表示されない原因</a></li>
+            <li><a href="#faq">よくある質問</a></li>
+          </ol>
+        </nav>
+
+        <h2 id="link-basic">リンクの基本の書き方</h2>
+        <p>リンクは <code>[表示テキスト](URL)</code> の形式です。<strong>角かっこが先、丸かっこが後</strong>と覚えます。かっこの間にスペースは入れません。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>詳しくは[Markdown Viewer](https://markdown-viewer.net/)をご覧ください。</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <p style="margin-bottom:0;">詳しくは<a href="https://markdown-viewer.net/">Markdown Viewer</a>をご覧ください。</p>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="link-advanced">リンクの応用（タイトル・自動リンク・ページ内リンク）</h2>
+        <h3>タイトル付きリンク</h3>
+        <p>URLの後ろに半角スペースを空けて <code>"タイトル"</code> を書くと、マウスを乗せたときにツールチップが表示されます。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>[公式サイト](https://markdown-viewer.net/ "無料のMarkdownビューアー")</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <p style="margin-bottom:0;"><a href="https://markdown-viewer.net/" title="無料のMarkdownビューアー">公式サイト</a>（マウスオーバーでタイトル表示）</p>
+            </div>
+          </div>
+        </div>
+        <h3>URLをそのままリンクにする（自動リンク）</h3>
+        <p>URLを <code>&lt; &gt;</code> で囲むとそのままリンクになります。GFM対応ツール（GitHubなど）では、囲まなくてもURLを書くだけで自動リンクになります。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>&lt;https://markdown-viewer.net/&gt;</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <p style="margin-bottom:0;"><a href="https://markdown-viewer.net/">https://markdown-viewer.net/</a></p>
+            </div>
+          </div>
+        </div>
+        <h3>ページ内リンク（アンカーリンク）</h3>
+        <p>見出しへのページ内リンクは <code>[目次へ](#見出しのテキスト)</code> のように書きます。見出しテキストは小文字になり、スペースはハイフンに変換されるのが一般的ですが、<strong>変換ルール（特に日本語見出しの扱い）はサービスごとに異なる</strong>ため、動作確認が必要です。</p>
+
+        <h2 id="link-blank">リンクを新しいタブで開く</h2>
+        <p>標準のMarkdown記法に「新しいタブで開く」指定はありません。必要な場合はHTMLの <code>&lt;a&gt;</code> タグで書きます。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>&lt;a href="https://markdown-viewer.net/" target="_blank" rel="noopener"&gt;新しいタブで開く&lt;/a&gt;</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <p style="margin-bottom:0;"><a href="https://markdown-viewer.net/" target="_blank" rel="noopener">新しいタブで開く</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="note"><code>target="_blank"</code> を使うときは、セキュリティのため <code>rel="noopener"</code> を併記するのが定番です。なお、はてなブログ等のブログサービスでは、貼り付けたHTML側の設定がそのまま活きます。</div>
+
+        <h2 id="image-basic">画像の基本の書き方</h2>
+        <p>画像はリンクの先頭に <code>!</code>（半角エクスクラメーション）を付けた <code>![代替テキスト](画像URL)</code> で表示します。代替テキスト（alt）は、画像が読み込めないときの表示や、スクリーンリーダー・画像検索SEOで使われる重要な情報です。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>![Markdown Viewerのロゴ](/favicon.svg)</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <img src="/favicon.svg" alt="Markdown Viewerのロゴ" class="demo-img" width="64" height="64">
+            </div>
+          </div>
+        </div>
+
+        <h2 id="image-size">画像のサイズを指定する</h2>
+        <p><strong>標準のMarkdown記法では画像のサイズ指定はできません</strong>。サイズを変えたいときは、HTMLの <code>&lt;img&gt;</code> タグを使うのが最も確実です。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方（HTMLで幅指定）</div>
+            <pre>&lt;img src="/favicon.svg" alt="ロゴ" width="40"&gt;</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <img src="/favicon.svg" alt="ロゴ" width="40" class="demo-img" style="max-width:40px;">
+            </div>
+          </div>
+        </div>
+        <p>一部のサービスには独自のサイズ指定記法があります（例: Obsidianの <code>![alt|300](url)</code>）。ただし他のツールに持っていくと効かないため、汎用性を重視するなら <code>&lt;img&gt;</code> タグをおすすめします。</p>
+
+        <h2 id="image-link">画像にリンクを付ける（画像リンク）</h2>
+        <p>「画像をクリックするとリンク先に飛ぶ」形は、<strong>リンク記法の中に画像記法を入れ子にする</strong>ことで作れます。バナーやバッジでよく使う書き方です。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>[![ロゴ](/favicon.svg)](https://markdown-viewer.net/)</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <a href="https://markdown-viewer.net/"><img src="/favicon.svg" alt="ロゴ" class="demo-img" width="64" height="64"></a>
+              <p style="margin-bottom:0; font-size:13px; color:var(--text-muted);">（画像がリンクになっています）</p>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="trouble">リンク・画像が表示されない原因</h2>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>症状</th><th>よくある原因</th><th>直し方</th></tr></thead>
+            <tbody>
+              <tr><td>記号がそのまま表示される</td><td><code>[ ]( )</code> の間に余計なスペースがある／全角かっこを使っている</td><td>半角の <code>[]()</code> を隙間なく書く</td></tr>
+              <tr><td>画像が壊れたアイコンになる</td><td>画像URLが間違っている・画像が非公開</td><td>URLをブラウザで直接開いて確認する</td></tr>
+              <tr><td>ローカルの画像が出ない</td><td>相対パスの基準が違う・オンラインツールからローカルファイルは参照不可</td><td>画像をアップロードしてURLで参照する</td></tr>
+              <tr><td>リンクにならず文字のまま</td><td><code>!</code> や記号の前後に必要な要素が欠けている</td><td><a href="/guide/markdown-syntax/">記法一覧</a>で形を再確認する</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="cta-box">
+          <p><strong>リンクや画像の表示、その場で確認しませんか？</strong><br>コピペするだけで即プレビュー。ブログ用のHTMLもワンクリックでコピーできます。</p>
+          <a href="/" class="cta-button">無料のMarkdownビューアーを開く</a>
+        </div>
+
+        <h2 id="faq">よくある質問</h2>
+        <h3>画像を中央寄せしたい</h3>
+        <p>Markdown記法にはないため、HTMLで <code>&lt;p align="center"&gt;</code> や <code>&lt;div style="text-align:center"&gt;</code> で囲むか、表示側のCSSで指定します。</p>
+        <h3>代替テキスト（alt）は省略していい？</h3>
+        <p>表示自体は <code>![](URL)</code> でも動きますが、アクセシビリティと画像SEOの観点から、画像の内容を説明するaltを書くことを強くおすすめします。</p>
+        <h3>表のセルの中に画像やリンクは入れられますか？</h3>
+        <p>はい、どちらもセル内で使えます。表の書き方は<a href="/guide/markdown-table/">表（テーブル）の書き方</a>をご覧ください。</p>
+
+        <h2>関連ガイド</h2>
+        <ul style="padding-left: 24px;">
+          <li><a href="/guide/markdown-syntax/">Markdown記法一覧【チートシート】</a> — 全記法の書き方まとめ</li>
+          <li><a href="/guide/markdown-table/">Markdownの表（テーブル）の書き方</a></li>
+          <li><a href="/guide/markdown-linebreak/">Markdownで改行できない・されない時の対処法</a></li>
+        </ul>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p><a href="/">Markdown Viewer — インストール不要の無料マークダウンビューアー</a> ｜ <a href="/guide/">書き方ガイド一覧</a></p>
+      <p>© 2026 Markdown Viewer</p>
+    </footer>
+  </body>
+</html>

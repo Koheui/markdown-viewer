@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5Y58TXJ0TX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-5Y58TXJ0TX');
+    </script>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Markdownの表（テーブル）の書き方 — 寄せ・セル内改行・結合まで解説 | Markdown Viewer</title>
+    <meta name="description" content="Markdown（マークダウン）の表・テーブルの書き方を解説。基本の作り方から、左寄せ・中央寄せ・右寄せ、セル内での改行、セル結合の代替方法、表が崩れる原因と直し方まで。書いた表はその場で無料プレビューできます。" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://markdown-viewer.net/guide/markdown-table/" />
+    <meta property="og:title" content="Markdownの表（テーブル）の書き方 — 寄せ・セル内改行・結合まで解説" />
+    <meta property="og:description" content="基本の作り方から、文字寄せ、セル内改行、セル結合の代替方法、表が崩れる原因と直し方まで。コピペで使える例つき。" />
+    <meta property="og:image" content="https://markdown-viewer.net/og-image.png" />
+    <meta property="og:site_name" content="Markdown Viewer" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://markdown-viewer.net/guide/markdown-table/" />
+    <meta property="twitter:title" content="Markdownの表（テーブル）の書き方 — 寄せ・セル内改行・結合まで解説" />
+    <meta property="twitter:description" content="基本の作り方から、文字寄せ、セル内改行、セル結合の代替方法、表が崩れる原因と直し方まで。コピペで使える例つき。" />
+
+    <link rel="canonical" href="https://markdown-viewer.net/guide/markdown-table/" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9357019958045811" crossorigin="anonymous"></script>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Markdownの表（テーブル）の書き方 — 寄せ・セル内改行・結合まで解説",
+      "description": "Markdownの表・テーブルの書き方を解説。基本の作り方から、左寄せ・中央寄せ・右寄せ、セル内での改行、セル結合の代替方法、表が崩れる原因と直し方まで。",
+      "image": "https://markdown-viewer.net/og-image.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Markdown Viewer",
+        "url": "https://markdown-viewer.net/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Markdown Viewer",
+        "url": "https://markdown-viewer.net/"
+      },
+      "datePublished": "2026-07-15",
+      "dateModified": "2026-07-15",
+      "mainEntityOfPage": "https://markdown-viewer.net/guide/markdown-table/"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Markdown Viewer", "item": "https://markdown-viewer.net/" },
+        { "@type": "ListItem", "position": 2, "name": "Markdownの書き方ガイド", "item": "https://markdown-viewer.net/guide/" },
+        { "@type": "ListItem", "position": 3, "name": "表（テーブル）の書き方", "item": "https://markdown-viewer.net/guide/markdown-table/" }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="/guide.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a href="/" class="logo">
+          <span class="logo-icon">M</span>
+          <span>Markdown<span class="text-accent">Viewer</span></span>
+        </a>
+        <a href="/" class="header-cta">ビューアーで試す →</a>
+      </div>
+    </header>
+
+    <main>
+      <nav class="breadcrumb" aria-label="パンくずリスト">
+        <a href="/">Markdown Viewer</a> › <a href="/guide/">書き方ガイド</a> › 表（テーブル）の書き方
+      </nav>
+
+      <article>
+        <h1>Markdownの表（テーブル）の書き方<br>寄せ・セル内改行・結合まで解説</h1>
+        <p class="lead">
+          Markdown（マークダウン）の表は、<code>|</code>（パイプ）と <code>-</code>（ハイフン）だけで作れますが、「列がズレて崩れる」「セルの中で改行できない」「セルを結合したい」など、つまずきポイントも多い記法です。このページでは、表の基本から応用・トラブル解決までを表示例つきでまとめました。書きながら確認したいときは<a href="/">無料のMarkdownビューアー</a>に貼り付ければ、その場で表をプレビューできます。
+        </p>
+
+        <nav class="toc" aria-label="目次">
+          <div class="toc-title">目次</div>
+          <ol>
+            <li><a href="#basic">表の基本の書き方</a></li>
+            <li><a href="#align">左寄せ・中央寄せ・右寄せ（文字揃え）</a></li>
+            <li><a href="#decorate">セル内の装飾（太字・コード・リンク）</a></li>
+            <li><a href="#br">セルの中で改行する方法</a></li>
+            <li><a href="#pipe">セルの中で「|」を使う方法</a></li>
+            <li><a href="#merge">セル結合はできる？（代替方法）</a></li>
+            <li><a href="#excel">Excel・スプレッドシートから表を作る</a></li>
+            <li><a href="#broken">表が崩れる・表示されない原因と直し方</a></li>
+            <li><a href="#faq">よくある質問</a></li>
+          </ol>
+        </nav>
+
+        <h2 id="basic">表の基本の書き方</h2>
+        <p>Markdownの表は3つの要素でできています。<strong>1行目がヘッダー行</strong>、<strong>2行目が区切り行</strong>（<code>---</code> を並べる）、<strong>3行目以降がデータ行</strong>です。列は <code>|</code> で区切ります。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>| 名前 | 担当 | 状態 |
+| --- | --- | --- |
+| 佐藤 | デザイン | 完了 |
+| 鈴木 | 実装 | 作業中 |</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <div class="table-wrapper" style="margin: 8px 0;">
+                <table style="min-width: 0;">
+                  <thead><tr><th>名前</th><th>担当</th><th>状態</th></tr></thead>
+                  <tbody>
+                    <tr><td>佐藤</td><td>デザイン</td><td>完了</td></tr>
+                    <tr><td>鈴木</td><td>実装</td><td>作業中</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="note">区切り行の <code>---</code> はハイフン3つが基本ですが、実際は1つ以上あれば動くツールが大半です。またソース上で列幅を揃える必要はなく、<code>|a|b|</code> のように詰めて書いても正しく表示されます。</div>
+
+        <h2 id="align">左寄せ・中央寄せ・右寄せ（文字揃え）</h2>
+        <p>区切り行に <code>:</code>（コロン）を付けると、列ごとに文字揃えを指定できます。数値の列を右寄せにすると、桁が揃って読みやすくなります。</p>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>書き方</th><th>意味</th></tr></thead>
+            <tbody>
+              <tr><td><code>:---</code></td><td>左寄せ（デフォルト）</td></tr>
+              <tr><td><code>:---:</code></td><td>中央寄せ</td></tr>
+              <tr><td><code>---:</code></td><td>右寄せ</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>| 項目 | 単価 | 数量 |
+| :--- | ---: | ---: |
+| ノート | 220円 | 3 |
+| ペン | 1,080円 | 12 |</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <div class="table-wrapper" style="margin: 8px 0;">
+                <table style="min-width: 0;">
+                  <thead><tr><th style="text-align:left;">項目</th><th style="text-align:right;">単価</th><th style="text-align:right;">数量</th></tr></thead>
+                  <tbody>
+                    <tr><td style="text-align:left;">ノート</td><td style="text-align:right;">220円</td><td style="text-align:right;">3</td></tr>
+                    <tr><td style="text-align:left;">ペン</td><td style="text-align:right;">1,080円</td><td style="text-align:right;">12</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="decorate">セル内の装飾（太字・コード・リンク）</h2>
+        <p>セルの中では、太字・斜体・インラインコード・リンクなどのインライン記法がそのまま使えます。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>| 機能 | 記法 |
+| --- | --- |
+| **重要** | `**太字**` |
+| [公式サイト](https://markdown-viewer.net/) | `[名前](URL)` |</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <div class="table-wrapper" style="margin: 8px 0;">
+                <table style="min-width: 0;">
+                  <thead><tr><th>機能</th><th>記法</th></tr></thead>
+                  <tbody>
+                    <tr><td><strong>重要</strong></td><td><code>**太字**</code></td></tr>
+                    <tr><td><a href="https://markdown-viewer.net/">公式サイト</a></td><td><code>[名前](URL)</code></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="br">セルの中で改行する方法</h2>
+        <p>Markdownの表では、<strong>セル内で通常の改行はできません</strong>（改行すると行が分かれて表が崩れます）。セル内で改行したいときは、HTMLの <code>&lt;br&gt;</code> タグを使います。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>| プラン | 内容 |
+| --- | --- |
+| 無料 | プレビュー&lt;br&gt;CSS出力 |
+| なし | すべて無料です |</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <div class="table-wrapper" style="margin: 8px 0;">
+                <table style="min-width: 0;">
+                  <thead><tr><th>プラン</th><th>内容</th></tr></thead>
+                  <tbody>
+                    <tr><td>無料</td><td>プレビュー<br>CSS出力</td></tr>
+                    <tr><td>なし</td><td>すべて無料です</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="note">改行の基本ルール（スペース2つ・空行・<code>&lt;br&gt;</code> の使い分け）は<a href="/guide/markdown-linebreak/">Markdownで改行できない時の対処法</a>で詳しく解説しています。</div>
+
+        <h2 id="pipe">セルの中で「|」を使う方法</h2>
+        <p><code>|</code> は列の区切り記号なので、セルの中でそのまま書くと列がズレます。文字として表示したいときは <code>\|</code> のようにバックスラッシュでエスケープします。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>| コマンド | 意味 |
+| --- | --- |
+| A \| B | AまたはB |</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <div class="table-wrapper" style="margin: 8px 0;">
+                <table style="min-width: 0;">
+                  <thead><tr><th>コマンド</th><th>意味</th></tr></thead>
+                  <tbody>
+                    <tr><td>A | B</td><td>AまたはB</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="merge">セル結合はできる？（代替方法）</h2>
+        <p>結論から言うと、<strong>標準のMarkdownにセル結合（rowspan / colspan）の記法はありません</strong>。セル結合が必要な表は、次のいずれかで対応します。</p>
+        <ol style="padding-left: 24px; margin-bottom: 16px;">
+          <li><strong>表の構成を見直す</strong>: 結合が必要になる表は列の設計を変えると解消できることが多いです（例: 結合したい項目を1列目に繰り返し書く）。</li>
+          <li><strong>HTMLで表を書く</strong>: Markdownの中にHTMLの <code>&lt;table&gt;</code> をそのまま書けるツールが多く、<code>rowspan</code> / <code>colspan</code> が使えます。</li>
+        </ol>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方（HTMLで結合）</div>
+            <pre>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th rowspan="2"&gt;チーム&lt;/th&gt;
+    &lt;td&gt;佐藤&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;鈴木&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <div class="table-wrapper" style="margin: 8px 0;">
+                <table style="min-width: 0;">
+                  <tbody>
+                    <tr><th rowspan="2">チーム</th><td>佐藤</td></tr>
+                    <tr><td>鈴木</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="note">HTMLが使えるかどうかはサービスによって異なります（GitHubやQiitaは可、Notionは不可など）。貼り付け先の仕様を確認してください。</div>
+
+        <h2 id="excel">Excel・スプレッドシートから表を作る</h2>
+        <p>ExcelやGoogleスプレッドシートの表をMarkdownにしたいときは、手で書き直すよりも次の手順が確実です。</p>
+        <ol style="padding-left: 24px; margin-bottom: 16px;">
+          <li>スプレッドシート側でセル範囲をコピーする</li>
+          <li>変換ツールやエディタの拡張機能（VS Codeの「Markdown Table」系拡張など）でMarkdown表に変換する</li>
+          <li>変換結果を<a href="/">Markdownビューアー</a>に貼り付けて、崩れていないか確認する</li>
+        </ol>
+        <p>逆に、Markdownの表をきれいなHTMLとしてブログに貼りたい場合は、<a href="/">Markdown Viewer</a>で表を含む文書をプレビューし、「HTMLコピー」ボタンを使えばそのまま持ち出せます。</p>
+
+        <h2 id="broken">表が崩れる・表示されない原因と直し方</h2>
+        <p>「表がただのテキストのまま表示される」「列がズレる」場合、原因はほぼ次のどれかです。</p>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>症状</th><th>原因</th><th>直し方</th></tr></thead>
+            <tbody>
+              <tr><td>表として認識されない</td><td>2行目の区切り行（<code>| --- | --- |</code>）がない・列数が合っていない</td><td>ヘッダーと同じ列数の区切り行を入れる</td></tr>
+              <tr><td>表の直前の文章とくっついて崩れる</td><td>表の前に空行がない</td><td>表の前後に空行を1行入れる</td></tr>
+              <tr><td>列がズレる</td><td>セル内の <code>|</code> がエスケープされていない</td><td><code>\|</code> に置き換える</td></tr>
+              <tr><td>行が分裂する</td><td>セル内で改行している</td><td><code>&lt;br&gt;</code> に置き換える</td></tr>
+              <tr><td>特定のサービスでだけ表示されない</td><td>そのサービスが表記法（GFM）に非対応</td><td>HTMLの<code>&lt;table&gt;</code>で書く</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note">表はMarkdownの中でも特に「書いてみないとわからない」記法です。<a href="/">リアルタイムプレビューできるビューアー</a>で確認しながら書くと、崩れの原因をすぐ特定できます。</div>
+
+        <div class="cta-box">
+          <p><strong>表を書きながら、その場で確認しませんか？</strong><br>コピペするだけでプレビュー。完成した表はHTML/CSSとしてコピーしてブログにも使えます。</p>
+          <a href="/" class="cta-button">無料のMarkdownビューアーを開く</a>
+        </div>
+
+        <h2 id="faq">よくある質問</h2>
+        <h3>表のセルの背景色や罫線の色は変えられますか？</h3>
+        <p>Markdownの記法だけでは変えられません。表示側のCSSで指定します。<a href="/">Markdown Viewer</a>ではプレビューのスタイルを調整して、そのままCSSをコピーできます。</p>
+        <h3>表の中に画像は入れられますか？</h3>
+        <p>はい。セル内に <code>![代替テキスト](画像URL)</code> を書けば画像を表示できます。詳しくは<a href="/guide/markdown-link-image/">リンク・画像の書き方</a>をご覧ください。</p>
+        <h3>スマホで見ると表がはみ出します</h3>
+        <p>列数が多い表は、表を横スクロール可能なコンテナ（<code>overflow-x: auto</code> を指定した div）で囲むのが定番の対処法です。ブログのテーマ側のCSSで対応します。</p>
+
+        <h2>関連ガイド</h2>
+        <ul style="padding-left: 24px;">
+          <li><a href="/guide/markdown-syntax/">Markdown記法一覧【チートシート】</a> — 全記法の書き方まとめ</li>
+          <li><a href="/guide/markdown-linebreak/">Markdownで改行できない・されない時の対処法</a></li>
+          <li><a href="/guide/markdown-link-image/">Markdownのリンク・画像の書き方</a></li>
+        </ul>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p><a href="/">Markdown Viewer — インストール不要の無料マークダウンビューアー</a> ｜ <a href="/guide/">書き方ガイド一覧</a></p>
+      <p>© 2026 Markdown Viewer</p>
+    </footer>
+  </body>
+</html>

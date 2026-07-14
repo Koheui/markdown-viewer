@@ -65,6 +65,48 @@
       }
     }
     </script>
+
+    <!-- Structured Data (JSON-LD) for FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is this Markdown Viewer free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, it is completely free. No registration or login is required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my data saved or sent somewhere?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. All processing is done locally in your browser. Your input is never sent to external servers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What Markdown syntax is supported?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It supports standard Markdown syntax, including headings (#), bold (**), italic (*), lists, code blocks, tables, links, and images."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it work on mobile devices?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. It has a fully responsive design and works beautifully on smartphones and tablets."
+          }
+        }
+      ]
+    }
+    </script>
   </head>
   <body class="dark-theme">
     <div id="app" class="app-container">

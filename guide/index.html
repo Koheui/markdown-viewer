@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5Y58TXJ0TX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-5Y58TXJ0TX');
+    </script>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Markdownの書き方ガイド一覧 — 記法・表・改行・リンク・画像 | Markdown Viewer</title>
+    <meta name="description" content="Markdown（マークダウン）の書き方を基礎から解説するガイド一覧。記法チートシート、表（テーブル）、改行できない時の対処法、リンク・画像の書き方など、コピペで使える例と表示結果つきで紹介します。" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://markdown-viewer.net/guide/" />
+    <meta property="og:title" content="Markdownの書き方ガイド一覧 — 記法・表・改行・リンク・画像" />
+    <meta property="og:description" content="Markdownの書き方を基礎から解説。記法チートシート、表、改行、リンク・画像など、例と表示結果つき。" />
+    <meta property="og:image" content="https://markdown-viewer.net/og-image.png" />
+    <meta property="og:site_name" content="Markdown Viewer" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://markdown-viewer.net/guide/" />
+    <meta property="twitter:title" content="Markdownの書き方ガイド一覧 — 記法・表・改行・リンク・画像" />
+    <meta property="twitter:description" content="Markdownの書き方を基礎から解説。記法チートシート、表、改行、リンク・画像など、例と表示結果つき。" />
+
+    <link rel="canonical" href="https://markdown-viewer.net/guide/" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9357019958045811" crossorigin="anonymous"></script>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Markdownの書き方ガイド一覧",
+      "url": "https://markdown-viewer.net/guide/",
+      "description": "Markdownの書き方を基礎から解説するガイド一覧。記法チートシート、表、改行、リンク・画像の書き方を例つきで紹介。",
+      "hasPart": [
+        { "@type": "Article", "name": "Markdown記法一覧【チートシート】", "url": "https://markdown-viewer.net/guide/markdown-syntax/" },
+        { "@type": "Article", "name": "Markdownの表（テーブル）の書き方", "url": "https://markdown-viewer.net/guide/markdown-table/" },
+        { "@type": "Article", "name": "Markdownで改行できない・されない時の対処法", "url": "https://markdown-viewer.net/guide/markdown-linebreak/" },
+        { "@type": "Article", "name": "Markdownのリンク・画像の書き方", "url": "https://markdown-viewer.net/guide/markdown-link-image/" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Markdown Viewer", "item": "https://markdown-viewer.net/" },
+        { "@type": "ListItem", "position": 2, "name": "Markdownの書き方ガイド", "item": "https://markdown-viewer.net/guide/" }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="/guide.css" />
+    <style>
+      .guide-cards { display: grid; gap: 16px; margin: 32px 0; }
+      .guide-card {
+        display: block;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 20px 24px;
+        text-decoration: none;
+        color: var(--text);
+        background: var(--bg-soft);
+        transition: border-color 0.15s ease;
+      }
+      .guide-card:hover { border-color: var(--accent); }
+      .guide-card h2 {
+        border: none;
+        margin: 0 0 8px;
+        padding: 0;
+        font-size: 18px;
+        color: var(--accent);
+      }
+      .guide-card p { margin: 0; font-size: 14.5px; color: var(--text-muted); }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a href="/" class="logo">
+          <span class="logo-icon">M</span>
+          <span>Markdown<span class="text-accent">Viewer</span></span>
+        </a>
+        <a href="/" class="header-cta">ビューアーで試す →</a>
+      </div>
+    </header>
+
+    <main>
+      <nav class="breadcrumb" aria-label="パンくずリスト">
+        <a href="/">Markdown Viewer</a> › 書き方ガイド
+      </nav>
+
+      <article>
+        <h1>Markdownの書き方ガイド</h1>
+        <p class="lead">
+          Markdown（マークダウン）の書き方を、コピペで使える入力例と表示結果のセットで解説するガイド集です。読みながら試したいときは、<a href="/">インストール不要の無料Markdownビューアー</a>に貼り付ければその場でプレビューできます。
+        </p>
+
+        <div class="guide-cards">
+          <a class="guide-card" href="/guide/markdown-syntax/">
+            <h2>Markdown記法一覧【チートシート】</h2>
+            <p>見出し・太字・リスト・引用・コードブロックなど、よく使う全記法の書き方を1ページに凝縮。まずはここから。</p>
+          </a>
+          <a class="guide-card" href="/guide/markdown-table/">
+            <h2>表（テーブル）の書き方</h2>
+            <p>基本の作り方から、左寄せ・中央寄せ・右寄せ、セル内改行、セル結合の代替方法、表が崩れる原因の解決まで。</p>
+          </a>
+          <a class="guide-card" href="/guide/markdown-linebreak/">
+            <h2>改行できない・されない時の対処法</h2>
+            <p>Markdown最大のつまずきポイント。半角スペース2つ・空行・brタグの使い分けと、サービスごとの改行仕様の違い。</p>
+          </a>
+          <a class="guide-card" href="/guide/markdown-link-image/">
+            <h2>リンク・画像の書き方</h2>
+            <p>基本記法から、画像のサイズ指定、新しいタブで開く方法、画像にリンクを付ける書き方、表示されない原因まで。</p>
+          </a>
+        </div>
+
+        <div class="cta-box">
+          <p><strong>Markdownを書いたら、その場で美しくプレビュー。</strong><br>フォント・余白・見出しデザインをカスタマイズして、ブログ用のCSS/HTMLをワンクリックでコピーできます。</p>
+          <a href="/" class="cta-button">無料のMarkdownビューアーを開く</a>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p><a href="/">Markdown Viewer — インストール不要の無料マークダウンビューアー</a></p>
+      <p>© 2026 Markdown Viewer</p>
+    </footer>
+  </body>
+</html>

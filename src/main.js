@@ -29,6 +29,15 @@ import { fontOptions, defaultStyles, defaultLightStyles, defaultDarkStyles } fro
 const isEn = window.location.pathname.includes('/en/');
 
 // ==========================================================================
+// GA4 Event Tracking (コンバージョン計測)
+// ==========================================================================
+function trackEvent(eventName, params = {}) {
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', eventName, params);
+  }
+}
+
+// ==========================================================================
 // Default Sample Markdown (Japanese)
 // ==========================================================================
 const sampleMarkdownJa = `# 【見やすさ劇的改善】Markdown（マークダウン）が読みづらい？ブログや資料を見やすく綺麗に整えるデザインのコツ
@@ -63,7 +72,7 @@ Notionやブログ、社内ドキュメントを**Markdown（マークダウン�
 
 ### 生成AI活用・LLM・開発環境（IDE）におけるマークダウンの重要性
 近年、ChatGPT、Claude、GeminiといったLLM（大規模言語モデル）や、各種**「生成AIツール」**の台頭に伴い、**「AI活用」**や**「AIプログラミング」**の現場においてマークダウンの価値が急上昇しています。
-特に、GitHub Copilot、Cursor、WindsurfなどのAIコーディングアシスタントや、高度な自律型**「AIエージェント」**を利用する開発者にとって、マークダウン is 必須の基礎スキルとなっています。
+特に、GitHub Copilot、Cursor、WindsurfなどのAIコーディングアシスタントや、高度な自律型**「AIエージェント」**を利用する開発者にとって、マークダウンは必須の基礎スキルとなっています。
 
 * **プロンプトエンジニアリングでの構造化**: 生成AIへのプロンプトテンプレートやシステム指示（System Instructions）を記述する際、指示内容、前提条件、入力コンテキスト、出力形式（フォーマット）をマークダウンの見出しやリスト、引用（>）を用いて整理することで、AIの理解度が劇的に向上し、意図通りの高精度な回答を引き出せます。
 * **RAG（検索拡張生成）やコンテキストインジェクションにおけるトークン節約**: マークダウンはHTMLやJSON、XMLと比較して非常に軽量なテキスト形式です。そのため、AIモデルに読み込ませる「コンテキスト（背景知識）」の文字数を大幅に削減でき、LLMのコンテキストウィンドウの制限やAPI利用時のトークン料金（Token Cost）を効率的に節約できます。
@@ -84,7 +93,7 @@ Notionやブログ、社内ドキュメントを**Markdown（マークダウン�
 * \`**太字**\`（星マーク2つで挟むとボールド体になります。HTMLの \`<strong>\`）
 * \`*斜体*\`（星マーク1つで挟むとイタリック体になります。HTMLの \`<em>\`）
 
-#### 3. リスト（箇言書き）
+#### 3. リスト（箇条書き）
 行頭に \`*\`、\`-\`、または \`+\` を書き、半角スペースを空けることで箇条書きリストを作成できます。
 * 項目1
 * 項目2
@@ -155,7 +164,7 @@ Markdownファイルをブラウザで閲覧・プレビューする方法とし
 段落と段落の間や、見出しの上の余白が詰まっていると、目が滑ってしまい、読者はストレスを感じて読むのをやめてしまいます（直帰や離脱の原因）。
 
 ### 3. フォントが用途に合っていない
-硬すぎるゴシック体や標準 of システムフォントのままだと、文章全体が冷たい印象になり、長文を読み進める意欲が低下しがちです。
+硬すぎるゴシック体や標準のシステムフォントのままだと、文章全体が冷たい印象になり、長文を読み進める意欲が低下しがちです。
 
 ---
 
@@ -896,6 +905,7 @@ function bindEvents() {
     editor.value = sampleMarkdown;
     renderMarkdown();
     saveState();
+    trackEvent('load_sample', { lang: isEn ? 'en' : 'ja' });
     showToast(isEn ? 'Sample markdown loaded!' : 'サンプルマークダウンを読み込みました！');
   });
 
@@ -963,6 +973,7 @@ function bindEvents() {
   document.getElementById('btn-copy-css').addEventListener('click', () => {
     const css = generateCSS();
     navigator.clipboard.writeText(css).then(() => {
+      trackEvent('copy_css', { lang: isEn ? 'en' : 'ja' });
       showToast(isEn ? 'CSS code copied to clipboard!' : 'CSSコードをクリップボードにコピーしました！');
     }).catch(err => {
       console.error('Error copying CSS:', err);
@@ -975,6 +986,7 @@ function bindEvents() {
     const html = document.getElementById('preview-content').innerHTML;
     // Format HTML slightly
     navigator.clipboard.writeText(html).then(() => {
+      trackEvent('copy_html', { lang: isEn ? 'en' : 'ja' });
       showToast(isEn ? 'HTML code copied to clipboard!' : 'HTMLコードをクリップボードにコピーしました！');
     }).catch(err => {
       console.error('Error copying HTML:', err);
@@ -1364,6 +1376,7 @@ function initDragAndDrop() {
             saveState();
             // Automatically focus and scroll to editor
             editor.focus();
+            trackEvent('file_drop', { lang: isEn ? 'en' : 'ja', file_ext: extension });
             showToast(isEn ? `File "${fileName}" loaded!` : `ファイル「${fileName}」を読み込みました！`);
           }
         };

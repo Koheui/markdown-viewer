@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5Y58TXJ0TX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-5Y58TXJ0TX');
+    </script>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Markdownで改行できない・されない時の対処法【スペース2つ・br・空行】 | Markdown Viewer</title>
+    <meta name="description" content="Markdown（マークダウン）で改行されない原因と対処法を解説。行末の半角スペース2つ・空行での段落分け・brタグの3つの方法の使い分け、GitHub・Qiita・Zenn・Notionなどサービスごとの改行の違いも紹介。その場で無料プレビューして確認できます。" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://markdown-viewer.net/guide/markdown-linebreak/" />
+    <meta property="og:title" content="Markdownで改行できない・されない時の対処法【スペース2つ・br・空行】" />
+    <meta property="og:description" content="改行されない原因と3つの対処法（半角スペース2つ・空行・brタグ）、サービスごとの改行仕様の違いを表示例つきで解説。" />
+    <meta property="og:image" content="https://markdown-viewer.net/og-image.png" />
+    <meta property="og:site_name" content="Markdown Viewer" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://markdown-viewer.net/guide/markdown-linebreak/" />
+    <meta property="twitter:title" content="Markdownで改行できない・されない時の対処法【スペース2つ・br・空行】" />
+    <meta property="twitter:description" content="改行されない原因と3つの対処法（半角スペース2つ・空行・brタグ）、サービスごとの改行仕様の違いを表示例つきで解説。" />
+
+    <link rel="canonical" href="https://markdown-viewer.net/guide/markdown-linebreak/" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9357019958045811" crossorigin="anonymous"></script>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Markdownで改行できない・されない時の対処法【スペース2つ・br・空行】",
+      "description": "Markdownで改行されない原因と対処法を解説。行末の半角スペース2つ・空行での段落分け・brタグの3つの方法の使い分け、サービスごとの改行の違いも紹介。",
+      "image": "https://markdown-viewer.net/og-image.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Markdown Viewer",
+        "url": "https://markdown-viewer.net/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Markdown Viewer",
+        "url": "https://markdown-viewer.net/"
+      },
+      "datePublished": "2026-07-15",
+      "dateModified": "2026-07-15",
+      "mainEntityOfPage": "https://markdown-viewer.net/guide/markdown-linebreak/"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Markdown Viewer", "item": "https://markdown-viewer.net/" },
+        { "@type": "ListItem", "position": 2, "name": "Markdownの書き方ガイド", "item": "https://markdown-viewer.net/guide/" },
+        { "@type": "ListItem", "position": 3, "name": "改行できない時の対処法", "item": "https://markdown-viewer.net/guide/markdown-linebreak/" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Markdownで改行されないのはなぜですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "標準のMarkdownでは、文中の単純な改行（Enter1回）は「読みやすさのための折り返し」とみなされ、表示上は無視される仕様だからです。改行を表示に反映するには、行末に半角スペースを2つ入れる、空行を挟んで段落を分ける、またはbrタグを使います。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "改行のためにbrタグを使ってもいいですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい、ほとんどのMarkdown対応ツールでbrタグは使えます。行末スペース2つは見た目で判別できずエディタの自動整形で消えることがあるため、確実さを重視するならbrタグ、テキストの綺麗さを重視するなら空行での段落分けがおすすめです。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "空行を何行入れても間隔が広がらないのはなぜですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "連続した空行は1つの段落区切りとしてまとめられる仕様のためです。余白を広げたい場合は、表示側のCSSで段落のmarginを調整するのが正攻法です。"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="/guide.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a href="/" class="logo">
+          <span class="logo-icon">M</span>
+          <span>Markdown<span class="text-accent">Viewer</span></span>
+        </a>
+        <a href="/" class="header-cta">ビューアーで試す →</a>
+      </div>
+    </header>
+
+    <main>
+      <nav class="breadcrumb" aria-label="パンくずリスト">
+        <a href="/">Markdown Viewer</a> › <a href="/guide/">書き方ガイド</a> › 改行できない時の対処法
+      </nav>
+
+      <article>
+        <h1>Markdownで改行できない・されない時の対処法</h1>
+        <p class="lead">
+          「Enterで改行したのに、表示すると1行につながってしまう」— Markdown（マークダウン）で誰もが最初につまずくのが改行です。これはバグではなくMarkdownの仕様で、<strong>改行の方法は3つ</strong>あります。このページで原因と使い分けをまとめました。動作は<a href="/">無料のMarkdownビューアー</a>に貼り付ければ、その場で確認できます。
+        </p>
+
+        <div class="table-wrapper">
+          <table>
+            <caption style="text-align:left; font-weight:700; margin-bottom:8px;">改行方法の早見表</caption>
+            <thead>
+              <tr><th>方法</th><th>書き方</th><th>向いている場面</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>半角スペース2つ</td><td>行末に「␣␣」を付けて改行</td><td>同じ段落内で行だけ変えたいとき</td></tr>
+              <tr><td>空行を挟む</td><td>行と行の間に空行を1行</td><td>話題が変わるとき（段落分け）</td></tr>
+              <tr><td><code>&lt;br&gt;</code> タグ</td><td>改行したい位置に <code>&lt;br&gt;</code></td><td>確実に改行したいとき・表のセル内</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <nav class="toc" aria-label="目次">
+          <div class="toc-title">目次</div>
+          <ol>
+            <li><a href="#why">なぜMarkdownは改行されないのか</a></li>
+            <li><a href="#space">方法1: 行末に半角スペース2つ</a></li>
+            <li><a href="#blank">方法2: 空行を挟む（段落分け）</a></li>
+            <li><a href="#br">方法3: brタグを使う</a></li>
+            <li><a href="#services">サービスごとの改行の違い（GitHub・Qiita・Notion等）</a></li>
+            <li><a href="#spacing">行間・余白を広げたいとき</a></li>
+            <li><a href="#faq">よくある質問</a></li>
+          </ol>
+        </nav>
+
+        <h2 id="why">なぜMarkdownは改行されないのか</h2>
+        <p>元祖Markdownの仕様では、<strong>文中の改行（Enter1回）は「ソースを読みやすくするための折り返し」として扱われ、表示には反映されません</strong>。英語の文章では、長い段落を適当な位置で折り返して書く習慣があり、それを1つの段落として繋げて表示するための設計です。</p>
+        <p>日本語の文章では「書いた通りに改行されてほしい」と感じる場面が多いため、このギャップがつまずきの原因になります。対処法は次の3つです。</p>
+
+        <h2 id="space">方法1: 行末に半角スペース2つ</h2>
+        <p>行の最後に<strong>半角スペースを2つ</strong>入れてから改行すると、表示上も改行（HTMLの <code>&lt;br&gt;</code>）になります。段落は分かれず、行間は詰まったままです。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方（␣は半角スペース）</div>
+            <pre>1行目␣␣
+2行目</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <p style="margin-bottom:0;">1行目<br>2行目</p>
+            </div>
+          </div>
+        </div>
+        <div class="note"><strong>注意</strong>: 行末スペースは目に見えないため、後から見て分かりにくいのが欠点です。また、エディタの設定（保存時に行末の空白を自動削除する機能）で消えてしまうことがあります。チームで書くファイルでは次の空行方式か <code>&lt;br&gt;</code> が安全です。</div>
+
+        <h2 id="blank">方法2: 空行を挟む（段落分け）</h2>
+        <p>行と行の間に<strong>空行を1行</strong>入れると、前後が別々の段落（HTMLの <code>&lt;p&gt;</code>）になります。段落の間には余白が付くので、見た目にも区切りが明確になります。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>最初の段落です。
+
+次の段落です。</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <p style="margin-bottom:12px;">最初の段落です。</p>
+              <p style="margin-bottom:0;">次の段落です。</p>
+            </div>
+          </div>
+        </div>
+        <div class="note">「行を変える（スペース2つ）」と「段落を変える（空行）」は別物です。文章のまとまりが変わるときは段落で分ける方が、読みやすさもHTMLの構造も良くなります。</div>
+
+        <h2 id="br">方法3: brタグを使う</h2>
+        <p>HTMLの <code>&lt;br&gt;</code> タグを書けば、その位置で確実に改行されます。ほとんどのMarkdown対応ツールで使えます。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>1行目&lt;br&gt;2行目</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <p style="margin-bottom:0;">1行目<br>2行目</p>
+            </div>
+          </div>
+        </div>
+        <p><code>&lt;br&gt;</code> が特に活躍するのは<strong>表（テーブル）のセル内</strong>です。セル内では通常の改行が使えないため、<code>&lt;br&gt;</code> が唯一の改行手段になります。詳しくは<a href="/guide/markdown-table/">表（テーブル）の書き方</a>をご覧ください。</p>
+
+        <h2 id="services">サービスごとの改行の違い（GitHub・Qiita・Notion等）</h2>
+        <p>実は「Enter1回で改行されるかどうか」は<strong>サービスによって挙動が異なります</strong>。多くの国産サービスは、日本語ユーザーに合わせてEnter1回を改行として表示する設定になっています。</p>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>サービス</th><th>Enter1回の扱い</th></tr></thead>
+            <tbody>
+              <tr><td>GitHub（README等）</td><td>改行されない（スペース2つ or <code>&lt;br&gt;</code> が必要）</td></tr>
+              <tr><td>GitHub（IssueやPRのコメント）</td><td>改行される</td></tr>
+              <tr><td>Qiita / Zenn / はてなブログ</td><td>改行される（ソフトブレイクを改行として表示）</td></tr>
+              <tr><td>Notion</td><td>改行される（Shift+Enterで行内改行、Enterでブロック分割）</td></tr>
+              <tr><td>Slack / Discord</td><td>改行される</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note">「Qiitaでは改行されたのにGitHubのREADMEでは繋がってしまった」という現象はこの仕様差が原因です。どの環境でも同じ見た目にしたい文書では、空行での段落分けを基本にするのがおすすめです。</div>
+
+        <h2 id="spacing">行間・余白を広げたいとき</h2>
+        <p>「空行を2行、3行と増やしても間隔が広がらない」のもMarkdownの仕様です（連続した空行は1つの段落区切りにまとめられます）。<code>&lt;br&gt;</code> を連打して無理やり間隔をあける方法もありますが、文書の構造としてはきれいではありません。</p>
+        <p>正攻法は、<strong>表示側のCSSで段落の余白（margin）や行間（line-height）を調整する</strong>ことです。<a href="/">Markdown Viewer</a>なら、本文や見出しの「下余白」「行間」をスライダーで調整して、そのままCSSとしてコピーできます。ブログ全体の読みやすさを整えたい場合に便利です。</p>
+
+        <div class="cta-box">
+          <p><strong>改行の挙動、その場で確認しませんか？</strong><br>コピペするだけで即プレビュー。スペース2つ・空行・brタグの違いが一目でわかります。</p>
+          <a href="/" class="cta-button">無料のMarkdownビューアーを開く</a>
+        </div>
+
+        <h2 id="faq">よくある質問</h2>
+        <h3>行末のスペース2つが自動で消えてしまいます</h3>
+        <p>エディタの「保存時に行末の空白を削除する」設定（VS Codeの <code>files.trimTrailingWhitespace</code> など）が原因です。Markdownファイルだけ除外設定にするか、<code>&lt;br&gt;</code> タグを使ってください。</p>
+        <h3>箇条書きの項目の中で改行したい</h3>
+        <p>行末スペース2つ、または <code>&lt;br&gt;</code> で改行できます。項目の中に段落を作りたい場合は、空行を挟んで次の行を半角スペース4つでインデントします。</p>
+        <h3>改行とは逆に、長い行を折り返したくないときは？</h3>
+        <p>表示の折り返しはCSS（<code>white-space</code> や表示幅）の領域です。コードやコマンドであればコードブロックにすると横スクロールで表示されます。</p>
+
+        <h2>関連ガイド</h2>
+        <ul style="padding-left: 24px;">
+          <li><a href="/guide/markdown-syntax/">Markdown記法一覧【チートシート】</a> — 全記法の書き方まとめ</li>
+          <li><a href="/guide/markdown-table/">Markdownの表（テーブル）の書き方</a></li>
+          <li><a href="/guide/markdown-link-image/">Markdownのリンク・画像の書き方</a></li>
+        </ul>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p><a href="/">Markdown Viewer — インストール不要の無料マークダウンビューアー</a> ｜ <a href="/guide/">書き方ガイド一覧</a></p>
+      <p>© 2026 Markdown Viewer</p>
+    </footer>
+  </body>
+</html>

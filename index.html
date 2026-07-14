@@ -13,14 +13,14 @@
     <meta charset="UTF-8" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Markdown Viewer — インストール不要。無料でテキストを美しく整えるマークダウンビューワー</title>
+    <title>Markdownビューアー【インストール不要・無料】コピペで即プレビュー＆CSS/HTML出力 | Markdown Viewer</title>
     <meta name="description" content="【インストール不要＆完全無料】コピペやドラッグ＆ドロップするだけで、Markdownをその場ですぐ美しくプレビューできるオンラインビューア。フォントや余白、見出し下線を直感的に調整し、ブログ用のCSS/HTMLも簡単に出力できます。" />
     <meta name="keywords" content="Markdown,マークダウン,ビューア,CSS,カスタマイズ,プレビュー,デザイン,ブログ,装飾,はてなブログ,WordPress,Qiita,Zenn,エディタ,オンライン,インストール不要" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://markdown-viewer.net/" />
-    <meta property="og:title" content="Markdown Viewer — インストール不要。無料でテキストを美しく整えるマークダウンビューワー" />
+    <meta property="og:title" content="Markdownビューアー【インストール不要・無料】コピペで即プレビュー＆CSS/HTML出力" />
     <meta property="og:description" content="【インストール不要＆完全無料】コピペやドラッグ＆ドロップするだけで、Markdownをその場ですぐ美しくプレビューできるオンラインビューア。" />
     <meta property="og:image" content="https://markdown-viewer.net/og-image.png" />
     <meta property="og:site_name" content="Markdown Viewer" />
@@ -28,7 +28,7 @@
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://markdown-viewer.net/" />
-    <meta property="twitter:title" content="Markdown Viewer — インストール不要。無料でテキストを美しく整えるマークダウンビューワー" />
+    <meta property="twitter:title" content="Markdownビューアー【インストール不要・無料】コピペで即プレビュー＆CSS/HTML出力" />
     <meta property="twitter:description" content="【インストール不要＆完全無料】コピペやドラッグ＆ドロップするだけで、Markdownをその場ですぐ美しくプレビューできるオンラインビューア。" />
 
     <!-- Google Fonts for App UI -->
@@ -63,6 +63,56 @@
         "price": "0.00",
         "priceCurrency": "JPY"
       }
+    }
+    </script>
+
+    <!-- Structured Data (JSON-LD) for FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "このMarkdownビューアーは無料ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい、完全無料です。会員登録・ログインも一切不要です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "入力したMarkdownはどこかに保存・送信されますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "いいえ。すべての処理はお使いのブラウザ内で完結します。入力内容は外部サーバーに送信されません。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "対応しているMarkdown記法は？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "見出し（#）、太字（**）、斜体（*）、リスト、コードブロック、テーブル、リンク、画像など、標準的なMarkdown記法に幅広く対応しています。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "スマートフォンやタブレットでも使えますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい。モバイル対応のレスポンシブデザインで、スマートフォン・タブレットでも快適に利用できます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "はてなブログやWordPressのブログ記事に使えますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい。スタイルをカスタマイズして「CSSコピー」「HTMLコピー」ボタンを使えば、ブログ記事用の整形済みHTMLとスタイルシートをそのままコピーできます。"
+          }
+        }
+      ]
     }
     </script>
   </head>
@@ -335,12 +385,20 @@
                   <dt>入力したMarkdownはどこかに保存・送信されますか？</dt>
                   <dd>いいえ。すべての処理はお使いのブラウザ内で完結します。入力内容は外部サーバーに送信されません。</dd>
                   <dt>対応しているMarkdown記法は？</dt>
-                  <dd>見出し（#）、太字（**）、斜体（*）、リスト、コードブロック、テーブル、リンク、画像など、標準的なMarkdown記法に幅広く対応しています。</dd>
+                  <dd>見出し（#）、太字（**）、斜体（*）、リスト、コードブロック、テーブル、リンク、画像など、標準的なMarkdown記法に幅広く対応しています。書き方の詳細は<a href="/guide/markdown-syntax/">Markdown記法一覧（チートシート）</a>をご覧ください。</dd>
                   <dt>スマートフォンやタブレットでも使えますか？</dt>
                   <dd>はい。モバイル対応のレスポンシブデザインで、スマートフォン・タブレットでも快適に利用できます。</dd>
                   <dt>はてなブログやWordPressのブログ記事に使えますか？</dt>
                   <dd>はい。スタイルをカスタマイズして「CSSコピー」「HTMLコピー」ボタンを使えば、ブログ記事用の整形済みHTMLとスタイルシートをそのままコピーできます。</dd>
                 </dl>
+
+                <h2>関連ガイド：<a href="/guide/">Markdownの書き方ガイド</a></h2>
+                <ul>
+                  <li><a href="/guide/markdown-syntax/">Markdown記法一覧【チートシート】</a> — 見出し・太字・リストなど、よく使う書き方のまとめ</li>
+                  <li><a href="/guide/markdown-table/">表（テーブル）の書き方</a> — 寄せ・セル内改行・結合の代替方法まで</li>
+                  <li><a href="/guide/markdown-linebreak/">改行できない・されない時の対処法</a> — スペース2つ・空行・brタグの使い分け</li>
+                  <li><a href="/guide/markdown-link-image/">リンク・画像の書き方</a> — サイズ指定・別タブ・画像リンク</li>
+                </ul>
               </section>
 
               <footer class="app-footer">
