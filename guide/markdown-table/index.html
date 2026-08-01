@@ -13,13 +13,13 @@
     <meta charset="UTF-8" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Markdownの表（テーブル）の書き方 — 寄せ・セル内改行・結合まで解説 | Markdown Viewer</title>
-    <meta name="description" content="Markdown（マークダウン）の表・テーブルの書き方を解説。基本の作り方から、左寄せ・中央寄せ・右寄せ、セル内での改行、セル結合の代替方法、表が崩れる原因と直し方まで。書いた表はその場で無料プレビューできます。" />
+    <title>Markdownの表（テーブル）の書き方 — セル結合・改行・寄せ・崩れる原因と直し方 | Markdown Viewer</title>
+    <meta name="description" content="Markdown（マークダウン）の表・テーブルの書き方を解説。基本の作り方から、左寄せ・中央寄せ・右寄せ、セル内での改行、セル結合（rowspan/colspan）の代替方法、表が崩れる原因と直し方まで。書いた表はその場で無料プレビューできます。" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://markdown-viewer.net/guide/markdown-table/" />
-    <meta property="og:title" content="Markdownの表（テーブル）の書き方 — 寄せ・セル内改行・結合まで解説" />
+    <meta property="og:title" content="Markdownの表（テーブル）の書き方 — セル結合・改行・寄せ・崩れる原因と直し方" />
     <meta property="og:description" content="基本の作り方から、文字寄せ、セル内改行、セル結合の代替方法、表が崩れる原因と直し方まで。コピペで使える例つき。" />
     <meta property="og:image" content="https://markdown-viewer.net/og-image.png" />
     <meta property="og:site_name" content="Markdown Viewer" />
@@ -27,7 +27,7 @@
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://markdown-viewer.net/guide/markdown-table/" />
-    <meta property="twitter:title" content="Markdownの表（テーブル）の書き方 — 寄せ・セル内改行・結合まで解説" />
+    <meta property="twitter:title" content="Markdownの表（テーブル）の書き方 — セル結合・改行・寄せ・崩れる原因と直し方" />
     <meta property="twitter:description" content="基本の作り方から、文字寄せ、セル内改行、セル結合の代替方法、表が崩れる原因と直し方まで。コピペで使える例つき。" />
 
     <link rel="canonical" href="https://markdown-viewer.net/guide/markdown-table/" />
@@ -45,7 +45,7 @@
     {
       "@context": "https://schema.org",
       "@type": "Article",
-      "headline": "Markdownの表（テーブル）の書き方 — 寄せ・セル内改行・結合まで解説",
+      "headline": "Markdownの表（テーブル）の書き方 — セル結合・改行・寄せ・崩れる原因と直し方",
       "description": "Markdownの表・テーブルの書き方を解説。基本の作り方から、左寄せ・中央寄せ・右寄せ、セル内での改行、セル結合の代替方法、表が崩れる原因と直し方まで。",
       "image": "https://markdown-viewer.net/og-image.png",
       "author": {
@@ -59,8 +59,40 @@
         "url": "https://markdown-viewer.net/"
       },
       "datePublished": "2026-07-15",
-      "dateModified": "2026-07-15",
+      "dateModified": "2026-08-02",
       "mainEntityOfPage": "https://markdown-viewer.net/guide/markdown-table/"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Markdownの表でセル結合（rowspan / colspan）はできますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "標準のMarkdown記法ではセル結合はサポートされていません。セル結合を行いたい場合は、HTMLの<table>タグ（rowspan/colspan）を直接記述するか、表の構成を見直して1列目に同一項目を並べる代替案があります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Markdownの表のセル内で改行するには？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Markdownの表のセル内では通常の改行はできません。セル内で改行したい場合はHTMLの<br>タグを挿入します。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Markdownの表が崩れる原因は？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "主な原因は『2行目の区切り行（| --- | --- |）の不足』『直前の文章との間に空行がない』『セル内のパイプ（|）のエスケープ忘れ』の3点です。"
+          }
+        }
+      ]
     }
     </script>
     <script type="application/ld+json">
