@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5Y58TXJ0TX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-5Y58TXJ0TX');
+    </script>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Markdownのコードブロック・インラインコードの書き方【言語指定・エスケープ・崩れる原因】 | Markdown Viewer</title>
+    <meta name="description" content="Markdown（マークダウン）のコードブロック（```）とインラインコード（`）の書き方を入力例と表示結果つきで解説。シンタックスハイライトの言語指定一覧、バッククォート自体の表示方法（エスケープ）、コードブロックが崩れる原因も紹介します。" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://markdown-viewer.net/guide/markdown-code-block/" />
+    <meta property="og:title" content="Markdownのコードブロック・インラインコードの書き方【言語指定・エスケープ】" />
+    <meta property="og:description" content="コードブロック（```）とインラインコード（`）の書き方、言語指定によるハイライト、バッククォートのエスケープ方法を表示例つきで解説。" />
+    <meta property="og:image" content="https://markdown-viewer.net/og-image.png" />
+    <meta property="og:site_name" content="Markdown Viewer" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://markdown-viewer.net/guide/markdown-code-block/" />
+    <meta property="twitter:title" content="Markdownのコードブロック・インラインコードの書き方【言語指定・エスケープ】" />
+    <meta property="twitter:description" content="コードブロック（```）とインラインコード（`）の書き方、言語指定によるハイライト、バッククォートのエスケープ方法を表示例つきで解説。" />
+
+    <link rel="canonical" href="https://markdown-viewer.net/guide/markdown-code-block/" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9357019958045811" crossorigin="anonymous"></script>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Markdownのコードブロック・インラインコードの書き方【言語指定・エスケープ・崩れる原因】",
+      "description": "Markdownのコードブロック（```）とインラインコード（`）の書き方を入力例と表示結果つきで解説。言語指定によるシンタックスハイライト、バッククォートのエスケープ方法も紹介。",
+      "image": "https://markdown-viewer.net/og-image.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Markdown Viewer",
+        "url": "https://markdown-viewer.net/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Markdown Viewer",
+        "url": "https://markdown-viewer.net/"
+      },
+      "datePublished": "2026-08-12",
+      "dateModified": "2026-08-12",
+      "mainEntityOfPage": "https://markdown-viewer.net/guide/markdown-code-block/"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Markdown Viewer", "item": "https://markdown-viewer.net/" },
+        { "@type": "ListItem", "position": 2, "name": "Markdownの書き方ガイド", "item": "https://markdown-viewer.net/guide/" },
+        { "@type": "ListItem", "position": 3, "name": "コードブロックの書き方", "item": "https://markdown-viewer.net/guide/markdown-code-block/" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Markdownでコードブロックを作るにはどう書きますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "バッククォート3つ（```）だけの行でコードを上下から挟みます。開始側の```の直後に python や js などの言語名を書くと、対応環境ではシンタックスハイライトが付きます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "バッククォート（`）はどうやって入力しますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "日本語キーボード（JIS配列）では Shift + @ で入力できます。英語キーボード（US配列）では Esc キーの下、数字の1の左にあるキーです。シングルクォート（'）とは別の文字なので注意してください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "コードブロックの中に```を表示したいときは？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "外側の囲いをバッククォート4つ（````）にすれば、内側に```をそのまま書けます。インラインコードの中に`を表示したい場合は、``と2つで挟みます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "コードブロックがそのまま文字で表示されてしまうのはなぜですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "```の行に余計な文字が入っている、開始と終了の```の数が揃っていない、または全角の記号を使っていることが主な原因です。```は行頭に置き、その行には言語名以外を書かないようにします。"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="/guide.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a href="/" class="logo">
+          <span class="logo-icon">M</span>
+          <span>Markdown<span class="text-accent">Viewer</span></span>
+        </a>
+        <a href="/" class="header-cta">ビューアーで試す →</a>
+      </div>
+    </header>
+
+    <main>
+      <nav class="breadcrumb" aria-label="パンくずリスト">
+        <a href="/">Markdown Viewer</a> › <a href="/guide/">書き方ガイド</a> › コードブロックの書き方
+      </nav>
+
+      <article>
+        <h1>Markdownのコードブロック・インラインコードの書き方</h1>
+        <p class="lead">
+          プログラムのコードやコマンド、設定ファイルをそのままの形で見せたいときに使うのが<strong>コードブロック（<code>```</code>）</strong>と<strong>インラインコード（<code>`</code>）</strong>です。このページでは基本の書き方から、シンタックスハイライトの言語指定、「バッククォート自体を表示したい」ときのエスケープまでまとめました。動作は<a href="/">無料のMarkdownビューアー</a>でその場で確認できます。
+        </p>
+
+        <div class="table-wrapper">
+          <table>
+            <caption style="text-align:left; font-weight:700; margin-bottom:8px;">コード記法の早見表</caption>
+            <thead>
+              <tr><th>やりたいこと</th><th>書き方</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>文中にコードを埋める</td><td><code>`code`</code>（バッククォート1つで挟む）</td></tr>
+              <tr><td>複数行のコードを載せる</td><td><code>```</code> の行でコードを上下から挟む</td></tr>
+              <tr><td>色分け（ハイライト）を付ける</td><td>開始の <code>```</code> の直後に言語名（例：<code>```python</code>）</td></tr>
+              <tr><td>コード内に ``` を表示する</td><td>外側を <code>````</code>（4つ）にする</td></tr>
+              <tr><td>文中に ` を表示する</td><td><code>``</code>（2つ）で挟む</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <nav class="toc" aria-label="目次">
+          <div class="toc-title">目次</div>
+          <ol>
+            <li><a href="#inline">インラインコード：文中にコードを埋める</a></li>
+            <li><a href="#block">コードブロック：複数行のコードを載せる</a></li>
+            <li><a href="#lang">言語指定でシンタックスハイライトを付ける</a></li>
+            <li><a href="#escape">バッククォート自体を表示したいとき（エスケープ）</a></li>
+            <li><a href="#trouble">コードブロックが崩れる原因と対処法</a></li>
+            <li><a href="#faq">よくある質問</a></li>
+          </ol>
+        </nav>
+
+        <h2 id="inline">インラインコード：文中にコードを埋める</h2>
+        <p>文章の中に変数名・コマンド・ファイル名などを埋め込むときは、<strong>バッククォート（<code>`</code>）1つで挟みます</strong>。挟んだ部分は等幅フォント＋背景色付きで表示され、本文と明確に区別できます。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>設定は `config.json` の `debug` を `true` に変更します。</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <p style="margin: 0;">設定は <code>config.json</code> の <code>debug</code> を <code>true</code> に変更します。</p>
+            </div>
+          </div>
+        </div>
+        <div class="note"><strong>バッククォートの入力方法</strong>：JIS配列（日本語キーボード）は <kbd>Shift</kbd> + <kbd>@</kbd>、US配列は数字の <kbd>1</kbd> の左のキーです。シングルクォート <code>'</code> と間違えやすいので注意してください。</div>
+
+        <h2 id="block">コードブロック：複数行のコードを載せる</h2>
+        <p>複数行のコードは、<strong>バッククォート3つ（<code>```</code>）だけの行</strong>で上下から挟みます。ブロック内では改行・スペース・記号がすべて書いたまま表示され、<code>#</code> や <code>*</code> などのMarkdown記法も無効になります。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>```
+function greet(name) {
+  console.log(`Hello, ${name}!`);
+}
+```</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <pre style="background: var(--code-bg); color: var(--code-text); padding: 12px 16px; border-radius: 8px; margin: 0; overflow-x: auto; font-size: 13px;">function greet(name) {
+  console.log(`Hello, ${name}!`);
+}</pre>
+            </div>
+          </div>
+        </div>
+        <p>コードブロックは、プログラムに限らず「<strong>そのままの形で見せたいテキスト全般</strong>」に便利です。ターミナルのコマンド、エラーメッセージ、設定ファイル、フォルダ構成図（ツリー）などにも広く使われます。</p>
+
+        <h2 id="lang">言語指定でシンタックスハイライトを付ける</h2>
+        <p>開始側の <code>```</code> の直後に言語名を書くと、GitHubやQiita・Zennなど対応環境ではコードが色分け（シンタックスハイライト）されます。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>```python
+def greet(name):
+    print(f"Hello, {name}!")
+```</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果（対応環境では色分けされる）</div>
+            <div class="example-body">
+              <pre style="background: var(--code-bg); padding: 12px 16px; border-radius: 8px; margin: 0; overflow-x: auto; font-size: 13px;"><span style="color: #c084fc;">def</span> <span style="color: #60a5fa;">greet</span><span style="color: #e2e8f0;">(name):</span>
+    <span style="color: #60a5fa;">print</span><span style="color: #e2e8f0;">(</span><span style="color: #4ade80;">f"Hello, {name}!"</span><span style="color: #e2e8f0;">)</span></pre>
+            </div>
+          </div>
+        </div>
+        <p>よく使う言語名の指定は次のとおりです。</p>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>言語・形式</th><th>指定名</th><th>言語・形式</th><th>指定名</th></tr></thead>
+            <tbody>
+              <tr><td>Python</td><td><code>python</code></td><td>JavaScript</td><td><code>js</code> / <code>javascript</code></td></tr>
+              <tr><td>TypeScript</td><td><code>ts</code> / <code>typescript</code></td><td>HTML</td><td><code>html</code></td></tr>
+              <tr><td>CSS</td><td><code>css</code></td><td>JSON</td><td><code>json</code></td></tr>
+              <tr><td>シェル・ターミナル</td><td><code>bash</code> / <code>sh</code></td><td>SQL</td><td><code>sql</code></td></tr>
+              <tr><td>Java</td><td><code>java</code></td><td>C / C++</td><td><code>c</code> / <code>cpp</code></td></tr>
+              <tr><td>Ruby</td><td><code>ruby</code></td><td>PHP</td><td><code>php</code></td></tr>
+              <tr><td>YAML</td><td><code>yaml</code></td><td>Markdown</td><td><code>md</code> / <code>markdown</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note">言語名を指定しない（または対応していない名前を書いた）場合は、ハイライトなしの単色で表示されるだけで、エラーにはなりません。迷ったらとりあえず書いておいて損はありません。</div>
+
+        <h2 id="escape">バッククォート自体を表示したいとき（エスケープ）</h2>
+        <p>「Markdownの解説記事を書く」など、記号そのものを見せたい場合の書き方です。</p>
+        <h3>文中に ` を表示したい</h3>
+        <p><strong>バッククォート2つ（<code>``</code>）で挟む</strong>と、中の <code>`</code> をそのまま表示できます。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>`` ` `` で挟むとインラインコードになります。</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <p style="margin: 0;"><code>`</code> で挟むとインラインコードになります。</p>
+            </div>
+          </div>
+        </div>
+        <h3>コードブロックの中に ``` を表示したい</h3>
+        <p>外側の囲いを<strong>バッククォート4つ（<code>````</code>）</strong>にすると、内側に <code>```</code> を含むコードブロックを書けます。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>````
+```python
+print("Hello")
+```
+````</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <pre style="background: var(--code-bg); color: var(--code-text); padding: 12px 16px; border-radius: 8px; margin: 0; overflow-x: auto; font-size: 13px;">```python
+print("Hello")
+```</pre>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="trouble">コードブロックが崩れる原因と対処法</h2>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>症状</th><th>原因</th><th>対処法</th></tr></thead>
+            <tbody>
+              <tr><td>```がそのまま文字として表示される</td><td>全角の「｀」を使っている／```の前後に余計な文字がある</td><td>半角のバッククォートで、```だけの行にする</td></tr>
+              <tr><td>ブロックが閉じずに以降が全部コード表示になる</td><td>終了側の```を書き忘れている／数が揃っていない</td><td>開始と終了のバッククォートの数を揃える</td></tr>
+              <tr><td>リストの中のコードブロックがリストの外に出る</td><td>リストの字下げに合わせたインデントがない</td><td>```ごと半角スペース4つで字下げする</td></tr>
+              <tr><td>ハイライトが付かない</td><td>表示先が言語指定に非対応／言語名の綴りが違う</td><td>表示先の対応言語名を確認する（例：<code>node</code>ではなく<code>js</code>）</td></tr>
+              <tr><td>コードの中の&lt;タグ&gt;が消える</td><td>コードブロックの外に書いたためHTMLとして解釈された</td><td>タグを含むテキストは必ずコードブロックか<code>`</code>の中に入れる</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="cta-box">
+          <p><strong>コードブロックの表示、その場で確認しませんか？</strong><br>バッククォートの数や言語指定を変えたときの挙動を、コピペするだけで試せます。</p>
+          <a href="/" class="cta-button">無料のMarkdownビューアーを開く</a>
+        </div>
+
+        <h2 id="faq">よくある質問</h2>
+        <h3>チルダ（~~~）でもコードブロックになると聞きました</h3>
+        <p>はい、多くのパーサーで <code>~~~</code> 3つでも同じコードブロックになります。「コードブロックの中に```を書きたい」場面で、外側を<code>~~~</code>にするという使い分けも可能です。</p>
+        <h3>行頭を4スペース空けたらコードブロックになりました</h3>
+        <p>それは「インデント式コードブロック」という古い記法です。意図せず発動して驚くことが多い（箇条書きのつもりの字下げがコード表示になる等）ため、現在は```で囲む方式（フェンス式）が推奨です。</p>
+        <h3>コードブロックに行番号やファイル名を表示したい</h3>
+        <p>標準記法にはありませんが、Qiita・Zennなどは <code>```python:app.py</code> のようにコロン区切りでファイル名を表示できる独自拡張があります。表示先のサービスの仕様を確認してください。</p>
+        <h3>ChatGPTの回答のコードをブログに貼りたい</h3>
+        <p>回答をそのままコピーすると```付きのMarkdownが取れます。<a href="/">Markdown Viewer</a>に貼り付ければ整形済みHTMLに変換されるので、「HTMLコピー」ボタンでブログ用のコードとして持ち出せます。</p>
+
+        <h2>関連ガイド</h2>
+        <ul style="padding-left: 24px;">
+          <li><a href="/guide/markdown-syntax/">Markdown記法一覧【チートシート】</a> — 全記法の書き方まとめ</li>
+          <li><a href="/guide/markdown-list/">箇条書き・番号付きリストの書き方</a></li>
+          <li><a href="/guide/markdown-linebreak/">改行できない・されない時の対処法</a></li>
+          <li><a href="/guide/what-is-markdown/">Markdownとは？初心者向け入門</a></li>
+        </ul>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p><a href="/">Markdown Viewer — インストール不要の無料マークダウンビューアー</a> ｜ <a href="/guide/">書き方ガイド一覧</a></p>
+      <p><a href="/about/">このサイトについて</a> ｜ <a href="/privacy/">プライバシーポリシー・免責事項</a></p>
+      <p>© 2026 Markdown Viewer</p>
+    </footer>
+  </body>
+</html>

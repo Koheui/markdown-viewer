@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5Y58TXJ0TX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-5Y58TXJ0TX');
+    </script>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Markdown（マークダウン）とは？初心者向けに書き方の基本をわかりやすく解説 | Markdown Viewer</title>
+    <meta name="description" content="Markdown（マークダウン）とは何か、初心者向けにわかりやすく解説。メリット・デメリット、使われる場所（GitHub・Notion・ChatGPT等）、最初に覚えるべき6つの記法を入力例と表示結果つきで紹介。ブラウザで無料でその場で試せます。" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://markdown-viewer.net/guide/what-is-markdown/" />
+    <meta property="og:title" content="Markdown（マークダウン）とは？初心者向けに書き方の基本をわかりやすく解説" />
+    <meta property="og:description" content="Markdownとは何か、メリット、使われる場所、最初に覚えるべき6つの記法を入力例と表示結果つきで解説。" />
+    <meta property="og:image" content="https://markdown-viewer.net/og-image.png" />
+    <meta property="og:site_name" content="Markdown Viewer" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://markdown-viewer.net/guide/what-is-markdown/" />
+    <meta property="twitter:title" content="Markdown（マークダウン）とは？初心者向けに書き方の基本をわかりやすく解説" />
+    <meta property="twitter:description" content="Markdownとは何か、メリット、使われる場所、最初に覚えるべき6つの記法を入力例と表示結果つきで解説。" />
+
+    <link rel="canonical" href="https://markdown-viewer.net/guide/what-is-markdown/" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9357019958045811" crossorigin="anonymous"></script>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Markdown（マークダウン）とは？初心者向けに書き方の基本をわかりやすく解説",
+      "description": "Markdown（マークダウン）とは何か、初心者向けにわかりやすく解説。メリット・デメリット、使われる場所、最初に覚えるべき6つの記法を入力例と表示結果つきで紹介。",
+      "image": "https://markdown-viewer.net/og-image.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Markdown Viewer",
+        "url": "https://markdown-viewer.net/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Markdown Viewer",
+        "url": "https://markdown-viewer.net/"
+      },
+      "datePublished": "2026-08-12",
+      "dateModified": "2026-08-12",
+      "mainEntityOfPage": "https://markdown-viewer.net/guide/what-is-markdown/"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Markdown Viewer", "item": "https://markdown-viewer.net/" },
+        { "@type": "ListItem", "position": 2, "name": "Markdownの書き方ガイド", "item": "https://markdown-viewer.net/guide/" },
+        { "@type": "ListItem", "position": 3, "name": "Markdownとは？", "item": "https://markdown-viewer.net/guide/what-is-markdown/" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Markdown（マークダウン）とは何ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Markdownは、# や ** などの簡単な記号を使って、文章の見出し・強調・リストなどの構造を表現できる軽量マークアップ言語です。プレーンテキストのまま読み書きでき、変換すると整形されたHTML（ウェブページの表示）になります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "MarkdownとHTMLの違いは何ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "どちらも文章の構造を表現しますが、HTMLはタグ（<h1>など）で囲む必要があり記述量が多いのに対し、Markdownは # を付けるだけなど記号が短く、書いたままでも人間が読みやすいのが特徴です。Markdownは最終的にHTMLに変換されて表示されます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Markdownはどこで使えますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GitHub（README）、Notion、Slack、Discord、Qiita、Zenn、はてなブログ、ChatGPTやClaudeなどのAIチャットなど、非常に多くのサービスで使えます。サービスによって対応記法に多少の違いがあります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Markdownの拡張子は何ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "「.md」が標準です（.markdownも使われます）。中身はただのテキストファイルなので、メモ帳などどんなテキストエディタでも開けます。整形された状態で確認したいときは、オンラインのMarkdownビューアーに貼り付けるかドロップすれば表示できます。"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="/guide.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a href="/" class="logo">
+          <span class="logo-icon">M</span>
+          <span>Markdown<span class="text-accent">Viewer</span></span>
+        </a>
+        <a href="/" class="header-cta">ビューアーで試す →</a>
+      </div>
+    </header>
+
+    <main>
+      <nav class="breadcrumb" aria-label="パンくずリスト">
+        <a href="/">Markdown Viewer</a> › <a href="/guide/">書き方ガイド</a> › Markdownとは？
+      </nav>
+
+      <article>
+        <h1>Markdown（マークダウン）とは？初心者向けに基本をわかりやすく解説</h1>
+        <p class="lead">
+          「README.mdってどうやって読むの？」「ChatGPTの回答に付いてる # や ** って何？」— その記号の正体が<strong>Markdown（マークダウン）</strong>です。このページでは、Markdownとは何か、なぜ世界中で使われているのか、そして最初に覚えるべき6つの書き方を、初心者向けにまとめました。実際の動きは<a href="/">無料のMarkdownビューアー</a>に貼り付ければ、その場で確認できます。
+        </p>
+
+        <nav class="toc" aria-label="目次">
+          <div class="toc-title">目次</div>
+          <ol>
+            <li><a href="#what">Markdownとは？ 30秒でわかる概要</a></li>
+            <li><a href="#example">百聞は一見にしかず：Markdownの実例</a></li>
+            <li><a href="#merit">Markdownのメリット・デメリット</a></li>
+            <li><a href="#where">Markdownが使われる場所</a></li>
+            <li><a href="#basic">最初に覚えるべき6つの記法</a></li>
+            <li><a href="#html">MarkdownとHTMLの関係</a></li>
+            <li><a href="#faq">よくある質問</a></li>
+          </ol>
+        </nav>
+
+        <h2 id="what">Markdownとは？ 30秒でわかる概要</h2>
+        <p>Markdownは、<strong>簡単な記号で文章の構造（見出し・強調・箇条書きなど）を表現できる書き方のルール</strong>です。正式には「軽量マークアップ言語」と呼ばれ、2004年にジョン・グルーバー氏によって考案されました。</p>
+        <p>ポイントは次の2つです。</p>
+        <ul style="padding-left: 24px;">
+          <li><strong>書くときはただのテキスト</strong> — メモ帳でもスマホでも、どんな環境でも書ける</li>
+          <li><strong>表示するときは整形されたドキュメント</strong> — 対応ツールに通すと、見出しや太字が反映された美しい文書になる</li>
+        </ul>
+        <p>ファイルの拡張子は <code>.md</code> が使われます。GitHubのプロジェクトに必ずある「README.md」の「.md」はMarkdownの略です。</p>
+
+        <h2 id="example">百聞は一見にしかず：Markdownの実例</h2>
+        <p>次の左側のようなテキストを書くと、右側のように表示されます。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方（Markdown）</div>
+            <pre># 会議メモ
+
+## 決まったこと
+
+- 次回リリースは **10月15日**
+- 担当は *田中さん*
+
+詳細は [仕様書](https://example.com) を参照。</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <h1 style="font-size: 1.5em; border-bottom: 1px solid var(--border); margin: 0 0 12px; padding-bottom: 6px;">会議メモ</h1>
+              <h2 style="font-size: 1.2em; border: none; margin: 0 0 8px; padding: 0;">決まったこと</h2>
+              <ul style="margin: 0 0 12px; padding-left: 24px;">
+                <li>次回リリースは <strong>10月15日</strong></li>
+                <li>担当は <em>田中さん</em></li>
+              </ul>
+              <p style="margin: 0;">詳細は <a href="#">仕様書</a> を参照。</p>
+            </div>
+          </div>
+        </div>
+        <p>記号はたったこれだけ：<code>#</code> が見出し、<code>-</code> が箇条書き、<code>**</code> で挟むと太字、<code>[テキスト](URL)</code> がリンクです。装飾ボタンを探してクリックする代わりに、キーボードから手を離さずに文書の構造を作れます。</p>
+
+        <h2 id="merit">Markdownのメリット・デメリット</h2>
+        <h3>メリット</h3>
+        <ul style="padding-left: 24px;">
+          <li><strong>速い</strong> — 装飾のためにマウス操作が不要。書くことに集中できる</li>
+          <li><strong>どこでも書ける・開ける</strong> — 中身はただのテキスト。専用ソフトがなくても読み書きできる</li>
+          <li><strong>持ち運びやすい</strong> — WordファイルやGoogleドキュメントと違い、サービス間のコピペで書式が壊れにくい</li>
+          <li><strong>バージョン管理と相性が良い</strong> — テキストなのでGitで差分管理でき、エンジニアの標準になっている</li>
+          <li><strong>将来も読める</strong> — 特定企業のファイル形式に依存しないため、10年後でも開けなくなる心配がない</li>
+        </ul>
+        <h3>デメリット</h3>
+        <ul style="padding-left: 24px;">
+          <li><strong>方言（フレーバー）がある</strong> — サービスによって対応記法が微妙に異なる（GitHub Flavored Markdownなど）</li>
+          <li><strong>複雑なレイアウトは苦手</strong> — 文字色の変更、セル結合、細かい配置指定などは標準記法にはなく、HTML/CSSの補助が必要</li>
+          <li><strong>表示確認に変換が必要</strong> — 書いたままでは記号が見えるだけなので、プレビュー環境があると便利</li>
+        </ul>
+        <div class="note">3つ目のデメリットを解決するのが<a href="/">Markdownビューアー</a>です。貼り付けるだけで表示結果を確認でき、フォントや余白を調整してブログ用のCSS/HTMLとして持ち出せます。</div>
+
+        <h2 id="where">Markdownが使われる場所</h2>
+        <p>Markdownは「エンジニアのもの」と思われがちですが、いまや職種を問わず使われています。</p>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>分野</th><th>サービス・用途の例</th></tr></thead>
+            <tbody>
+              <tr><td>開発</td><td>GitHub / GitLab（README・Issue・PR）、各種ドキュメントツール</td></tr>
+              <tr><td>メモ・ノート</td><td>Notion、Obsidian、Bear、Typora</td></tr>
+              <tr><td>チャット</td><td>Slack、Discord、Microsoft Teams（一部記法）</td></tr>
+              <tr><td>ブログ・技術記事</td><td>Qiita、Zenn、はてなブログ、note（一部）、WordPress（プラグイン）</td></tr>
+              <tr><td>AIチャット</td><td>ChatGPT、Claude、Geminiの回答はMarkdown形式で出力される</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>特に近年は<strong>AIチャットの回答がMarkdownで出力される</strong>ため、「AIの回答をコピーしたら # や ** だらけだった」という形でMarkdownに出会う人が増えています。そのまま<a href="/">ビューアー</a>に貼り付ければ、整形された状態で読めて、そのままブログ等に転用できます。</p>
+
+        <h2 id="basic">最初に覚えるべき6つの記法</h2>
+        <p>Markdownの記法は数十種類ありますが、日常利用の9割は次の6つでカバーできます。</p>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>やりたいこと</th><th>書き方</th><th>ポイント</th></tr></thead>
+            <tbody>
+              <tr><td>見出し</td><td><code># 見出し1</code> / <code>## 見出し2</code></td><td><code>#</code> の数がレベル。# の後に半角スペース必須</td></tr>
+              <tr><td>太字</td><td><code>**太字**</code></td><td>アスタリスク2つで挟む</td></tr>
+              <tr><td>箇条書き</td><td><code>- 項目</code></td><td><code>-</code> の後に半角スペース。字下げで入れ子に</td></tr>
+              <tr><td>番号付きリスト</td><td><code>1. 項目</code></td><td>すべて <code>1.</code> でも自動連番になる</td></tr>
+              <tr><td>リンク</td><td><code>[表示名](URL)</code></td><td>角かっこ→丸かっこの順</td></tr>
+              <tr><td>コード</td><td><code>`コード`</code></td><td>バッククォートで挟む。3つ並べるとブロックに</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>それぞれの詳しい書き方とつまずきポイントは、<a href="/guide/markdown-syntax/">Markdown記法一覧【チートシート】</a>にまとめてあります。個別の解説記事もあります：<a href="/guide/markdown-list/">リストの書き方</a>・<a href="/guide/markdown-table/">表の書き方</a>・<a href="/guide/markdown-link-image/">リンク・画像の書き方</a>・<a href="/guide/markdown-code-block/">コードブロックの書き方</a>。</p>
+
+        <h2 id="html">MarkdownとHTMLの関係</h2>
+        <p>Markdownは、最終的に<strong>HTML（ウェブページを構成する言語）に変換されて表示されます</strong>。たとえば <code># 見出し</code> は <code>&lt;h1&gt;見出し&lt;/h1&gt;</code> に、<code>**太字**</code> は <code>&lt;strong&gt;太字&lt;/strong&gt;</code> に変換されます。</p>
+        <p>つまりMarkdownは「HTMLを速く・読みやすく書くための短縮記法」と言えます。この性質のおかげで、<strong>Markdownの中にHTMLタグを直接書くことも可能</strong>です。標準記法でできないこと（文字色の変更、画像のサイズ指定、セル内改行など）は、HTMLタグで補うのが定石です。</p>
+        <div class="note">当サイトの<a href="/">ビューアー</a>は、Markdownを変換したHTMLと、見た目を整えるCSSをワンクリックでコピーできます。「Markdownで書いてHTMLで納品する」ようなブログ執筆の流れを1画面で完結できます。</div>
+
+        <div class="cta-box">
+          <p><strong>読むより触るのが一番の近道。</strong><br>サンプル読み込みボタンを押すだけで、主要な記法の書き方と表示結果を見比べられます。</p>
+          <a href="/" class="cta-button">無料のMarkdownビューアーを開く</a>
+        </div>
+
+        <h2 id="faq">よくある質問</h2>
+        <h3>Markdownを覚えるのは難しいですか？</h3>
+        <p>基本の6記法だけなら30分もかかりません。日常的に使う記法は限られているので、まず見出し・太字・箇条書きの3つから使い始めるのがおすすめです。</p>
+        <h3>.mdファイルをもらったのですが、どうやって開けばいいですか？</h3>
+        <p>中身はテキストファイルなのでメモ帳でも開けますが、記号がそのまま表示されます。整形された状態で読むには、当サイトの<a href="/">ビューアー</a>にファイルをドラッグ＆ドロップしてください。インストール不要で、内容が外部に送信されることもありません。</p>
+        <h3>MarkdownとWord、どちらを使うべきですか？</h3>
+        <p>印刷レイアウトが重要な文書（契約書・チラシ等）はWord、構造が中心の文書（議事録・手順書・技術メモ・ブログ原稿）はMarkdownが向いています。共同編集やバージョン管理をするならMarkdownが圧倒的に扱いやすいです。</p>
+        <h3>サービスごとに記法が違うのはなぜですか？</h3>
+        <p>元祖Markdownの仕様が最小限だったため、各サービスが表・チェックボックスなどを独自拡張してきた歴史があります。GitHubの拡張（GFM）が事実上の標準です。よく使うサービスでの挙動の違いは<a href="/guide/markdown-linebreak/">改行の記事</a>でも解説しています。</p>
+
+        <h2>関連ガイド</h2>
+        <ul style="padding-left: 24px;">
+          <li><a href="/guide/markdown-syntax/">Markdown記法一覧【チートシート】</a> — 全記法の書き方まとめ</li>
+          <li><a href="/guide/markdown-list/">箇条書き・番号付きリストの書き方</a></li>
+          <li><a href="/guide/markdown-table/">表（テーブル）の書き方</a></li>
+          <li><a href="/guide/markdown-linebreak/">改行できない・されない時の対処法</a></li>
+        </ul>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p><a href="/">Markdown Viewer — インストール不要の無料マークダウンビューアー</a> ｜ <a href="/guide/">書き方ガイド一覧</a></p>
+      <p><a href="/about/">このサイトについて</a> ｜ <a href="/privacy/">プライバシーポリシー・免責事項</a></p>
+      <p>© 2026 Markdown Viewer</p>
+    </footer>
+  </body>
+</html>

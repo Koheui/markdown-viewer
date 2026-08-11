@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5Y58TXJ0TX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-5Y58TXJ0TX');
+    </script>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Markdownの箇条書き・番号付きリストの書き方【ネスト・チェックボックス・崩れる原因】 | Markdown Viewer</title>
+    <meta name="description" content="Markdown（マークダウン）の箇条書き（- や *）・番号付きリスト（1.）・チェックボックス（- [ ]）の書き方を入力例と表示結果つきで解説。ネスト（入れ子）のインデント幅、リストが崩れる・反映されない原因と対処法も紹介します。" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://markdown-viewer.net/guide/markdown-list/" />
+    <meta property="og:title" content="Markdownの箇条書き・番号付きリストの書き方【ネスト・チェックボックス・崩れる原因】" />
+    <meta property="og:description" content="箇条書き・番号付きリスト・チェックボックスの書き方と、ネストのインデント幅、リストが崩れる原因の解決法を表示例つきで解説。" />
+    <meta property="og:image" content="https://markdown-viewer.net/og-image.png" />
+    <meta property="og:site_name" content="Markdown Viewer" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://markdown-viewer.net/guide/markdown-list/" />
+    <meta property="twitter:title" content="Markdownの箇条書き・番号付きリストの書き方【ネスト・チェックボックス・崩れる原因】" />
+    <meta property="twitter:description" content="箇条書き・番号付きリスト・チェックボックスの書き方と、ネストのインデント幅、リストが崩れる原因の解決法を表示例つきで解説。" />
+
+    <link rel="canonical" href="https://markdown-viewer.net/guide/markdown-list/" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9357019958045811" crossorigin="anonymous"></script>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Markdownの箇条書き・番号付きリストの書き方【ネスト・チェックボックス・崩れる原因】",
+      "description": "Markdownの箇条書き・番号付きリスト・チェックボックスの書き方を入力例と表示結果つきで解説。ネストのインデント幅、リストが崩れる原因と対処法も紹介。",
+      "image": "https://markdown-viewer.net/og-image.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Markdown Viewer",
+        "url": "https://markdown-viewer.net/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Markdown Viewer",
+        "url": "https://markdown-viewer.net/"
+      },
+      "datePublished": "2026-08-12",
+      "dateModified": "2026-08-12",
+      "mainEntityOfPage": "https://markdown-viewer.net/guide/markdown-list/"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Markdown Viewer", "item": "https://markdown-viewer.net/" },
+        { "@type": "ListItem", "position": 2, "name": "Markdownの書き方ガイド", "item": "https://markdown-viewer.net/guide/" },
+        { "@type": "ListItem", "position": 3, "name": "リストの書き方", "item": "https://markdown-viewer.net/guide/markdown-list/" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Markdownの箇条書きが反映されないのはなぜですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "最も多い原因は、記号（- や 1.）の直後の半角スペース忘れです。「-項目」ではなく「- 項目」と書きます。また、直前の行が通常の文章の場合は、文章とリストの間に空行が必要なパーサーもあります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "リストのネスト（入れ子）は何文字下げればいいですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "半角スペース4つ（またはタブ1つ）の字下げが最も互換性が高くおすすめです。スペース2つで動くサービス（GitHubなど）もありますが、パーサーによっては認識されないため、4スペースに統一しておくと崩れにくくなります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "番号付きリストの番号がずれる・勝手に変わるのはなぜですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Markdownでは書いた数字ではなく連番が自動で振り直されるためです。逆にこの仕様を利用して、すべての行を「1.」で書けば、後から項目を並べ替えても番号を修正する必要がなくなります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "チェックボックス（- [ ]）が表示されないのはなぜですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "チェックボックスはGitHub Flavored Markdown（GFM）の拡張記法のため、対応していないサービスがあります。また [ ] の中の半角スペースを省略したり、全角スペースを使ったりすると認識されません。"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="/guide.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a href="/" class="logo">
+          <span class="logo-icon">M</span>
+          <span>Markdown<span class="text-accent">Viewer</span></span>
+        </a>
+        <a href="/" class="header-cta">ビューアーで試す →</a>
+      </div>
+    </header>
+
+    <main>
+      <nav class="breadcrumb" aria-label="パンくずリスト">
+        <a href="/">Markdown Viewer</a> › <a href="/guide/">書き方ガイド</a> › リストの書き方
+      </nav>
+
+      <article>
+        <h1>Markdownの箇条書き・番号付きリストの書き方</h1>
+        <p class="lead">
+          Markdown（マークダウン）のリストは <code>-</code> や <code>1.</code> を行頭に付けるだけ — のはずが、「箇条書きにならない」「ネストが崩れる」「番号がずれる」というつまずきが意外と多い記法です。このページでは、<strong>箇条書き・番号付きリスト・チェックボックスの書き方と、崩れる原因の直し方</strong>をまとめました。動作は<a href="/">無料のMarkdownビューアー</a>でその場で確認できます。
+        </p>
+
+        <div class="table-wrapper">
+          <table>
+            <caption style="text-align:left; font-weight:700; margin-bottom:8px;">リスト記法の早見表</caption>
+            <thead>
+              <tr><th>種類</th><th>書き方</th><th>注意点</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>箇条書き</td><td><code>- 項目</code>（* や + も可）</td><td>記号の後に半角スペース必須</td></tr>
+              <tr><td>番号付き</td><td><code>1. 項目</code></td><td>番号は自動で振り直される</td></tr>
+              <tr><td>ネスト（入れ子）</td><td>半角スペース4つで字下げ</td><td>2つで動く環境もあるが4つが安全</td></tr>
+              <tr><td>チェックボックス</td><td><code>- [ ] 未完了</code> / <code>- [x] 完了</code></td><td>GFM拡張。[ ] 内の半角スペース必須</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <nav class="toc" aria-label="目次">
+          <div class="toc-title">目次</div>
+          <ol>
+            <li><a href="#ul">箇条書き（順序なしリスト）の基本</a></li>
+            <li><a href="#ol">番号付きリスト（順序付きリスト）の基本</a></li>
+            <li><a href="#nest">ネスト（入れ子）の書き方とインデント幅</a></li>
+            <li><a href="#checkbox">チェックボックス（タスクリスト）の書き方</a></li>
+            <li><a href="#trouble">リストが崩れる・反映されない原因と対処法</a></li>
+            <li><a href="#style">リストの見た目（行間・記号）を整えたいとき</a></li>
+            <li><a href="#faq">よくある質問</a></li>
+          </ol>
+        </nav>
+
+        <h2 id="ul">箇条書き（順序なしリスト）の基本</h2>
+        <p>行頭に <code>-</code>（ハイフン）を書き、<strong>半角スペースを1つ</strong>あけてから項目を書きます。<code>*</code> や <code>+</code> でも同じ結果になりますが、1つの文書内では記号を統一しましょう。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>- りんご
+- みかん
+- ぶどう</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <ul style="margin: 0; padding-left: 24px;">
+                <li>りんご</li>
+                <li>みかん</li>
+                <li>ぶどう</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="note"><strong>最重要ポイント</strong>：<code>-りんご</code> のようにスペースを省くと、リストとして認識されずそのまま表示されます。「箇条書きにならない」原因の大半はこのスペース忘れです。</div>
+
+        <h2 id="ol">番号付きリスト（順序付きリスト）の基本</h2>
+        <p>行頭に <code>1.</code> のように「数字＋ピリオド＋半角スペース」を書きます。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>1. 材料を切る
+2. 炒める
+3. 味付けする</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <ol style="margin: 0; padding-left: 24px;">
+                <li>材料を切る</li>
+                <li>炒める</li>
+                <li>味付けする</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <p>実は、書く数字は<strong>すべて <code>1.</code> でも自動的に連番になります</strong>。後から項目を追加・並べ替えしても番号を書き直さなくて済むため、あえて全行 <code>1.</code> で書く流儀もあります。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方（全部 1. でOK）</div>
+            <pre>1. 材料を切る
+1. 炒める
+1. 味付けする</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果（自動で連番になる）</div>
+            <div class="example-body">
+              <ol style="margin: 0; padding-left: 24px;">
+                <li>材料を切る</li>
+                <li>炒める</li>
+                <li>味付けする</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="nest">ネスト（入れ子）の書き方とインデント幅</h2>
+        <p>子項目を作るには、行頭を<strong>半角スペース4つ</strong>（またはタブ1つ）で字下げします。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方（␣␣␣␣は半角スペース4つ）</div>
+            <pre>- 果物
+    - りんご
+    - みかん
+- 野菜
+    - にんじん</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <ul style="margin: 0; padding-left: 24px;">
+                <li>果物
+                  <ul style="margin: 0; padding-left: 20px;">
+                    <li>りんご</li>
+                    <li>みかん</li>
+                  </ul>
+                </li>
+                <li>野菜
+                  <ul style="margin: 0; padding-left: 20px;">
+                    <li>にんじん</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="note"><strong>「スペース2つ」と「4つ」どっち？</strong>：GitHubやQiitaなど多くのサービスは2つでも動きますが、元祖Markdownや一部のパーサーは4つ（またはタブ）を要求します。<strong>4スペースに統一しておけばどの環境でも崩れません</strong>。番号付きリストの下にネストする場合は、親の「1. 」の文字幅に合わせて字下げが必要なため、なおさら4スペース以上が安全です。</div>
+
+        <h2 id="checkbox">チェックボックス（タスクリスト）の書き方</h2>
+        <p>箇条書きの記号の後に <code>[ ]</code>（未完了）または <code>[x]</code>（完了）を付けると、チェックボックス付きのタスクリストになります。GitHubのIssueやNotionのToDo管理でおなじみの記法です。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>- [x] 原稿を書く
+- [x] レビューを依頼する
+- [ ] 公開する</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <ul style="margin: 0; padding-left: 4px; list-style: none;">
+                <li><input type="checkbox" checked disabled> 原稿を書く</li>
+                <li><input type="checkbox" checked disabled> レビューを依頼する</li>
+                <li><input type="checkbox" disabled> 公開する</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="note">チェックボックスは<strong>GitHub Flavored Markdown（GFM）の拡張記法</strong>です。未完了側の <code>[ ]</code> の中には<strong>半角スペースが1つ必要</strong>で、<code>[]</code> と詰めたり全角スペースを入れたりすると認識されません。</div>
+
+        <h2 id="trouble">リストが崩れる・反映されない原因と対処法</h2>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>症状</th><th>原因</th><th>対処法</th></tr></thead>
+            <tbody>
+              <tr><td>箇条書きにならず「- 項目」のまま表示される</td><td>記号の後の半角スペース忘れ／全角スペースを使っている</td><td><code>- </code>（記号＋半角スペース）に修正</td></tr>
+              <tr><td>文章の直後のリストが認識されない</td><td>段落とリストの間に空行がない</td><td>文章とリストの間に空行を1行入れる</td></tr>
+              <tr><td>ネストが反映されず同じ階層になる</td><td>字下げが足りない（スペース1〜3つ）</td><td>半角スペース4つで字下げする</td></tr>
+              <tr><td>番号が1から振り直される</td><td>リストの途中に空行や別の要素が挟まりリストが分断された</td><td>項目間の空行を消す。項目内で改行したいときは行末スペース2つか<code>&lt;br&gt;</code></td></tr>
+              <tr><td>リストの中に書いたコードや文章がずれる</td><td>継続行の字下げ不足</td><td>リスト項目の続きは4スペース字下げして書く</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>リスト項目の中での改行については<a href="/guide/markdown-linebreak/">改行できない・されない時の対処法</a>で詳しく解説しています。</p>
+
+        <h2 id="style">リストの見た目（行間・記号）を整えたいとき</h2>
+        <p>「行間が詰まりすぎて読みにくい」「点（・）の色を変えたい」といった見た目の調整は、Markdown記法ではなく<strong>表示側のCSS</strong>の役割です。ブログに貼るときは、<code>li</code> の <code>margin</code> や <code>line-height</code> を調整すると読みやすくなります。</p>
+        <p><a href="/">Markdown Viewer</a>では、本文の行間・余白をスライダーで調整しながらプレビューし、調整結果をそのままCSSとしてコピーできます。はてなブログやWordPressのデザインCSSに貼り付ければ、記事全体のリストの読みやすさを一括で整えられます。</p>
+
+        <div class="cta-box">
+          <p><strong>リストの挙動、その場で確認しませんか？</strong><br>スペースの数やネストの深さを変えると表示がどう変わるか、貼り付けるだけで試せます。</p>
+          <a href="/" class="cta-button">無料のMarkdownビューアーを開く</a>
+        </div>
+
+        <h2 id="faq">よくある質問</h2>
+        <h3>リストの項目の中に複数の段落を書きたい</h3>
+        <p>項目の続きの段落を、空行を挟んだうえで<strong>半角スペース4つで字下げ</strong>して書きます。字下げを忘れると、リストが終了して通常の段落になってしまいます。</p>
+        <h3>番号を「途中から」始めたい（例：4から）</h3>
+        <p>最初の項目に <code>4.</code> と書けば、多くのパーサーで4から始まります。ただし途中の飛び番（1, 2, 5…）は連番に振り直されるため表現できません。</p>
+        <h3>箇条書きの記号を「・」ではなく数字なし文字にしたい</h3>
+        <p>記号の種類（●・○・■など）はCSSの <code>list-style-type</code> で変更します。Markdown記法自体には記号を選ぶ機能はありません。</p>
+        <h3>リストと表を組み合わせられますか？</h3>
+        <p>表のセル内でリスト記法は使えません。セル内で項目を分けたいときは <code>&lt;br&gt;</code> で改行して「・」を直接書くのが実用的です。詳しくは<a href="/guide/markdown-table/">表（テーブル）の書き方</a>をご覧ください。</p>
+
+        <h2>関連ガイド</h2>
+        <ul style="padding-left: 24px;">
+          <li><a href="/guide/markdown-syntax/">Markdown記法一覧【チートシート】</a> — 全記法の書き方まとめ</li>
+          <li><a href="/guide/markdown-linebreak/">改行できない・されない時の対処法</a></li>
+          <li><a href="/guide/markdown-table/">表（テーブル）の書き方</a></li>
+          <li><a href="/guide/what-is-markdown/">Markdownとは？初心者向け入門</a></li>
+        </ul>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p><a href="/">Markdown Viewer — インストール不要の無料マークダウンビューアー</a> ｜ <a href="/guide/">書き方ガイド一覧</a></p>
+      <p><a href="/about/">このサイトについて</a> ｜ <a href="/privacy/">プライバシーポリシー・免責事項</a></p>
+      <p>© 2026 Markdown Viewer</p>
+    </footer>
+  </body>
+</html>

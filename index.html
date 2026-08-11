@@ -351,8 +351,8 @@
 
             </div> <!-- closing styles-controls-row -->
 
-            <!-- SEO/FAQ Accordion -->
-            <details class="seo-accordion">
+            <!-- SEO/FAQ Accordion (open by default so content is visible to visitors and reviewers) -->
+            <details class="seo-accordion" open>
               <summary class="seo-summary">
                 <i data-lucide="help-circle"></i>
                 <span>このツールについて（使い方・よくある質問）</span>
@@ -394,16 +394,20 @@
 
                 <h2>関連ガイド：<a href="/guide/">Markdownの書き方ガイド</a></h2>
                 <ul>
+                  <li><a href="/guide/what-is-markdown/">Markdownとは？初心者向け入門</a> — メリット・使われる場所・最初に覚える6つの記法</li>
                   <li><a href="/guide/markdown-syntax/">Markdown記法一覧【チートシート】</a> — 見出し・太字・リストなど、よく使う書き方のまとめ</li>
                   <li><a href="/guide/markdown-table/">表（テーブル）の書き方</a> — 寄せ・セル内改行・結合の代替方法まで</li>
                   <li><a href="/guide/markdown-linebreak/">改行できない・されない時の対処法</a> — スペース2つ・空行・brタグの使い分け</li>
                   <li><a href="/guide/markdown-link-image/">リンク・画像の書き方</a> — サイズ指定・別タブ・画像リンク</li>
+                  <li><a href="/guide/markdown-list/">箇条書き・番号付きリストの書き方</a> — ネスト・チェックボックス・崩れる原因</li>
+                  <li><a href="/guide/markdown-code-block/">コードブロックの書き方</a> — 言語指定・ハイライト・エスケープ</li>
                 </ul>
               </section>
 
               <footer class="app-footer">
                 <span class="footer-text">© 2026 Markdown Viewer</span>
-                <a href="#" id="btn-privacy-policy" class="footer-link">プライバシーポリシー・免責事項</a>
+                <a href="/about/" class="footer-link">このサイトについて</a>
+                <a href="/privacy/" class="footer-link">プライバシーポリシー・免責事項</a>
               </footer>
             </div>
           </div>
@@ -438,32 +442,6 @@
           <i data-lucide="file-up" class="drag-drop-icon"></i>
           <h2 class="drag-drop-title">ファイルをここにドロップ</h2>
           <p class="drag-drop-subtitle">.md または .txt ファイルに対応しています</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- プライバシーポリシー モーダル -->
-    <div id="modal-privacy" class="modal">
-      <div class="modal-overlay" id="modal-privacy-overlay"></div>
-      <div class="modal-content scrollable">
-        <div class="modal-header">
-          <h2>プライバシーポリシー・免責事項</h2>
-          <button id="btn-close-privacy" class="btn-close" aria-label="閉じる">&times;</button>
-        </div>
-        <div class="modal-body-content">
-          <h3>1. 広告の配信について</h3>
-          <p>当サイトでは、第三者配信の広告サービス「Google AdSense（グーグルアドセンス）」を利用しています。広告配信事業者は、ユーザーの興味に応じた商品やサービスの広告を表示するため、当サイトや他サイトへのアクセスに関する情報「Cookie」（氏名、住所、メールアドレス、電話番号は含まれません）を使用することがあります。</p>
-          <p>Googleによるパーソナライズ広告の無効化や設定については、Googleの<a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">広告に関するポリシーと規約</a>をご参照ください。</p>
-
-          <h3>2. 免責事項</h3>
-          <p>当サイトで生成されたコード（CSS・HTML等）や、当サイトで提供するすべての情報により生じたトラブルやいかなる損失・損害についても、当サイトおよび運営者は一切の責任を負いません。本ツールの利用結果については、お客様ご自身の責任においてご判断ください。</p>
-          <p>また、当サイトからリンクやバナーなどによって他のサイトに移動された場合、移動先サイトで提供される情報、サービス等について一切の責任を負いません。</p>
-
-          <h3>3. 著作権・肖像権について</h3>
-          <p>当サイトに掲載されているすべてのコンテンツ（文章、画像、デザイン等）の著作権・肖像権は、当サイトの所有者または各権利所有者に帰属します。無断転載・複製・二次利用等は固く禁じます。</p>
-          
-          <h3>4. プライバシーポリシーの変更について</h3>
-          <p>当サイトは、個人情報に関して適用される日本の法令を遵守するとともに、本ポリシーの内容を適宜見直し、その改善に努めます。修正された最新のプライバシーポリシーは常に本ページにて開示されます。</p>
         </div>
       </div>
     </div>

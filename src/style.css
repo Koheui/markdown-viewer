@@ -1568,6 +1568,8 @@ body {
   background-color: var(--bg-secondary);
   overflow: hidden;
   transition: all 0.3s ease;
+  /* keep natural height inside the flex panel so open content isn't clipped */
+  flex-shrink: 0;
 }
 
 .seo-accordion[open] {

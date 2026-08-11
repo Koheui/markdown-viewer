@@ -5,7 +5,7 @@
     <loc>https://markdown-viewer.net/</loc>
     <xhtml:link rel="alternate" hreflang="ja" href="https://markdown-viewer.net/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://markdown-viewer.net/en/" />
-    <lastmod>2026-07-03</lastmod>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -13,13 +13,13 @@
     <loc>https://markdown-viewer.net/en/</loc>
     <xhtml:link rel="alternate" hreflang="ja" href="https://markdown-viewer.net/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://markdown-viewer.net/en/" />
-    <lastmod>2026-07-03</lastmod>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://markdown-viewer.net/guide/</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -46,5 +46,29 @@
     <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://markdown-viewer.net/guide/what-is-markdown/</loc>
+    <lastmod>2026-08-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://markdown-viewer.net/guide/markdown-list/</loc>
+    <lastmod>2026-08-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://markdown-viewer.net/guide/markdown-code-block/</loc>
+    <lastmod>2026-08-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://markdown-viewer.net/about/</loc>
+    <lastmod>2026-08-12</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>
