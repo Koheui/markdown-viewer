@@ -13,22 +13,22 @@
     <meta charset="UTF-8" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Markdownで改行できない・されない時の対処法【ChatGPT・Claude・スペース2つ・br・空行】 | Markdown Viewer</title>
-    <meta name="description" content="ChatGPTやClaude、GitHubでMarkdown（マークダウン）が改行されない原因と対処法を解説。行末の半角スペース2つ・空行での段落分け・brタグの3つの方法の使い分け、サービスごとの改行の違いも紹介。その場で無料プレビューして確認できます。" />
+    <title>【即解決】Markdownで改行できない・反映されない原因と3つの対処法（スペース2個・空行・brタグ） | Markdown Viewer</title>
+    <meta name="description" content="Markdown（マークダウン）で改行が反映されない原因と3つの解決策（末尾スペース2つ・段落空行・<br>タグ）を徹底解説。GitHub README・Qiita・ChatGPTでの挙動の違いも網羅。今すぐビューアーで動作確認可能。" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://markdown-viewer.net/guide/markdown-linebreak/" />
-    <meta property="og:title" content="Markdownで改行できない・されない時の対処法【ChatGPT・スペース2つ・br・空行】" />
-    <meta property="og:description" content="改行されない原因と3つの対処法（半角スペース2つ・空行・brタグ）、サービスごとの改行仕様の違いを表示例つきで解説。" />
+    <meta property="og:title" content="【即解決】Markdownで改行できない・反映されない原因と3つの対処法（スペース2個・空行・brタグ）" />
+    <meta property="og:description" content="改行されない原因と3つの対処法（半角スペース2つ・空行・brタグ）、GitHubやQiita等サービスごとの改行仕様の違いを表示例つきで解説。" />
     <meta property="og:image" content="https://markdown-viewer.net/og-image.png" />
     <meta property="og:site_name" content="Markdown Viewer" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://markdown-viewer.net/guide/markdown-linebreak/" />
-    <meta property="twitter:title" content="Markdownで改行できない・されない時の対処法【ChatGPT・スペース2つ・br・空行】" />
-    <meta property="twitter:description" content="改行されない原因と3つの対処法（半角スペース2つ・空行・brタグ）、サービスごとの改行仕様の違いを表示例つきで解説。" />
+    <meta property="twitter:title" content="【即解決】Markdownで改行できない・反映されない原因と3つの対処法（スペース2個・空行・brタグ）" />
+    <meta property="twitter:description" content="改行されない原因と3つの対処法（半角スペース2つ・空行・brタグ）、GitHubやQiita等サービスごとの改行仕様の違いを表示例つきで解説。" />
 
     <link rel="canonical" href="https://markdown-viewer.net/guide/markdown-linebreak/" />
 
@@ -45,8 +45,8 @@
     {
       "@context": "https://schema.org",
       "@type": "Article",
-      "headline": "Markdownで改行できない・されない時の対処法【ChatGPT・Claude・スペース2つ・br・空行】",
-      "description": "ChatGPTやClaude、GitHubでMarkdownで改行されない原因と対処法を解説。行末の半角スペース2つ・空行での段落分け・brタグの3つの方法の使い分け、サービスごとの改行の違いも紹介。",
+      "headline": "【即解決】Markdownで改行できない・反映されない原因と3つの対処法（スペース2個・空行・brタグ）",
+      "description": "Markdownで改行されない原因と3つの対処法（半角スペース2つ・段落空行・brタグ）を解説。GitHubやQiitaなど各サービスの挙動の違いも紹介。",
       "image": "https://markdown-viewer.net/og-image.png",
       "author": {
         "@type": "Organization",
@@ -59,7 +59,7 @@
         "url": "https://markdown-viewer.net/"
       },
       "datePublished": "2026-07-15",
-      "dateModified": "2026-08-02",
+      "dateModified": "2026-09-09",
       "mainEntityOfPage": "https://markdown-viewer.net/guide/markdown-linebreak/"
     }
     </script>
@@ -126,9 +126,9 @@
       </nav>
 
       <article>
-        <h1>Markdownで改行できない・されない時の対処法</h1>
+        <h1 style="line-height: 1.4;"><span style="display: inline-block; white-space: nowrap;">Markdownで改行できない・</span><span style="display: inline-block; white-space: nowrap;">反映されない原因と</span><br><span style="display: inline-block; white-space: nowrap;">3つの対処法まとめ</span></h1>
         <p class="lead">
-          「Enterで改行したのに、表示すると1行につながってしまう」— Markdown（マークダウン）で誰もが最初につまずくのが改行です。これはバグではなくMarkdownの仕様で、<strong>改行の方法は3つ</strong>あります。このページで原因と使い分けをまとめました。動作は<a href="/">無料のMarkdownビューアー</a>に貼り付ければ、その場で確認できます。
+          「Enterで改行したのに、表示すると1行につながってしまう」— Markdown（マークダウン）で誰もが最初につまずくのが改行です。これはバグではなくMarkdownの基本仕様で、<strong>解決方法は3つ</strong>あります。このページで原因と使い分けを分かりやすくまとめました。各サンプルの「🚀 ビューアーで試す」ボタンを押せば、その場でビューアーに読み込んでプレビューを確認できます。
         </p>
 
         <div class="table-wrapper">
@@ -166,8 +166,11 @@
         <p>行の最後に<strong>半角スペースを2つ</strong>入れてから改行すると、表示上も改行（HTMLの <code>&lt;br&gt;</code>）になります。段落は分かれず、行間は詰まったままです。</p>
         <div class="example">
           <div class="example-code">
-            <div class="example-label">書き方（␣は半角スペース）</div>
-            <pre>1行目␣␣
+            <div class="example-header">
+              <span class="example-label">書き方（␣は半角スペース）</span>
+              <button type="button" class="btn-try-viewer" onclick="tryInViewer(this)">🚀 ビューアーで試す</button>
+            </div>
+            <pre>1行目  
 2行目</pre>
           </div>
           <div class="example-result">
@@ -183,7 +186,10 @@
         <p>行と行の間に<strong>空行を1行</strong>入れると、前後が別々の段落（HTMLの <code>&lt;p&gt;</code>）になります。段落の間には余白が付くので、見た目にも区切りが明確になります。</p>
         <div class="example">
           <div class="example-code">
-            <div class="example-label">書き方</div>
+            <div class="example-header">
+              <span class="example-label">書き方</span>
+              <button type="button" class="btn-try-viewer" onclick="tryInViewer(this)">🚀 ビューアーで試す</button>
+            </div>
             <pre>最初の段落です。
 
 次の段落です。</pre>
@@ -202,7 +208,10 @@
         <p>HTMLの <code>&lt;br&gt;</code> タグを書けば、その位置で確実に改行されます。ほとんどのMarkdown対応ツールで使えます。</p>
         <div class="example">
           <div class="example-code">
-            <div class="example-label">書き方</div>
+            <div class="example-header">
+              <span class="example-label">書き方</span>
+              <button type="button" class="btn-try-viewer" onclick="tryInViewer(this)">🚀 ビューアーで試す</button>
+            </div>
             <pre>1行目&lt;br&gt;2行目</pre>
           </div>
           <div class="example-result">
@@ -261,5 +270,6 @@
       <p><a href="/about/">このサイトについて</a> ｜ <a href="/privacy/">プライバシーポリシー・免責事項</a></p>
       <p>© 2026 Markdown Viewer</p>
     </footer>
+    <script src="/guide.js"></script>
   </body>
 </html>

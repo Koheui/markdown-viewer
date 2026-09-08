@@ -384,8 +384,34 @@ function loadState() {
   const savedTheme = localStorage.getItem('md_styler_theme');
   const savedSizes = localStorage.getItem('md_styler_panel_sizes');
 
-  // Load input text
-  document.getElementById('markdown-input').value = (savedText && savedText.trim()) ? savedText : sampleMarkdown;
+  // Load input text (check URL params or sessionStorage from guide pages first)
+  const urlParams = new URLSearchParams(window.location.search);
+  const queryText = urlParams.get('text') || urlParams.get('md');
+  let incomingText = null;
+  if (queryText) {
+    try {
+      incomingText = decodeURIComponent(queryText);
+    } catch (e) {
+      incomingText = queryText;
+    }
+  } else {
+    try {
+      const sessionText = sessionStorage.getItem('md_preview_text');
+      if (sessionText) {
+        incomingText = sessionText;
+        sessionStorage.removeItem('md_preview_text');
+      }
+    } catch (e) {
+      console.warn('sessionStorage access failed', e);
+    }
+  }
+
+  if (incomingText && incomingText.trim()) {
+    document.getElementById('markdown-input').value = incomingText;
+    window._incomingSampleLoaded = true;
+  } else {
+    document.getElementById('markdown-input').value = (savedText && savedText.trim()) ? savedText : sampleMarkdown;
+  }
 
   // Load theme preference first to determine base styles
   if (savedTheme) {
@@ -1431,6 +1457,13 @@ function initApp() {
 
   // Lazy init AdSense slots
   setTimeout(initAdSense, 50);
+
+  // Notify user if sample was loaded from guide/external link
+  if (window._incomingSampleLoaded) {
+    setTimeout(() => {
+      showToast(isEn ? 'Sample loaded into viewer!' : 'ガイドのサンプルをビューアーに読み込みました！');
+    }, 200);
+  }
 }
 
 // Launch application on DOM Load

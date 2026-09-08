@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5Y58TXJ0TX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-5Y58TXJ0TX');
+    </script>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>【コピペで即解決】Markdownで画像サイズ（幅・高さ）を指定・中央揃えする方法 | Markdown Viewer</title>
+    <meta name="description" content="Markdown（マークダウン）で画像サイズ（width/height）の変更や中央揃えを行う方法を解説。HTML代替タグ（<img>）のコピペコード、GitHub・Qiita・Zenn等での対応状況も網羅。ビューアーで即プレビューできます。" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://markdown-viewer.net/guide/markdown-image-size/" />
+    <meta property="og:title" content="【コピペで即解決】Markdownで画像サイズ（幅・高さ）を指定・中央揃えする方法" />
+    <meta property="og:description" content="Markdownで画像サイズ（width/height）の指定や中央揃えを行う方法を徹底解説。コピペで使えるHTMLタグ例やツール別対応表付き。" />
+    <meta property="og:image" content="https://markdown-viewer.net/og-image.png" />
+    <meta property="og:site_name" content="Markdown Viewer" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://markdown-viewer.net/guide/markdown-image-size/" />
+    <meta property="twitter:title" content="【コピペで即解決】Markdownで画像サイズ（幅・高さ）を指定・中央揃えする方法" />
+    <meta property="twitter:description" content="Markdownで画像サイズ（width/height）の指定や中央揃えを行う方法を徹底解説。コピペで使えるHTMLタグ例やツール別対応表付き。" />
+
+    <link rel="canonical" href="https://markdown-viewer.net/guide/markdown-image-size/" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9357019958045811" crossorigin="anonymous"></script>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "【コピペで即解決】Markdownで画像サイズ（幅・高さ）を指定・中央揃えする方法",
+      "description": "Markdownで画像サイズ（width/height）の変更や中央揃えを行う方法を解説。HTML代替タグ（<img>）のコピペコード、GitHub・Qiita・Zenn等での対応状況も網羅。",
+      "image": "https://markdown-viewer.net/og-image.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Markdown Viewer",
+        "url": "https://markdown-viewer.net/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Markdown Viewer",
+        "url": "https://markdown-viewer.net/"
+      },
+      "datePublished": "2026-09-09",
+      "dateModified": "2026-09-09",
+      "mainEntityOfPage": "https://markdown-viewer.net/guide/markdown-image-size/"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Markdown Viewer", "item": "https://markdown-viewer.net/" },
+        { "@type": "ListItem", "position": 2, "name": "Markdownの書き方ガイド", "item": "https://markdown-viewer.net/guide/" },
+        { "@type": "ListItem", "position": 3, "name": "画像サイズ指定・中央揃え", "item": "https://markdown-viewer.net/guide/markdown-image-size/" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Markdown標準で画像サイズは変更できますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "標準のMarkdown記法（CommonMark / GFM）には画像サイズを指定する機能はありません。HTMLの<img>タグを直接使用してwidthやheight属性を指定するのが最も確実な解決策です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "画像を中央揃えにするにはどうすればいいですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "画像を<div align=\"center\">または<p align=\"center\">で囲むことで、GitHubやQiita等多くのサービスで簡単に中央揃えにできます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "画像のアスペクト比（縦横比）を崩さずにリサイズするには？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "width属性のみ（例: width=\"300\" または width=\"60%\"）を指定し、heightは指定しないでおくと、ブラウザが自動的に元の縦横比を保ったまま縮小・拡大してくれます。"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="/guide.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a href="/" class="logo">
+          <span class="logo-icon">M</span>
+          <span>Markdown<span class="text-accent">Viewer</span></span>
+        </a>
+        <a href="/" class="header-cta">ビューアーで試す →</a>
+      </div>
+    </header>
+
+    <main>
+      <nav class="breadcrumb" aria-label="パンくずリスト">
+        <a href="/">Markdown Viewer</a> › <a href="/guide/">書き方ガイド</a> › 画像サイズ指定・中央揃え
+      </nav>
+
+      <article>
+        <h1 style="line-height: 1.4;"><span style="display: inline-block; white-space: nowrap;">Markdownで画像サイズ</span><span style="display: inline-block; white-space: nowrap;">（幅・高さ）を指定・</span><br><span style="display: inline-block; white-space: nowrap;">中央揃えする方法</span></h1>
+        <p class="lead">
+          「画像を貼ったら画面いっぱいに巨大化してしまう」「幅を小さくして中央に寄せたい」— Markdown（マークダウン）の標準記法 <code>![alt](url)</code> には、画像サイズや位置を指定する機能がありません。このページでは、HTML代替タグを使ったサイズ指定（px指定・％指定）や中央揃えの書き方をコピペ用コード付きで解説します。各サンプルの「🚀 ビューアーで試す」ボタンを押せば、その場でビューアーに読み込んでプレビューを確認できます。
+        </p>
+
+        <div class="table-wrapper">
+          <table>
+            <caption style="text-align:left; font-weight:700; margin-bottom:8px;">画像リサイズ＆配置の早見表</caption>
+            <thead>
+              <tr><th>やりたいこと</th><th>書き方</th><th>備考</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>幅を指定（px）</td><td><code>&lt;img src="url" width="300"&gt;</code></td><td>縦横比を自動維持</td></tr>
+              <tr><td>幅を指定（％）</td><td><code>&lt;img src="url" width="50%"&gt;</code></td><td>スマホ対応に最適</td></tr>
+              <tr><td>中央揃え</td><td><code>&lt;div align="center"&gt;&lt;img ...&gt;&lt;/div&gt;</code></td><td>GitHubやQiitaで確実</td></tr>
+              <tr><td>右寄せ</td><td><code>&lt;div align="right"&gt;&lt;img ...&gt;&lt;/div&gt;</code></td><td>キャプション等に</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <nav class="toc" aria-label="目次">
+          <div class="toc-title">目次</div>
+          <ol>
+            <li><a href="#why">なぜ標準記法では画像サイズを変えられないのか</a></li>
+            <li><a href="#html-size">方法1: HTMLのimgタグでサイズを指定する（おすすめ）</a></li>
+            <li><a href="#align-center">方法2: 画像を中央揃え・右寄せにする方法</a></li>
+            <li><a href="#multiple">方法3: 2枚の画像を横並びに配置する</a></li>
+            <li><a href="#link-image">方法4: サイズ指定した画像にリンクを貼る</a></li>
+            <li><a href="#services">主要サービス別の対応状況（GitHub・Qiita・Zenn・Notion）</a></li>
+            <li><a href="#faq">よくある質問</a></li>
+          </ol>
+        </nav>
+
+        <h2 id="why">なぜ標準記法では画像サイズを変えられないのか</h2>
+        <p>Markdownは「テキストをプレーンかつ読みやすく書く」という思想で作られたため、標準仕様（CommonMark）には画像サイズ（width/height）や配置属性の文法が盛り込まれていません。しかし、Markdown文書の中では<strong>HTMLタグをそのまま記述することが許可されている</strong>ため、HTMLの <code>&lt;img&gt;</code> タグを使うのがWeb標準かつ最も確実な解決策となります。</p>
+
+        <h2 id="html-size">方法1: HTMLのimgタグでサイズを指定する（おすすめ）</h2>
+        <p>画像を縮小・拡大したいときは、<code>![alt](url)</code> の代わりに <code>&lt;img&gt;</code> タグを記述します。<strong>width属性だけを指定する</strong>と、画像の縦横比（アスペクト比）を崩さずに綺麗にリサイズされます。</p>
+
+        <h3>ピクセル（px）で固定サイズにする</h3>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-header">
+              <span class="example-label">書き方（px指定）</span>
+              <button type="button" class="btn-try-viewer" onclick="tryInViewer(this)">🚀 ビューアーで試す</button>
+            </div>
+            <pre>&lt;img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&auto=format&fit=crop&q=60" alt="ノートPC" width="240"&gt;</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&auto=format&fit=crop&q=60" alt="ノートPC" style="width: 240px; max-width: 100%; border-radius: 6px;" />
+            </div>
+          </div>
+        </div>
+
+        <h3>パーセント（％）で画面幅に合わせる（レスポンシブ）</h3>
+        <p>スマホやタブレットでもはみ出さず、画面幅に応じた比率で表示したい場合は、<code>width="50%"</code> や <code>style="width: 50%;"</code> を指定します。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-header">
+              <span class="example-label">書き方（%指定）</span>
+              <button type="button" class="btn-try-viewer" onclick="tryInViewer(this)">🚀 ビューアーで試す</button>
+            </div>
+            <pre>&lt;img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&auto=format&fit=crop&q=60" alt="ノートPC" width="60%"&gt;</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&auto=format&fit=crop&q=60" alt="ノートPC" style="width: 60%; max-width: 100%; border-radius: 6px;" />
+            </div>
+          </div>
+        </div>
+
+        <h2 id="align-center">方法2: 画像を中央揃え・右寄せにする方法</h2>
+        <p>ブログのアイキャッチや図解を中央に配置したいときは、<code>&lt;div align="center"&gt;</code> で囲むのが一番簡単で、多くのプラットフォームで動作します。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-header">
+              <span class="example-label">書き方（中央揃え）</span>
+              <button type="button" class="btn-try-viewer" onclick="tryInViewer(this)">🚀 ビューアーで試す</button>
+            </div>
+            <pre>&lt;div align="center"&gt;
+  &lt;img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&auto=format&fit=crop&q=60" alt="ノートPC" width="260"&gt;
+  &lt;p&gt;&lt;small&gt;▲ 図1: 作業環境のサンプル&lt;/small&gt;&lt;/p&gt;
+&lt;/div&gt;</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <div style="text-align: center;">
+                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&auto=format&fit=crop&q=60" alt="ノートPC" style="width: 260px; max-width: 100%; border-radius: 6px;" />
+                <p style="margin: 4px 0 0; color: var(--text-muted); font-size: 12px;">▲ 図1: 作業環境のサンプル</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="note">右寄せにしたい場合は <code>&lt;div align="right"&gt;</code> に変更してください。</div>
+
+        <h2 id="multiple">方法3: 2枚の画像を横並びに配置する</h2>
+        <p>ビフォー・アフターの比較や複数のスクリーンショットを並べたいときは、テーブル（表）の中に画像を配置するか、1行に続けて <code>&lt;img&gt;</code> を並べます。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-header">
+              <span class="example-label">書き方（横並び）</span>
+              <button type="button" class="btn-try-viewer" onclick="tryInViewer(this)">🚀 ビューアーで試す</button>
+            </div>
+            <pre>| Before | After |
+| :---: | :---: |
+| &lt;img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400" width="160"&gt; | &lt;img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400" width="160"&gt; |</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <div class="table-wrapper" style="margin: 4px 0;">
+                <table style="min-width: 0;">
+                  <thead><tr><th style="text-align:center;">Before</th><th style="text-align:center;">After</th></tr></thead>
+                  <tbody>
+                    <tr>
+                      <td style="text-align:center;"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400" width="120" style="border-radius:4px;"></td>
+                      <td style="text-align:center;"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400" width="120" style="border-radius:4px;"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="link-image">方法4: サイズ指定した画像にリンクを貼る</h2>
+        <p>画像をクリックしたときに特定のURLへジャンプさせたい場合は、<code>&lt;a&gt;</code> タグの中に <code>&lt;img&gt;</code> タグを挟み込みます。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-header">
+              <span class="example-label">書き方（画像リンク）</span>
+              <button type="button" class="btn-try-viewer" onclick="tryInViewer(this)">🚀 ビューアーで試す</button>
+            </div>
+            <pre>&lt;a href="https://markdown-viewer.net/" target="_blank" rel="noopener"&gt;
+  &lt;img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600" alt="Markdown Viewer" width="200"&gt;
+&lt;/a&gt;</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <a href="https://markdown-viewer.net/" target="_blank" rel="noopener">
+                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600" alt="Markdown Viewer" width="200" style="border-radius:6px; cursor:pointer;" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="services">主要サービス別の対応状況（GitHub・Qiita・Zenn・Notion）</h2>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr><th>サービス</th><th>HTML（imgタグ）</th><th>中央揃え（align）</th><th>独自リサイズ記法</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>GitHub (README/Wiki)</td><td>◯ 完全対応</td><td>◯ 完全対応</td><td>✕ なし</td></tr>
+              <tr><td>Qiita</td><td>◯ 完全対応</td><td>◯ 完全対応</td><td>✕ なし</td></tr>
+              <tr><td>Zenn</td><td>◯ 完全対応</td><td>◯ 完全対応</td><td>✕ なし</td></tr>
+              <tr><td>Notion</td><td>✕ HTML非対応</td><td>✕ HTML非対応</td><td>◯ ドラッグでリサイズ可能</td></tr>
+              <tr><td>VS Codeプレビュー</td><td>◯ 完全対応</td><td>◯ 完全対応</td><td>拡張機能により対応</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note">エンジニア向けの主要プラットフォーム（GitHub、Qiita、Zenn）では、いずれもHTMLの <code>&lt;img&gt;</code> タグによるサイズ調整が公式に推奨・サポートされています。</div>
+
+        <div class="cta-box">
+          <p><strong>画像の配置やサイズ、その場で確認しませんか？</strong><br>コピペするだけでリアルタイムプレビュー。完成したMarkdown/HTMLはワンクリックでコピーできます。</p>
+          <a href="/" class="cta-button">無料のMarkdownビューアーを開く</a>
+        </div>
+
+        <h2 id="faq">よくある質問</h2>
+        <h3>画像が表示されない・壊れたアイコンになる原因は？</h3>
+        <p>主な原因は「画像のURLが間違っている」「ローカルの絶対パス（C:\...）を指定している」「画像サーバーが直リンク（ホットリンク）をブロックしている」のいずれかです。Web上で公開されたhttpsの画像URLを使用してください。</p>
+
+        <h3>heightも同時に指定したほうが良いですか？</h3>
+        <p>いいえ、<code>width</code> のみを指定することをお勧めします。<code>width</code> と <code>height</code> の両方を手動指定すると、計算がずれた場合に画像が縦や横に潰れて不自然な歪みが生じる原因になります。</p>
+
+        <h3>Markdownの標準記法だけでサイズ変更できる拡張はありますか？</h3>
+        <p>Kramdownなど一部のプロセッサでは <code>![alt](url){:width="300px"}</code> という記法が存在しますが、GitHubやQiitaではそのまま文字列として表示されてしまいます。互換性を保つならHTMLタグを使うのが最も安全です。</p>
+
+        <h2>関連ガイド</h2>
+        <ul style="padding-left: 24px;">
+          <li><a href="/guide/markdown-link-image/">Markdownのリンク・画像の書き方基本</a> — 標準記法はこちら</li>
+          <li><a href="/guide/markdown-table/">Markdownの表（テーブル）の書き方</a> — 表の中に画像を並べるテクニック</li>
+          <li><a href="/guide/markdown-syntax/">Markdown記法一覧【チートシート】</a> — 全記法まとめ</li>
+        </ul>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p><a href="/">Markdown Viewer — インストール不要の無料マークダウンビューアー</a> ｜ <a href="/guide/">書き方ガイド一覧</a></p>
+      <p><a href="/about/">このサイトについて</a> ｜ <a href="/privacy/">プライバシーポリシー・免責事項</a></p>
+      <p>© 2026 Markdown Viewer</p>
+    </footer>
+    <script src="/guide.js"></script>
+  </body>
+</html>

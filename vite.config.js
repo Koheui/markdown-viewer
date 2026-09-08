@@ -16,6 +16,7 @@ export default defineConfig({
         guideWhatIsMarkdown: resolve(__dirname, 'guide/what-is-markdown/index.html'),
         guideMarkdownList: resolve(__dirname, 'guide/markdown-list/index.html'),
         guideMarkdownCodeBlock: resolve(__dirname, 'guide/markdown-code-block/index.html'),
+        guideMarkdownImageSize: resolve(__dirname, 'guide/markdown-image-size/index.html'),
         about: resolve(__dirname, 'about/index.html'),
         privacy: resolve(__dirname, 'privacy/index.html'),
       },

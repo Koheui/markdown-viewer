@@ -66,6 +66,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://markdown-viewer.net/guide/markdown-image-size/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://markdown-viewer.net/about/</loc>
     <lastmod>2026-08-12</lastmod>
     <changefreq>yearly</changefreq>

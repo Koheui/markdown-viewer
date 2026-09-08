@@ -168,6 +168,36 @@
         color: var(--code-text);
       }
       .example-code .example-label { color: #94a3b8; }
+      .example-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 12px 0 16px;
+      }
+      .example-header .example-label {
+        padding: 0;
+      }
+      .btn-try-viewer {
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        color: #ffffff !important;
+        border: none;
+        border-radius: 6px;
+        padding: 4px 10px;
+        font-size: 11px;
+        font-weight: 600;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        transition: opacity 0.2s, transform 0.1s;
+        font-family: inherit;
+        text-decoration: none !important;
+        line-height: 1.4;
+      }
+      .btn-try-viewer:hover {
+        opacity: 0.92;
+        transform: translateY(-1px);
+      }
       .example-code pre {
         padding: 10px 16px 16px;
         overflow-x: auto;
