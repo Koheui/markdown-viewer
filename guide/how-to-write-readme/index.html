@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5Y58TXJ0TX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-5Y58TXJ0TX');
+    </script>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>README.mdの書き方入門【テンプレート付き・GitHubで映える構成】 | Markdown Viewer</title>
+    <meta name="description" content="GitHubのREADME.mdの書き方を初心者向けに解説。そのまま使えるテンプレート、必須セクションの構成（概要・インストール・使い方）、バッジやスクリーンショットの載せ方、日本語READMEの注意点まで紹介します。" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://markdown-viewer.net/guide/how-to-write-readme/" />
+    <meta property="og:title" content="README.mdの書き方入門【テンプレート付き・GitHubで映える構成】" />
+    <meta property="og:description" content="そのまま使えるテンプレート、必須セクション構成、バッジ・スクリーンショットの載せ方まで解説。" />
+    <meta property="og:image" content="https://markdown-viewer.net/og-image.png" />
+    <meta property="og:site_name" content="Markdown Viewer" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://markdown-viewer.net/guide/how-to-write-readme/" />
+    <meta property="twitter:title" content="README.mdの書き方入門【テンプレート付き・GitHubで映える構成】" />
+    <meta property="twitter:description" content="そのまま使えるテンプレート、必須セクション構成、バッジ・スクリーンショットの載せ方まで解説。" />
+
+    <link rel="canonical" href="https://markdown-viewer.net/guide/how-to-write-readme/" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9357019958045811" crossorigin="anonymous"></script>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "README.mdの書き方入門【テンプレート付き・GitHubで映える構成】",
+      "description": "GitHubのREADME.mdの書き方を初心者向けに解説。テンプレート、必須セクションの構成、バッジやスクリーンショットの載せ方、日本語READMEの注意点まで紹介。",
+      "image": "https://markdown-viewer.net/og-image.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Markdown Viewer",
+        "url": "https://markdown-viewer.net/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Markdown Viewer",
+        "url": "https://markdown-viewer.net/"
+      },
+      "datePublished": "2026-09-12",
+      "dateModified": "2026-09-12",
+      "mainEntityOfPage": "https://markdown-viewer.net/guide/how-to-write-readme/"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Markdown Viewer", "item": "https://markdown-viewer.net/" },
+        { "@type": "ListItem", "position": 2, "name": "Markdownの書き方ガイド", "item": "https://markdown-viewer.net/guide/" },
+        { "@type": "ListItem", "position": 3, "name": "README.mdの書き方", "item": "https://markdown-viewer.net/guide/how-to-write-readme/" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "README.mdとは何ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "プロジェクトの説明書となるMarkdownファイルです。GitHubなどのリポジトリのトップに置くと、リポジトリページに自動で整形表示されます。プロジェクトが何をするものか、どう使うかを最初に伝える、いわばプロジェクトの顔です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "READMEには何を書けばいいですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "最低限、プロジェクト名と概要（何をするものか）、インストール方法、基本的な使い方、ライセンスの4つです。加えてスクリーンショット、動作要件、コントリビュート方法があると親切です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "READMEはなぜ大文字なのですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "「まずこれを読んで（Read me）」という慣習的な命名で、大文字にすることでファイル一覧の中で目立たせる伝統に由来します。GitHubはREADME.md・readme.mdどちらも認識しますが、慣習に従い大文字が推奨です。"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="/guide.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a href="/" class="logo">
+          <span class="logo-icon">M</span>
+          <span>Markdown<span class="text-accent">Viewer</span></span>
+        </a>
+        <a href="/" class="header-cta">ビューアーで試す →</a>
+      </div>
+    </header>
+
+    <main>
+      <nav class="breadcrumb" aria-label="パンくずリスト">
+        <a href="/">Markdown Viewer</a> › <a href="/guide/">書き方ガイド</a> › README.mdの書き方
+      </nav>
+
+      <article>
+        <h1>README.mdの書き方入門 — テンプレート付き</h1>
+        <p class="lead">
+          README.md はプロジェクトの「顔」です。GitHubでリポジトリを開いた人が最初に読む場所であり、<strong>ここで使い方が分からなければ、コードがどれだけ良くても使ってもらえません</strong>。このページでは、そのまま使えるテンプレートと、各セクションの書き方のコツをまとめました。書きながらの表示確認は<a href="/">無料のMarkdownビューアー</a>でどうぞ。
+        </p>
+
+        <nav class="toc" aria-label="目次">
+          <div class="toc-title">目次</div>
+          <ol>
+            <li><a href="#what">README.mdの基本（置き場所と表示の仕組み）</a></li>
+            <li><a href="#template">コピペで使えるテンプレート</a></li>
+            <li><a href="#section">各セクションの書き方のコツ</a></li>
+            <li><a href="#visual">バッジ・スクリーンショットで見栄えを上げる</a></li>
+            <li><a href="#jp">日本語READMEの注意点</a></li>
+            <li><a href="#faq">よくある質問</a></li>
+          </ol>
+        </nav>
+
+        <h2 id="what">README.mdの基本（置き場所と表示の仕組み）</h2>
+        <p>README.md を<strong>リポジトリのルート（一番上の階層）</strong>に置くと、GitHub・GitLabなどはリポジトリページの下部に自動で整形表示します。ファイル名は慣習で大文字の <code>README.md</code> とします。</p>
+        <ul style="padding-left: 24px;">
+          <li>フォルダごとに置ける — <code>docs/README.md</code> はそのフォルダを開いたときに表示される</li>
+          <li>プロフィールにも使える — 自分のユーザー名と同名のリポジトリの README は、GitHubプロフィールページに表示される</li>
+          <li>GitHubのREADME表示は<strong>GFM（GitHub Flavored Markdown）</strong>でレンダリングされ、表・チェックボックス・打ち消し線などの拡張記法が使える</li>
+        </ul>
+
+        <h2 id="template">コピペで使えるテンプレート</h2>
+        <p>個人開発・社内ツール程度の規模なら、この構成で十分です。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">README.mdテンプレート</div>
+            <pre># プロジェクト名
+
+プロジェクトの説明を1〜2文で。何をするもので、誰の何を解決するのか。
+
+![スクリーンショット](docs/screenshot.png)
+
+## 特徴
+
+- 特徴1（例：インストール不要で動く）
+- 特徴2（例：外部にデータを送らない）
+- 特徴3
+
+## 必要環境
+
+- Node.js 20以上
+- macOS / Windows / Linux
+
+## インストール
+
+```bash
+git clone https://github.com/user/repo.git
+cd repo
+npm install
+```
+
+## 使い方
+
+```bash
+npm run dev
+```
+
+ブラウザで http://localhost:5173 を開きます。
+
+## ライセンス
+
+MIT License</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">構成のポイント</div>
+            <div class="example-body">
+              <ul style="margin:0; padding-left: 20px; font-size: 14px;">
+                <li>冒頭1〜2文で「何ができるか」を言い切る</li>
+                <li>コマンドは必ずコードブロックに</li>
+                <li>スクリーンショットは上の方に（読む前に「見せる」）</li>
+                <li>書けない項目は消す（空セクションを残さない）</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="section">各セクションの書き方のコツ</h2>
+        <h3>タイトルと概要 — 最重要の2行</h3>
+        <p>読者は概要の1〜2文で「自分に関係あるか」を判断します。「◯◯を△△するツール」の形で、<strong>機能ではなく解決すること</strong>を書きます。「Reactで作ったアプリです」は概要ではありません。</p>
+        <h3>インストール・使い方 — コピペで動くことが正義</h3>
+        <p>手順は<strong>上から順にコピペすれば動く</strong>状態にします。コマンドは<a href="/guide/markdown-code-block/">コードブロック</a>（```bash）に入れ、実行結果の例も載せると親切です。前提条件（Nodeのバージョン等）は手順の前に書きます。</p>
+        <h3>ライセンス — 1行でも必ず書く</h3>
+        <p>ライセンスの記載がないコードは、法的には「使ってよいか不明」な状態です。公開リポジトリなら MIT などを明記し、LICENSE ファイルも置きます。</p>
+
+        <h2 id="visual">バッジ・スクリーンショットで見栄えを上げる</h2>
+        <h3>バッジ</h3>
+        <p>READMEの冒頭でよく見る小さなラベル画像は「バッジ」で、shields.io というサービスで生成するのが定番です。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方の例</div>
+            <pre>![License](https://img.shields.io/badge/license-MIT-blue)
+![Node](https://img.shields.io/badge/node-%3E%3D20-green)</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">ポイント</div>
+            <div class="example-body">
+              <p style="margin:0; font-size: 14px;">ライセンス・対応バージョン・CIの状態など、3〜5個までが見やすい範囲です。並べすぎると逆に素人っぽくなります。</p>
+            </div>
+          </div>
+        </div>
+        <h3>スクリーンショット・GIF</h3>
+        <p>UIのあるプロジェクトでは、スクリーンショット1枚で説明文10行分の価値があります。画像はリポジトリ内（<code>docs/</code> フォルダ等）に置き、<strong>相対パス</strong>で参照します。サイズ調整は <code>&lt;img src="..." width="600"&gt;</code> とHTMLタグを使います（<a href="/guide/markdown-link-image/">画像の書き方</a>参照）。動きを見せたいときはGIFや短い動画（GitHubは動画の埋め込みにも対応）が効果的です。</p>
+
+        <h2 id="jp">日本語READMEの注意点</h2>
+        <ul style="padding-left: 24px;">
+          <li><strong>改行の仕様に注意</strong> — GitHubのREADMEではEnter1回の改行は表示に反映されません。段落は空行で分けます（<a href="/guide/markdown-linebreak/">改行の記事</a>参照）</li>
+          <li><strong>見出しへのリンク（目次）</strong> — 日本語見出しへのアンカーリンクは <code>#見出しテキスト</code> がそのまま使えます（例：<code>[使い方へ](#使い方)</code>）</li>
+          <li><strong>英語版の用意</strong> — 海外ユーザーも想定するなら <code>README.md</code> を英語、<code>README.ja.md</code> を日本語にして相互リンクするのが定番です</li>
+        </ul>
+
+        <div class="cta-box">
+          <p><strong>READMEを書きながら表示確認しませんか？</strong><br>GitHubにpushする前に、貼り付けるだけで整形結果をチェックできます。</p>
+          <a href="/" class="cta-button">無料のMarkdownビューアーを開く</a>
+        </div>
+
+        <h2 id="faq">よくある質問</h2>
+        <h3>READMEに目次は必要ですか？</h3>
+        <p>スクロールが2〜3画面を超えるなら付ける価値があります。なお、GitHubは見出し構成から自動生成される目次メニュー（ファイル表示の右上）も備えているため、短いREADMEなら手書きの目次は不要です。</p>
+        <h3>センター寄せのおしゃれなREADMEはどう作るのですか？</h3>
+        <p>冒頭のロゴやバッジのセンター寄せは <code>&lt;div align="center"&gt;...&lt;/div&gt;</code> というHTMLタグで実現されています。GitHubは <code>align</code> 属性を許可しているため機能します（style属性は使えません。<a href="/guide/markdown-text-decoration/">装飾の記事</a>参照）。</p>
+        <h3>READMEが長くなりすぎたら？</h3>
+        <p>READMEには「概要・導入・最小の使い方」だけを残し、詳細は <code>docs/</code> フォルダの別Markdownファイルに分けて相対リンクで誘導します。READMEは玄関、docsは書斎という役割分担です。</p>
+
+        <h2>関連ガイド</h2>
+        <ul style="padding-left: 24px;">
+          <li><a href="/guide/markdown-syntax/">Markdown記法一覧【チートシート】</a></li>
+          <li><a href="/guide/markdown-code-block/">コードブロック・インラインコードの書き方</a></li>
+          <li><a href="/guide/markdown-link-image/">リンク・画像の書き方</a> — サイズ指定・画像リンク</li>
+          <li><a href="/guide/markdown-linebreak/">改行できない・されない時の対処法</a></li>
+        </ul>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p><a href="/">Markdown Viewer — インストール不要の無料マークダウンビューアー</a> ｜ <a href="/guide/">書き方ガイド一覧</a></p>
+      <p><a href="/about/">このサイトについて</a> ｜ <a href="/privacy/">プライバシーポリシー・免責事項</a></p>
+      <p>© 2026 Markdown Viewer</p>
+    </footer>
+  </body>
+</html>

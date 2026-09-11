@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5Y58TXJ0TX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-5Y58TXJ0TX');
+    </script>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ExcelやWordの表をMarkdownに変換する方法【コピペ・AI・ツール比較】 | Markdown Viewer</title>
+    <meta name="description" content="Excel（エクセル）やWord、スプレッドシートの表をMarkdown（マークダウン）のテーブルに変換する方法を解説。コピペでできる手順、AIチャットを使った変換、VSCode拡張機能、変換後に崩れないためのチェックポイントまで紹介します。" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://markdown-viewer.net/guide/excel-to-markdown/" />
+    <meta property="og:title" content="ExcelやWordの表をMarkdownに変換する方法【コピペ・AI・ツール比較】" />
+    <meta property="og:description" content="Excelやスプレッドシートの表をMarkdownテーブルに変換する4つの方法と、変換後に崩れないためのチェックポイントを解説。" />
+    <meta property="og:image" content="https://markdown-viewer.net/og-image.png" />
+    <meta property="og:site_name" content="Markdown Viewer" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://markdown-viewer.net/guide/excel-to-markdown/" />
+    <meta property="twitter:title" content="ExcelやWordの表をMarkdownに変換する方法【コピペ・AI・ツール比較】" />
+    <meta property="twitter:description" content="Excelやスプレッドシートの表をMarkdownテーブルに変換する4つの方法と、変換後に崩れないためのチェックポイントを解説。" />
+
+    <link rel="canonical" href="https://markdown-viewer.net/guide/excel-to-markdown/" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9357019958045811" crossorigin="anonymous"></script>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "ExcelやWordの表をMarkdownに変換する方法【コピペ・AI・ツール比較】",
+      "description": "ExcelやWord、スプレッドシートの表をMarkdownのテーブルに変換する方法を解説。コピペでできる手順、AIチャットを使った変換、VSCode拡張機能、変換後のチェックポイントまで紹介。",
+      "image": "https://markdown-viewer.net/og-image.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Markdown Viewer",
+        "url": "https://markdown-viewer.net/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Markdown Viewer",
+        "url": "https://markdown-viewer.net/"
+      },
+      "datePublished": "2026-09-12",
+      "dateModified": "2026-09-12",
+      "mainEntityOfPage": "https://markdown-viewer.net/guide/excel-to-markdown/"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Markdown Viewer", "item": "https://markdown-viewer.net/" },
+        { "@type": "ListItem", "position": 2, "name": "Markdownの書き方ガイド", "item": "https://markdown-viewer.net/guide/" },
+        { "@type": "ListItem", "position": 3, "name": "Excelの表をMarkdownに変換", "item": "https://markdown-viewer.net/guide/excel-to-markdown/" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Excelの表をそのままMarkdownに貼り付けられますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "そのまま貼り付けると、タブ区切りのテキスト（TSV）になり、Markdownの表にはなりません。変換ツール・AIチャット・VSCode拡張機能などを使って、| 区切りのMarkdownテーブル形式に変換する必要があります。ただしNotionなど一部のアプリは、貼り付け時に自動で表に変換してくれます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "セル結合されたExcelの表はMarkdownに変換できますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Markdownの標準的なテーブル記法にはセル結合がないため、結合は解除された状態に変換されます。結合セルの内容は先頭セルのみに入り、残りは空セルになるのが一般的です。変換前に結合を解除し、各セルに値を入れておくと意図通りになります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "変換したMarkdownの表が崩れて表示されるのはなぜですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "セルの中に |（パイプ）や改行が含まれている、区切り行（---）の列数が合っていない、などが主な原因です。セル内の | は \\| にエスケープし、セル内改行は <br> タグに置き換えてください。"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="/guide.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a href="/" class="logo">
+          <span class="logo-icon">M</span>
+          <span>Markdown<span class="text-accent">Viewer</span></span>
+        </a>
+        <a href="/" class="header-cta">ビューアーで試す →</a>
+      </div>
+    </header>
+
+    <main>
+      <nav class="breadcrumb" aria-label="パンくずリスト">
+        <a href="/">Markdown Viewer</a> › <a href="/guide/">書き方ガイド</a> › Excelの表をMarkdownに変換
+      </nav>
+
+      <article>
+        <h1>ExcelやWordの表をMarkdownに変換する方法</h1>
+        <p class="lead">
+          「Excelで作った表をREADMEやドキュメントに載せたい」「スプレッドシートの表をそのまま貼ったらぐちゃぐちゃになった」— Excel・Word・Googleスプレッドシートの表は、コピペしただけでは<strong>Markdown（マークダウン）の表になりません</strong>。このページでは、表をMarkdownテーブルに変換する4つの方法と、変換後に崩れないためのチェックポイントをまとめました。変換結果は<a href="/">無料のMarkdownビューアー</a>に貼り付ければ、その場で確認できます。
+        </p>
+
+        <div class="table-wrapper">
+          <table>
+            <caption style="text-align:left; font-weight:700; margin-bottom:8px;">変換方法の早見表</caption>
+            <thead>
+              <tr><th>方法</th><th>手軽さ</th><th>向いている場面</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>AIチャットに変換してもらう</td><td>◎</td><td>たまに変換する・整形も一緒に頼みたい</td></tr>
+              <tr><td>オンライン変換ツール</td><td>◎</td><td>ブラウザだけで完結したい</td></tr>
+              <tr><td>VSCodeの拡張機能</td><td>○</td><td>開発中に頻繁に変換する</td></tr>
+              <tr><td>手動で書き直す</td><td>△</td><td>小さい表・記法の勉強を兼ねる</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <nav class="toc" aria-label="目次">
+          <div class="toc-title">目次</div>
+          <ol>
+            <li><a href="#why">なぜコピペだけでは表にならないのか</a></li>
+            <li><a href="#ai">方法1: AIチャット（ChatGPT・Claude等）に変換してもらう</a></li>
+            <li><a href="#tool">方法2: オンライン変換ツールを使う</a></li>
+            <li><a href="#vscode">方法3: VSCodeの拡張機能で変換する</a></li>
+            <li><a href="#manual">方法4: 手動で書き直す（小さい表向け）</a></li>
+            <li><a href="#check">変換後に崩れないためのチェックポイント</a></li>
+            <li><a href="#faq">よくある質問</a></li>
+          </ol>
+        </nav>
+
+        <h2 id="why">なぜコピペだけでは表にならないのか</h2>
+        <p>Excelやスプレッドシートで表をコピーすると、クリップボードには<strong>タブ区切りのテキスト（TSV）</strong>として格納されます。これをテキストエディタやMarkdownファイルに貼り付けると、次のような「タブで区切られただけの文字列」になります。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">Excelからそのまま貼り付けた状態</div>
+            <pre>商品	価格	在庫
+りんご	120	32
+みかん	80	120</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">Markdownとして必要な形</div>
+            <pre style="background: var(--code-bg); color: var(--code-text); padding: 12px 16px; border-radius: 8px; margin: 0; overflow-x: auto; font-size: 13px;">| 商品 | 価格 | 在庫 |
+| --- | --- | --- |
+| りんご | 120 | 32 |
+| みかん | 80 | 120 |</pre>
+          </div>
+        </div>
+        <p>Markdownの表は <code>|</code>（パイプ）でセルを区切り、2行目に <code>---</code> の区切り行を置く形式です（詳細は<a href="/guide/markdown-table/">表の書き方ガイド</a>参照）。つまり「タブ区切り → パイプ区切り」への変換が必要になります。</p>
+        <div class="note"><strong>例外</strong>：NotionやGitHubのIssueコメント欄など、一部のアプリはExcelからの貼り付けを自動で表に変換してくれます。貼り付け先がMarkdownファイルやテキストエリアの場合に、この変換作業が必要です。</div>
+
+        <h2 id="ai">方法1: AIチャット（ChatGPT・Claude等）に変換してもらう</h2>
+        <p>現在もっとも手軽なのがこの方法です。Excelの表をコピーして、AIチャットに貼り付け、こう頼むだけです。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">プロンプト例</div>
+            <pre>以下の表をMarkdownのテーブルに変換してください。
+
+商品	価格	在庫
+りんご	120	32
+みかん	80	120</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">ポイント</div>
+            <div class="example-body">
+              <ul style="margin:0; padding-left: 20px; font-size: 14px;">
+                <li>数値列の右寄せ、列の並べ替え、単位の追加なども<strong>同時に頼める</strong></li>
+                <li>数百行の大きな表は分割して依頼する</li>
+                <li>機密データはAIに送る前に社内ルールを確認</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p>AIの回答はMarkdown形式で返ってくるので、そのままコピーして使えます。変換結果が正しく表になっているかは、<a href="/">Markdownビューアー</a>に貼り付ければ一目で確認できます。</p>
+
+        <h2 id="tool">方法2: オンライン変換ツールを使う</h2>
+        <p>「Markdown table generator」「TSV to Markdown」などで検索すると、Excelからの貼り付けをMarkdownテーブルに変換してくれる無料のWebツールが多数見つかります。使い方はどれもほぼ共通です。</p>
+        <ol style="padding-left: 24px;">
+          <li>Excel・スプレッドシートで表の範囲をコピーする</li>
+          <li>変換ツールの入力欄に貼り付ける（自動でセルに展開される）</li>
+          <li>生成されたMarkdownをコピーする</li>
+        </ol>
+        <div class="note">ツールによっては列の寄せ（<code>:---</code> / <code>:---:</code> / <code>---:</code>）の指定や、テキストの整列（パイプ位置を揃える整形）もできます。業務データを外部ツールに貼る場合は、データの取り扱いに注意してください。</div>
+
+        <h2 id="vscode">方法3: VSCodeの拡張機能で変換する</h2>
+        <p>開発中に頻繁に変換するなら、VSCodeの拡張機能が便利です。定番は「<strong>Excel to Markdown table</strong>」という拡張機能で、Excelからコピーした内容を <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>V</kbd>（Macは <kbd>Shift</kbd>+<kbd>Option</kbd>+<kbd>V</kbd>）で貼り付けると、その場でMarkdownテーブルに変換されます。</p>
+        <p>また「Markdown All in One」などの拡張機能を入れておくと、変換後の表の整形（列幅を揃える）やプレビューもエディタ内で完結します。VSCodeでのプレビュー方法は<a href="/guide/vscode-markdown-preview/">VSCodeでMarkdownをプレビューする方法</a>で詳しく解説しています。</p>
+
+        <h2 id="manual">方法4: 手動で書き直す（小さい表向け）</h2>
+        <p>3列×3行程度の小さな表なら、手で書いた方が早いこともあります。コツは<strong>最初に区切り行のテンプレートを書いてしまう</strong>ことです。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">テンプレート（列数分の --- を先に用意）</div>
+            <pre>|  |  |  |
+| --- | --- | --- |
+|  |  |  |</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">ポイント</div>
+            <div class="example-body">
+              <p style="margin:0; font-size: 14px;">枠を先に作ってからセルを埋めると、列数のズレ（崩れの最大原因）を防げます。パイプの位置は揃っていなくても正しく表示されます。</p>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="check">変換後に崩れないためのチェックポイント</h2>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>チェック項目</th><th>問題が起きる例</th><th>対処法</th></tr></thead>
+            <tbody>
+              <tr><td>セル内の <code>|</code></td><td>「A|B」という値があると列がずれる</td><td><code>\|</code> にエスケープする</td></tr>
+              <tr><td>セル内の改行</td><td>Excelのセル内改行（Alt+Enter）が行を分断する</td><td><code>&lt;br&gt;</code> タグに置き換える</td></tr>
+              <tr><td>セル結合</td><td>結合セルが空セルの羅列になる</td><td>変換前に結合を解除して各セルに値を入れる</td></tr>
+              <tr><td>空セル</td><td>列数が合わず崩れる</td><td>空でも <code>|  |</code> とセルの枠は残す</td></tr>
+              <tr><td>先頭・末尾の空白</td><td>見た目は問題ないが差分管理でノイズに</td><td>整形機能のあるツールで揃える</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>崩れの原因と直し方の詳細は<a href="/guide/markdown-table/">Markdownの表（テーブル）の書き方</a>にまとめてあります。セル結合の代替表現もそちらで解説しています。</p>
+
+        <div class="cta-box">
+          <p><strong>変換した表、正しく表示されるか不安なら。</strong><br>貼り付けるだけで即プレビュー。崩れていればその場で気づけます。</p>
+          <a href="/" class="cta-button">無料のMarkdownビューアーで確認する</a>
+        </div>
+
+        <h2 id="faq">よくある質問</h2>
+        <h3>逆に、Markdownの表をExcelに戻せますか？</h3>
+        <p>Markdownの表をコピーしてExcelに貼ると1列に入ってしまいます。「区切り位置」機能で <code>|</code> を区切り文字に指定して分割するか、AIチャットに「この表をタブ区切りにして」と頼むのが手軽です。</p>
+        <h3>Googleスプレッドシートでも同じ方法が使えますか？</h3>
+        <p>はい。スプレッドシートのコピーも同じタブ区切り形式なので、このページの4つの方法がすべてそのまま使えます。</p>
+        <h3>Wordの表はどうやって変換しますか？</h3>
+        <p>Wordの表はいったんExcelに貼り付けてからコピーすると、確実にタブ区切りになります。またはWordの表を直接AIチャットに貼り付けて変換を頼んでも、ほとんどの場合正しく認識されます。</p>
+        <h3>数字の桁区切りカンマ（1,200など）はそのままで大丈夫？</h3>
+        <p>はい、Markdownの表ではカンマは特別な意味を持たないのでそのまま使えます。CSV経由で変換する場合のみ、カンマが区切り文字と衝突するため注意が必要です。</p>
+
+        <h2>関連ガイド</h2>
+        <ul style="padding-left: 24px;">
+          <li><a href="/guide/markdown-table/">Markdownの表（テーブル）の書き方</a> — 寄せ・セル内改行・結合の代替方法</li>
+          <li><a href="/guide/markdown-table-width/">表の幅・列幅を調整する方法</a></li>
+          <li><a href="/guide/vscode-markdown-preview/">VSCodeでMarkdownをプレビューする方法</a></li>
+          <li><a href="/guide/markdown-syntax/">Markdown記法一覧【チートシート】</a></li>
+        </ul>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p><a href="/">Markdown Viewer — インストール不要の無料マークダウンビューアー</a> ｜ <a href="/guide/">書き方ガイド一覧</a></p>
+      <p><a href="/about/">このサイトについて</a> ｜ <a href="/privacy/">プライバシーポリシー・免責事項</a></p>
+      <p>© 2026 Markdown Viewer</p>
+    </footer>
+  </body>
+</html>

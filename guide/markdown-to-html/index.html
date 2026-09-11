@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5Y58TXJ0TX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-5Y58TXJ0TX');
+    </script>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MarkdownをHTMLに変換する方法まとめ【無料ツール・pandoc・ライブラリ】 | Markdown Viewer</title>
+    <meta name="description" content="Markdown（マークダウン）をHTMLに変換する方法を用途別に解説。ブラウザで完結する無料ツール、pandocコマンド、JavaScriptライブラリ（marked・markdown-it）、ブログ（WordPress・はてな）への貼り付け方まで紹介します。" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://markdown-viewer.net/guide/markdown-to-html/" />
+    <meta property="og:title" content="MarkdownをHTMLに変換する方法まとめ【無料ツール・pandoc・ライブラリ】" />
+    <meta property="og:description" content="ブラウザ完結の無料ツール、pandoc、JSライブラリ、ブログへの貼り付けまで、Markdown→HTML変換を用途別に解説。" />
+    <meta property="og:image" content="https://markdown-viewer.net/og-image.png" />
+    <meta property="og:site_name" content="Markdown Viewer" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://markdown-viewer.net/guide/markdown-to-html/" />
+    <meta property="twitter:title" content="MarkdownをHTMLに変換する方法まとめ【無料ツール・pandoc・ライブラリ】" />
+    <meta property="twitter:description" content="ブラウザ完結の無料ツール、pandoc、JSライブラリ、ブログへの貼り付けまで、Markdown→HTML変換を用途別に解説。" />
+
+    <link rel="canonical" href="https://markdown-viewer.net/guide/markdown-to-html/" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9357019958045811" crossorigin="anonymous"></script>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "MarkdownをHTMLに変換する方法まとめ【無料ツール・pandoc・ライブラリ】",
+      "description": "MarkdownをHTMLに変換する方法を用途別に解説。ブラウザで完結する無料ツール、pandocコマンド、JavaScriptライブラリ、ブログへの貼り付け方まで紹介。",
+      "image": "https://markdown-viewer.net/og-image.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Markdown Viewer",
+        "url": "https://markdown-viewer.net/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Markdown Viewer",
+        "url": "https://markdown-viewer.net/"
+      },
+      "datePublished": "2026-09-12",
+      "dateModified": "2026-09-12",
+      "mainEntityOfPage": "https://markdown-viewer.net/guide/markdown-to-html/"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Markdown Viewer", "item": "https://markdown-viewer.net/" },
+        { "@type": "ListItem", "position": 2, "name": "Markdownの書き方ガイド", "item": "https://markdown-viewer.net/guide/" },
+        { "@type": "ListItem", "position": 3, "name": "HTMLへの変換方法", "item": "https://markdown-viewer.net/guide/markdown-to-html/" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "MarkdownをHTMLに変換する一番簡単な方法は？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ブラウザで使えるオンライン変換ツールにMarkdownを貼り付け、生成されたHTMLをコピーする方法です。インストール不要で、当サイトのMarkdownビューアーならプレビューで見た目を確認し、スタイル込みのHTMLをワンクリックでコピーできます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "MarkdownはなぜHTMLに変換する必要があるのですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ブラウザが直接表示できるのはHTMLだからです。Markdownは人間が書きやすい下書き形式で、Webページとして表示する際は必ずHTML（# → h1、** → strong など）に変換されます。GitHubやブログはこの変換を自動で行っています。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "大量の.mdファイルを一括でHTMLに変換するには？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "コマンドラインツールのpandocが定番です。シェルのループと組み合わせれば数百ファイルでも一括変換できます。サイトとして公開したい場合は、HugoやMkDocsなどの静的サイトジェネレーターを使うと、ナビゲーションやデザインまで含めて生成できます。"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="/guide.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a href="/" class="logo">
+          <span class="logo-icon">M</span>
+          <span>Markdown<span class="text-accent">Viewer</span></span>
+        </a>
+        <a href="/" class="header-cta">ビューアーで試す →</a>
+      </div>
+    </header>
+
+    <main>
+      <nav class="breadcrumb" aria-label="パンくずリスト">
+        <a href="/">Markdown Viewer</a> › <a href="/guide/">書き方ガイド</a> › HTMLへの変換方法
+      </nav>
+
+      <article>
+        <h1>MarkdownをHTMLに変換する方法まとめ</h1>
+        <p class="lead">
+          Markdown（マークダウン）で書いた文書をWebページやブログに載せるには、<strong>HTMLへの変換</strong>が必要です。このページでは、「1回だけサッと変換したい」から「大量ファイルの一括変換」「アプリへの組み込み」まで、用途別に方法をまとめました。
+        </p>
+
+        <div class="table-wrapper">
+          <table>
+            <caption style="text-align:left; font-weight:700; margin-bottom:8px;">用途別の最適解</caption>
+            <thead>
+              <tr><th>用途</th><th>おすすめの方法</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1回だけ・すぐ変換したい</td><td>ブラウザの変換ツール（インストール不要）</td></tr>
+              <tr><td>ブログ記事として貼りたい</td><td>スタイル込みHTML出力（CSSとセットでコピー）</td></tr>
+              <tr><td>大量ファイルの一括変換</td><td>pandoc（コマンドライン）</td></tr>
+              <tr><td>ドキュメントサイトを作りたい</td><td>静的サイトジェネレーター（Hugo・MkDocs等）</td></tr>
+              <tr><td>自分のアプリに組み込みたい</td><td>JSライブラリ（marked・markdown-it）</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <nav class="toc" aria-label="目次">
+          <div class="toc-title">目次</div>
+          <ol>
+            <li><a href="#what">変換で何が起きるのか（対応表）</a></li>
+            <li><a href="#browser">方法1: ブラウザの無料ツールで変換する</a></li>
+            <li><a href="#blog">方法2: ブログ用にスタイル込みで変換する</a></li>
+            <li><a href="#pandoc">方法3: pandocで一括変換する</a></li>
+            <li><a href="#library">方法4: JavaScriptライブラリで組み込む</a></li>
+            <li><a href="#ssg">方法5: 静的サイトジェネレーターでサイト化する</a></li>
+            <li><a href="#faq">よくある質問</a></li>
+          </ol>
+        </nav>
+
+        <h2 id="what">変換で何が起きるのか（対応表）</h2>
+        <p>Markdownの各記法は、次のようにHTMLタグへ機械的に変換されます。</p>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>Markdown</th><th>変換後のHTML</th></tr></thead>
+            <tbody>
+              <tr><td><code># 見出し</code></td><td><code>&lt;h1&gt;見出し&lt;/h1&gt;</code></td></tr>
+              <tr><td><code>**太字**</code></td><td><code>&lt;strong&gt;太字&lt;/strong&gt;</code></td></tr>
+              <tr><td><code>- 項目</code></td><td><code>&lt;ul&gt;&lt;li&gt;項目&lt;/li&gt;&lt;/ul&gt;</code></td></tr>
+              <tr><td><code>[表示名](URL)</code></td><td><code>&lt;a href="URL"&gt;表示名&lt;/a&gt;</code></td></tr>
+              <tr><td><code>`コード`</code></td><td><code>&lt;code&gt;コード&lt;/code&gt;</code></td></tr>
+              <tr><td>段落（空行区切り）</td><td><code>&lt;p&gt;...&lt;/p&gt;</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>ここで重要なのは、<strong>変換されるのは「構造」だけ</strong>という点です。フォント・色・余白などの「見た目」はHTMLではなくCSSの担当なので、変換したHTMLを綺麗に表示するにはCSSもセットで必要になります。ブログに貼ったのに素っ気ない見た目になる場合、原因はほぼこれです。</p>
+
+        <h2 id="browser">方法1: ブラウザの無料ツールで変換する</h2>
+        <p>もっとも手軽なのは、ブラウザで動く変換ツールです。<a href="/">当サイトのMarkdownビューアー</a>もこの方式で、次の3ステップで完了します。</p>
+        <ol style="padding-left: 24px;">
+          <li>Markdownテキストを貼り付ける（または .md ファイルをドロップ）</li>
+          <li>プレビューで表示を確認する</li>
+          <li>「<strong>HTMLコピー</strong>」ボタンで変換結果をコピーする</li>
+        </ol>
+        <div class="note">当サイトの変換処理は<strong>すべてブラウザ内で完結</strong>し、入力内容がサーバーに送信されることはありません。社外秘のドキュメントでも安心して使えます。</div>
+
+        <h2 id="blog">方法2: ブログ用にスタイル込みで変換する</h2>
+        <p>はてなブログ・WordPressなどに記事として貼る場合は、HTMLだけでなく<strong>CSS（見た目）もセットで用意する</strong>のがポイントです。手順の考え方はこうです。</p>
+        <ol style="padding-left: 24px;">
+          <li>ビューアー上でフォント・見出しの装飾・余白を好みに調整する</li>
+          <li>「CSSコピー」でスタイルを取得し、ブログの「デザインCSS」欄に貼る（初回のみ）</li>
+          <li>記事ごとに「HTMLコピー」で本文を貼り付ける</li>
+        </ol>
+        <p>この方式なら、2記事目以降はHTMLを貼るだけで統一されたデザインになります。見出しの下線や余白の調整方法は<a href="/">ビューアー</a>のスタイルカスタマイズパネルで直感的に試せます。</p>
+
+        <h2 id="pandoc">方法3: pandocで一括変換する</h2>
+        <p>コマンドラインが使えるなら、ドキュメント変換の定番ツール<strong>pandoc</strong>が強力です。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">基本の変換コマンド</div>
+            <pre># 1ファイル変換
+pandoc input.md -o output.html
+
+# スタンドアロンHTML（head等も含む完全なページ）
+pandoc input.md -s -o output.html
+
+# フォルダ内の全.mdを一括変換（bash）
+for f in *.md; do pandoc "$f" -s -o "${f%.md}.html"; done</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">pandocが向いている場面</div>
+            <div class="example-body">
+              <ul style="margin:0; padding-left: 20px; font-size: 14px;">
+                <li>数十〜数百ファイルの一括変換</li>
+                <li>HTML以外（Word・PDF・EPUB等）への変換も同じツールで</li>
+                <li>CIに組み込んだ自動変換</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="library">方法4: JavaScriptライブラリで組み込む</h2>
+        <p>自分のWebアプリでMarkdownを表示したい場合は、変換ライブラリを組み込みます。定番は<strong>marked</strong>（軽量・速い）と<strong>markdown-it</strong>（拡張性が高い）です。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">markedの最小例</div>
+            <pre>import { marked } from 'marked';
+
+const html = marked.parse('# Hello\n**world**');
+// → &lt;h1&gt;Hello&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;world&lt;/strong&gt;&lt;/p&gt;</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">注意点</div>
+            <div class="example-body">
+              <p style="margin:0; font-size: 14px;">ユーザー入力を変換して表示する場合は、<strong>サニタイズ（DOMPurify等）が必須</strong>です。Markdown内にはHTMLやスクリプトを書けるため、無防備に表示するとXSSの原因になります。</p>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="ssg">方法5: 静的サイトジェネレーターでサイト化する</h2>
+        <p>「.mdファイル群をドキュメントサイトやブログとして公開したい」場合は、1ファイルずつ変換するのではなく、<strong>静的サイトジェネレーター（SSG）</strong>に任せるのが正解です。</p>
+        <ul style="padding-left: 24px;">
+          <li><strong>MkDocs / Docusaurus</strong> — 技術ドキュメント向け。検索・ナビゲーション付き</li>
+          <li><strong>Hugo / Astro</strong> — ブログ・汎用サイト向け。ビルドが高速</li>
+          <li><strong>GitHub Pages + Jekyll</strong> — GitHubにpushするだけで公開まで自動化</li>
+        </ul>
+        <p>いずれも「Markdownを書けばHTMLとデザインは自動生成」という思想のツールで、変換作業そのものから解放されます。</p>
+
+        <div class="cta-box">
+          <p><strong>まずは1本、変換してみませんか？</strong><br>貼り付けてプレビュー確認、HTMLコピーまで30秒。登録もインストールも不要です。</p>
+          <a href="/" class="cta-button">無料のMarkdownビューアーで変換する</a>
+        </div>
+
+        <h2 id="faq">よくある質問</h2>
+        <h3>逆にHTMLをMarkdownに変換できますか？</h3>
+        <p>できます。pandocなら <code>pandoc input.html -o output.md</code> で逆変換が可能です。ただし複雑なHTML（入れ子のdivやCSS依存のレイアウト）は綺麗なMarkdownにならないことが多く、手直しを前提にしてください。</p>
+        <h3>変換したHTMLをメールに貼れますか？</h3>
+        <p>GmailなどのHTMLメールには、変換後の「表示された状態」をコピーして貼るのが実用的です。ビューアーのプレビュー部分を範囲選択してコピーすると、書式付きで貼り付けられます。</p>
+        <h3>WordPressはMarkdownのまま書けませんか？</h3>
+        <p>ブロックエディタは一部のMarkdown入力（# や - など）を自動変換します。完全なMarkdown運用をしたい場合はプラグインを追加するか、HTML変換して貼り付ける方式が確実です。</p>
+        <h3>表やコードブロックも変換されますか？</h3>
+        <p>はい。表は <code>&lt;table&gt;</code>、コードブロックは <code>&lt;pre&gt;&lt;code&gt;</code> に変換されます。表の書き方は<a href="/guide/markdown-table/">表のガイド</a>、コードブロックは<a href="/guide/markdown-code-block/">コードブロックのガイド</a>をご覧ください。</p>
+
+        <h2>関連ガイド</h2>
+        <ul style="padding-left: 24px;">
+          <li><a href="/guide/markdown-syntax/">Markdown記法一覧【チートシート】</a></li>
+          <li><a href="/guide/what-is-markdown/">Markdownとは？初心者向け入門</a> — MarkdownとHTMLの関係</li>
+          <li><a href="/guide/vscode-markdown-preview/">VSCodeでMarkdownをプレビューする方法</a></li>
+          <li><a href="/guide/markdown-table/">Markdownの表（テーブル）の書き方</a></li>
+        </ul>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p><a href="/">Markdown Viewer — インストール不要の無料マークダウンビューアー</a> ｜ <a href="/guide/">書き方ガイド一覧</a></p>
+      <p><a href="/about/">このサイトについて</a> ｜ <a href="/privacy/">プライバシーポリシー・免責事項</a></p>
+      <p>© 2026 Markdown Viewer</p>
+    </footer>
+  </body>
+</html>

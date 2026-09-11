@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5Y58TXJ0TX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-5Y58TXJ0TX');
+    </script>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Markdownの引用（&gt;）の書き方【複数行・ネスト・引用元の書き方】 | Markdown Viewer</title>
+    <meta name="description" content="Markdown（マークダウン）の引用記法（>）の書き方を入力例と表示結果つきで解説。複数行の引用で途切れる問題、二重引用（ネスト）、引用の中でリストやコードを使う方法、引用元（出典）の自然な書き方まで紹介します。" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://markdown-viewer.net/guide/markdown-quote/" />
+    <meta property="og:title" content="Markdownの引用（&gt;）の書き方【複数行・ネスト・引用元の書き方】" />
+    <meta property="og:description" content="引用記法（>）の基本から、複数行で途切れる問題、二重引用、引用元の書き方まで表示例つきで解説。" />
+    <meta property="og:image" content="https://markdown-viewer.net/og-image.png" />
+    <meta property="og:site_name" content="Markdown Viewer" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://markdown-viewer.net/guide/markdown-quote/" />
+    <meta property="twitter:title" content="Markdownの引用（&gt;）の書き方【複数行・ネスト・引用元の書き方】" />
+    <meta property="twitter:description" content="引用記法（>）の基本から、複数行で途切れる問題、二重引用、引用元の書き方まで表示例つきで解説。" />
+
+    <link rel="canonical" href="https://markdown-viewer.net/guide/markdown-quote/" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9357019958045811" crossorigin="anonymous"></script>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Markdownの引用（>）の書き方【複数行・ネスト・引用元の書き方】",
+      "description": "Markdownの引用記法（>）の書き方を入力例と表示結果つきで解説。複数行の引用、二重引用（ネスト）、引用内のリストやコード、引用元の書き方まで紹介。",
+      "image": "https://markdown-viewer.net/og-image.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Markdown Viewer",
+        "url": "https://markdown-viewer.net/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Markdown Viewer",
+        "url": "https://markdown-viewer.net/"
+      },
+      "datePublished": "2026-09-12",
+      "dateModified": "2026-09-12",
+      "mainEntityOfPage": "https://markdown-viewer.net/guide/markdown-quote/"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Markdown Viewer", "item": "https://markdown-viewer.net/" },
+        { "@type": "ListItem", "position": 2, "name": "Markdownの書き方ガイド", "item": "https://markdown-viewer.net/guide/" },
+        { "@type": "ListItem", "position": 3, "name": "引用の書き方", "item": "https://markdown-viewer.net/guide/markdown-quote/" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Markdownで引用はどう書きますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "行頭に >（大なり記号）と半角スペースを付けます。連続する行に > を付ければ1つの引用ブロックになり、>> と重ねると引用の中の引用（ネスト）になります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "複数の段落を1つの引用にまとめるには？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "段落間の空行にも > だけの行を置きます。空行を > なしで挟むと、そこで引用ブロックが途切れて2つに分かれてしまいます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "引用の中に箇条書きやコードは書けますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "書けます。> の後に通常どおりリスト記法やコードブロック記法を書けば、引用ブロックの中で機能します。各行の行頭に > を付け続けるのがポイントです。"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="/guide.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a href="/" class="logo">
+          <span class="logo-icon">M</span>
+          <span>Markdown<span class="text-accent">Viewer</span></span>
+        </a>
+        <a href="/" class="header-cta">ビューアーで試す →</a>
+      </div>
+    </header>
+
+    <main>
+      <nav class="breadcrumb" aria-label="パンくずリスト">
+        <a href="/">Markdown Viewer</a> › <a href="/guide/">書き方ガイド</a> › 引用の書き方
+      </nav>
+
+      <article>
+        <h1>Markdownの引用（&gt;）の書き方</h1>
+        <p class="lead">
+          他の文献やメッセージの内容を引用するときに使うのが<strong>引用記法（<code>&gt;</code>）</strong>です。書き方自体はシンプルですが、「複数行で途切れる」「引用の中にリストを入れたい」「出典はどう書く？」など、実際に使うと細かい疑問が出てきます。このページでまとめて解決します。動作は<a href="/">無料のMarkdownビューアー</a>でその場で確認できます。
+        </p>
+
+        <nav class="toc" aria-label="目次">
+          <div class="toc-title">目次</div>
+          <ol>
+            <li><a href="#basic">基本の書き方</a></li>
+            <li><a href="#multi">複数行・複数段落の引用（途切れる問題）</a></li>
+            <li><a href="#nest">二重引用（ネスト）</a></li>
+            <li><a href="#inside">引用の中でリスト・コード・見出しを使う</a></li>
+            <li><a href="#source">引用元（出典）の書き方</a></li>
+            <li><a href="#style">引用の見た目をCSSで整える</a></li>
+            <li><a href="#faq">よくある質問</a></li>
+          </ol>
+        </nav>
+
+        <h2 id="basic">基本の書き方</h2>
+        <p>行頭に <code>&gt;</code>（半角の大なり記号）と半角スペースを付けます。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>&gt; 継続は力なり。</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <blockquote style="margin:0; padding: 8px 16px; border-left: 4px solid var(--border); color: var(--text-muted);">継続は力なり。</blockquote>
+            </div>
+          </div>
+        </div>
+        <p>HTMLでは <code>&lt;blockquote&gt;</code> タグに変換され、多くの環境で左側に縦線が付いたスタイルで表示されます。メールの返信やチャットの引用表示と同じ見た目です。</p>
+
+        <h2 id="multi">複数行・複数段落の引用（途切れる問題）</h2>
+        <p>連続する行それぞれの行頭に <code>&gt;</code> を付ければ、1つの引用ブロックになります。つまずきやすいのは<strong>段落が複数あるとき</strong>です。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">❌ 途切れる書き方（空行に &gt; がない）</div>
+            <pre>&gt; 1つ目の段落。
+
+&gt; 2つ目の段落。</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果（別々の引用に分かれる）</div>
+            <div class="example-body">
+              <blockquote style="margin:0 0 10px; padding: 6px 16px; border-left: 4px solid var(--border); color: var(--text-muted);">1つ目の段落。</blockquote>
+              <blockquote style="margin:0; padding: 6px 16px; border-left: 4px solid var(--border); color: var(--text-muted);">2つ目の段落。</blockquote>
+            </div>
+          </div>
+        </div>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">⭕ 1つにまとめる書き方（空行にも &gt;）</div>
+            <pre>&gt; 1つ目の段落。
+&gt;
+&gt; 2つ目の段落。</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果（1つの引用ブロック）</div>
+            <div class="example-body">
+              <blockquote style="margin:0; padding: 6px 16px; border-left: 4px solid var(--border); color: var(--text-muted);"><p style="margin:0 0 10px;">1つ目の段落。</p><p style="margin:0;">2つ目の段落。</p></blockquote>
+            </div>
+          </div>
+        </div>
+        <div class="note">段落の区切りとして「<code>&gt;</code> だけの行」を挟むのがポイントです。なお、多くのパーサーは2行目以降の <code>&gt;</code> を省略しても引用の続き（lazy continuation）として扱いますが、環境差が出やすいため<strong>全行に <code>&gt;</code> を付けるのが安全</strong>です。</div>
+
+        <h2 id="nest">二重引用（ネスト）</h2>
+        <p><code>&gt;&gt;</code> と重ねると、引用の中の引用になります。メールのやり取りの再現などに使います。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>&gt; 田中さんの返信：
+&gt;&gt; 私は賛成です。
+&gt;
+&gt; とのことでした。</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <blockquote style="margin:0; padding: 6px 16px; border-left: 4px solid var(--border); color: var(--text-muted);">
+                <p style="margin:0 0 8px;">田中さんの返信：</p>
+                <blockquote style="margin:0 0 8px; padding: 4px 12px; border-left: 4px solid var(--border);">私は賛成です。</blockquote>
+                <p style="margin:0;">とのことでした。</p>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="inside">引用の中でリスト・コード・見出しを使う</h2>
+        <p>引用ブロックの中では、他のMarkdown記法も通常どおり使えます。<code>&gt;</code> の後に記法を続けるだけです。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>&gt; **決定事項**
+&gt; - リリースは10月
+&gt; - 担当は佐藤さん
+&gt; - 詳細は `docs/plan.md` 参照</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <blockquote style="margin:0; padding: 6px 16px; border-left: 4px solid var(--border); color: var(--text-muted);">
+                <p style="margin:0 0 6px;"><strong>決定事項</strong></p>
+                <ul style="margin:0; padding-left: 20px;">
+                  <li>リリースは10月</li>
+                  <li>担当は佐藤さん</li>
+                  <li>詳細は <code>docs/plan.md</code> 参照</li>
+                </ul>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+        <p>リストの書き方は<a href="/guide/markdown-list/">リストのガイド</a>、コードは<a href="/guide/markdown-code-block/">コードブロックのガイド</a>で詳しく解説しています。</p>
+
+        <h2 id="source">引用元（出典）の書き方</h2>
+        <p>Markdownに「出典」専用の記法はありませんが、慣例として次のような書き方がよく使われます。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方（引用の最終行に出典）</div>
+            <pre>&gt; 学びを止めた者は老人である。
+&gt;
+&gt; — ヘンリー・フォード
+
+出典を引用の外に書く場合：
+&gt; 引用文...
+
+（出典：[書籍名](https://example.com)）</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">ポイント</div>
+            <div class="example-body">
+              <ul style="margin:0; padding-left: 20px; font-size: 14px;">
+                <li>ダッシュ（—）＋著者名が定番の形</li>
+                <li>Webからの引用はリンクを付けると誠実</li>
+                <li>ブログでは著作権法上の「引用の要件」（主従関係・出典明記）にも注意</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="style">引用の見た目をCSSで整える</h2>
+        <p>ブログでは、引用の見た目（縦線の色・背景色・余白）を整えると記事の印象が大きく変わります。<code>blockquote</code> に対するCSSの例です。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">CSS例</div>
+            <pre>blockquote {
+  border-left: 4px solid #6366f1;
+  background: #f8fafc;
+  padding: 12px 20px;
+  margin: 16px 0;
+  color: #475569;
+}</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示イメージ</div>
+            <div class="example-body">
+              <blockquote style="margin:0; border-left: 4px solid #6366f1; background: var(--bg-soft); padding: 12px 20px; color: var(--text-muted);">アクセントカラーの縦線＋薄い背景で、引用が視覚的に際立ちます。</blockquote>
+            </div>
+          </div>
+        </div>
+        <p><a href="/">Markdown Viewer</a>でプレビューしながらスタイルを調整し、「CSSコピー」でブログに持ち出すこともできます。</p>
+
+        <div class="cta-box">
+          <p><strong>引用の表示、その場で確認しませんか？</strong><br>&gt; の付け方による表示の違いが、貼り付けるだけで一目でわかります。</p>
+          <a href="/" class="cta-button">無料のMarkdownビューアーを開く</a>
+        </div>
+
+        <h2 id="faq">よくある質問</h2>
+        <h3>「&gt;」が文字としてそのまま表示されてしまいます</h3>
+        <p>全角の「＞」を使っている、または <code>&gt;</code> の前にスペースやテキストがある（行頭にない）のが典型的な原因です。半角の <code>&gt;</code> を行頭に置いてください。</p>
+        <h3>逆に、文頭の &gt; を引用にせず文字として表示したい</h3>
+        <p><code>\&gt;</code> とバックスラッシュでエスケープするか、インラインコード（<code>`&gt;`</code>）にします。</p>
+        <h3>引用ブロックに枠線や「引用」ラベルを付けたい</h3>
+        <p>それはCSSの領域です。<code>blockquote::before</code> でラベルを付けるなどの装飾ができます。GitHubなどCSSが使えない環境では、太字で「引用：」と書き添えるのが現実解です。</p>
+        <h3>GitHubで見かける「Note」や「Warning」の色付きボックスは引用ですか？</h3>
+        <p>はい、GitHubの「アラート記法」で、引用記法の拡張です。<code>&gt; [!NOTE]</code> のように書くと色付きの注意ボックスになります。GitHub独自の拡張のため、他のサービスではただの引用として表示されます。</p>
+
+        <h2>関連ガイド</h2>
+        <ul style="padding-left: 24px;">
+          <li><a href="/guide/markdown-syntax/">Markdown記法一覧【チートシート】</a></li>
+          <li><a href="/guide/markdown-list/">箇条書き・番号付きリストの書き方</a></li>
+          <li><a href="/guide/markdown-code-block/">コードブロック・インラインコードの書き方</a></li>
+          <li><a href="/guide/markdown-linebreak/">改行できない・されない時の対処法</a></li>
+        </ul>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p><a href="/">Markdown Viewer — インストール不要の無料マークダウンビューアー</a> ｜ <a href="/guide/">書き方ガイド一覧</a></p>
+      <p><a href="/about/">このサイトについて</a> ｜ <a href="/privacy/">プライバシーポリシー・免責事項</a></p>
+      <p>© 2026 Markdown Viewer</p>
+    </footer>
+  </body>
+</html>

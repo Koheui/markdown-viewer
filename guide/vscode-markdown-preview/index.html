@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5Y58TXJ0TX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-5Y58TXJ0TX');
+    </script>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VSCodeでMarkdownをプレビューする方法【ショートカット・おすすめ拡張機能】 | Markdown Viewer</title>
+    <meta name="description" content="VSCode（Visual Studio Code）でMarkdown（マークダウン）をプレビューする方法を解説。Ctrl+Shift+Vのショートカット、エディタと並べて表示する方法、Markdown All in Oneなどのおすすめ拡張機能、プレビューが表示されない時の対処法を紹介します。" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://markdown-viewer.net/guide/vscode-markdown-preview/" />
+    <meta property="og:title" content="VSCodeでMarkdownをプレビューする方法【ショートカット・おすすめ拡張機能】" />
+    <meta property="og:description" content="Ctrl+Shift+Vのショートカット、横並びプレビュー、おすすめ拡張機能、表示されない時の対処法まで解説。" />
+    <meta property="og:image" content="https://markdown-viewer.net/og-image.png" />
+    <meta property="og:site_name" content="Markdown Viewer" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://markdown-viewer.net/guide/vscode-markdown-preview/" />
+    <meta property="twitter:title" content="VSCodeでMarkdownをプレビューする方法【ショートカット・おすすめ拡張機能】" />
+    <meta property="twitter:description" content="Ctrl+Shift+Vのショートカット、横並びプレビュー、おすすめ拡張機能、表示されない時の対処法まで解説。" />
+
+    <link rel="canonical" href="https://markdown-viewer.net/guide/vscode-markdown-preview/" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9357019958045811" crossorigin="anonymous"></script>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "VSCodeでMarkdownをプレビューする方法【ショートカット・おすすめ拡張機能】",
+      "description": "VSCodeでMarkdownをプレビューする方法を解説。ショートカット、横並び表示、おすすめ拡張機能、プレビューが表示されない時の対処法を紹介。",
+      "image": "https://markdown-viewer.net/og-image.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Markdown Viewer",
+        "url": "https://markdown-viewer.net/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Markdown Viewer",
+        "url": "https://markdown-viewer.net/"
+      },
+      "datePublished": "2026-09-12",
+      "dateModified": "2026-09-12",
+      "mainEntityOfPage": "https://markdown-viewer.net/guide/vscode-markdown-preview/"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Markdown Viewer", "item": "https://markdown-viewer.net/" },
+        { "@type": "ListItem", "position": 2, "name": "Markdownの書き方ガイド", "item": "https://markdown-viewer.net/guide/" },
+        { "@type": "ListItem", "position": 3, "name": "VSCodeでプレビュー", "item": "https://markdown-viewer.net/guide/vscode-markdown-preview/" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "VSCodeでMarkdownをプレビューするショートカットは？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Windows/LinuxはCtrl+Shift+V、MacはCmd+Shift+Vでプレビューをタブとして開きます。エディタと横に並べて表示するにはCtrl+K V（MacはCmd+K V）を使います。拡張機能のインストールは不要で、VSCode標準機能です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "VSCodeのプレビューが表示されない・真っ白になるのはなぜですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "開いているファイルがMarkdownとして認識されていない（拡張子が.mdでない、言語モードが違う）ことが最も多い原因です。右下の言語モードをMarkdownに変更してください。また、セキュリティ設定によりプレビュー内のスクリプトや一部コンテンツがブロックされることもあります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "VSCodeのプレビューとGitHubの表示は同じですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "概ね同じですが完全には一致しません。VSCodeのプレビューはCommonMarkベース＋GFMの一部対応で、GitHub側の細かい仕様（相対リンクの解決、絵文字、アラート記法など）と差が出ることがあります。最終確認は実際の表示先で行うのが確実です。"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="/guide.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a href="/" class="logo">
+          <span class="logo-icon">M</span>
+          <span>Markdown<span class="text-accent">Viewer</span></span>
+        </a>
+        <a href="/" class="header-cta">ビューアーで試す →</a>
+      </div>
+    </header>
+
+    <main>
+      <nav class="breadcrumb" aria-label="パンくずリスト">
+        <a href="/">Markdown Viewer</a> › <a href="/guide/">書き方ガイド</a> › VSCodeでプレビュー
+      </nav>
+
+      <article>
+        <h1>VSCodeでMarkdownをプレビューする方法</h1>
+        <p class="lead">
+          VSCode（Visual Studio Code）には、拡張機能なしで使える<strong>Markdownプレビュー機能が標準搭載</strong>されています。このページでは、基本のショートカットから、書きながら確認できる横並び表示、より快適にするおすすめ拡張機能、プレビューが出ないときの対処法までまとめました。
+        </p>
+
+        <div class="table-wrapper">
+          <table>
+            <caption style="text-align:left; font-weight:700; margin-bottom:8px;">プレビュー操作の早見表</caption>
+            <thead>
+              <tr><th>操作</th><th>Windows / Linux</th><th>Mac</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>プレビューを開く</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd></td><td><kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd></td></tr>
+              <tr><td>横に並べてプレビュー</td><td><kbd>Ctrl</kbd>+<kbd>K</kbd> → <kbd>V</kbd></td><td><kbd>Cmd</kbd>+<kbd>K</kbd> → <kbd>V</kbd></td></tr>
+              <tr><td>コマンドパレット</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> →「Markdown: プレビューを開く」</td><td><kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> → 同左</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <nav class="toc" aria-label="目次">
+          <div class="toc-title">目次</div>
+          <ol>
+            <li><a href="#basic">基本：ショートカットでプレビューを開く</a></li>
+            <li><a href="#side">おすすめ：横並びプレビューで書きながら確認</a></li>
+            <li><a href="#ext">より快適にするおすすめ拡張機能</a></li>
+            <li><a href="#trouble">プレビューが表示されない時の対処法</a></li>
+            <li><a href="#diff">プレビューと実際の表示の違いに注意</a></li>
+            <li><a href="#faq">よくある質問</a></li>
+          </ol>
+        </nav>
+
+        <h2 id="basic">基本：ショートカットでプレビューを開く</h2>
+        <p>.md ファイルを開いた状態で <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd>（Macは <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd>）を押すと、整形されたプレビューが新しいタブで開きます。エディタ右上の<strong>虫眼鏡付きのプレビューアイコン</strong>をクリックしても同じです。</p>
+        <p>プレビューは編集内容に<strong>リアルタイムで追従</strong>し、エディタのスクロールとも同期します。</p>
+
+        <h2 id="side">おすすめ：横並びプレビューで書きながら確認</h2>
+        <p>執筆中は、エディタとプレビューを左右に並べる表示が圧倒的に快適です。<kbd>Ctrl</kbd>+<kbd>K</kbd> を押してから <kbd>V</kbd>（Macは <kbd>Cmd</kbd>+<kbd>K</kbd> → <kbd>V</kbd>）で、<strong>編集画面の横にプレビューが開きます</strong>。</p>
+        <div class="note">2つのキーを「順番に」押すショートカット（コード）です。<kbd>Ctrl</kbd>+<kbd>K</kbd> を押して一拍おいてから <kbd>V</kbd> を単独で押してください。同時押しではありません。</div>
+
+        <h2 id="ext">より快適にするおすすめ拡張機能</h2>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>拡張機能</th><th>できること</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Markdown All in One</strong></td><td>目次の自動生成、太字のショートカット（Ctrl+B）、リストの自動継続、表の整形など総合支援。まず入れるならこれ</td></tr>
+              <tr><td><strong>markdownlint</strong></td><td>記法の揺れ（見出しレベルの飛び・行末スペース等）を静的チェック。チームでの品質統一に</td></tr>
+              <tr><td><strong>Markdown Preview Enhanced</strong></td><td>数式（LaTeX）・図表（mermaid）・PDF出力など標準プレビューを大幅強化</td></tr>
+              <tr><td><strong>Excel to Markdown table</strong></td><td>Excelからコピーした表をMarkdownテーブルとして貼り付け（<a href="/guide/excel-to-markdown/">表の変換方法</a>参照）</td></tr>
+              <tr><td><strong>Paste Image</strong></td><td>クリップボードの画像を保存しつつ画像リンクを挿入</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>拡張機能は左側のブロックアイコン（拡張機能ビュー）から名前で検索してインストールします。</p>
+
+        <h2 id="trouble">プレビューが表示されない時の対処法</h2>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>症状</th><th>原因と対処</th></tr></thead>
+            <tbody>
+              <tr><td>ショートカットが効かない</td><td>ファイルがMarkdownとして認識されていない。右下の言語モード表示を確認し、「Markdown」に変更する。拡張子を <code>.md</code> にするのが確実</td></tr>
+              <tr><td>プレビューが真っ白</td><td>拡張機能の競合が典型。拡張機能を無効化して切り分けるか、コマンドパレットから「開発者: ウィンドウの再読み込み」を実行</td></tr>
+              <tr><td>画像が表示されない</td><td>画像パスがファイルからの相対パスになっているか確認。ワークスペース外の画像はセキュリティ設定でブロックされることがある</td></tr>
+              <tr><td>HTMLタグが反映されない</td><td>プレビューのセキュリティ設定が原因。プレビュー右上の「…」→「プレビューのセキュリティ設定の変更」で調整（信頼できる内容のみ）</td></tr>
+              <tr><td>スクロールが同期しない</td><td>設定の <code>markdown.preview.scrollPreviewWithEditor</code> を確認</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="diff">プレビューと実際の表示の違いに注意</h2>
+        <p>VSCodeのプレビューはCommonMarkベース（＋GFMの一部）で、<strong>GitHubやブログでの最終表示と細部が異なる</strong>ことがあります。よくある差は次のとおりです。</p>
+        <ul style="padding-left: 24px;">
+          <li>改行の扱い（ソフトブレイクの表示）が表示先と異なる — <a href="/guide/markdown-linebreak/">サービスごとの改行の違い</a>参照</li>
+          <li>GitHub特有の記法（アラート、タスクリストの表示など）は差が出やすい</li>
+          <li>数式・mermaidは標準プレビューでは表示されない（拡張機能が必要）</li>
+        </ul>
+        <p>「VSCodeでは綺麗だったのに、貼り付け先で崩れた」を防ぐには、最終的な表示先か、それに近い環境での確認が確実です。ブラウザだけでサッと確認したいときは、<a href="/">インストール不要のMarkdownビューアー</a>にコピペする方法もあります。VSCodeを開くまでもない「もらったファイルをちょっと見たい」場面ではこちらの方が速いです。</p>
+
+        <div class="cta-box">
+          <p><strong>VSCodeを開くほどでもないときは。</strong><br>ブラウザに貼り付けるだけで即プレビュー。フォントや余白の調整、ブログ用CSS/HTML出力もできます。</p>
+          <a href="/" class="cta-button">無料のMarkdownビューアーを開く</a>
+        </div>
+
+        <h2 id="faq">よくある質問</h2>
+        <h3>プレビューのデザイン（CSS）は変えられますか？</h3>
+        <p>はい。設定の <code>markdown.styles</code> に自作CSSファイルのパスを指定すると、プレビューに適用されます。ブログの本番CSSを指定しておくと、実際の見た目に近い状態で執筆できます。</p>
+        <h3>プレビューをそのままHTMLとして保存できますか？</h3>
+        <p>標準機能にはありません。「Markdown Preview Enhanced」拡張機能のHTMLエクスポートを使うか、<a href="/">Markdownビューアー</a>の「HTMLコピー」機能で整形済みHTMLを取得してください。変換方法の全体像は<a href="/guide/markdown-to-html/">Markdown→HTML変換の方法まとめ</a>で解説しています。</p>
+        <h3>プレビューだけを常に開いた状態にできますか？</h3>
+        <p>プレビュータブは通常のタブと同じように固定（ピン留め）できます。また「プレビューのロック」を使うと、他のファイルに切り替えてもプレビュー対象を固定できます。</p>
+
+        <h2>関連ガイド</h2>
+        <ul style="padding-left: 24px;">
+          <li><a href="/guide/markdown-syntax/">Markdown記法一覧【チートシート】</a></li>
+          <li><a href="/guide/markdown-to-html/">Markdown→HTML変換の方法まとめ</a></li>
+          <li><a href="/guide/excel-to-markdown/">ExcelやWordの表をMarkdownに変換する方法</a></li>
+          <li><a href="/guide/markdown-linebreak/">改行できない・されない時の対処法</a></li>
+        </ul>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p><a href="/">Markdown Viewer — インストール不要の無料マークダウンビューアー</a> ｜ <a href="/guide/">書き方ガイド一覧</a></p>
+      <p><a href="/about/">このサイトについて</a> ｜ <a href="/privacy/">プライバシーポリシー・免責事項</a></p>
+      <p>© 2026 Markdown Viewer</p>
+    </footer>
+  </body>
+</html>

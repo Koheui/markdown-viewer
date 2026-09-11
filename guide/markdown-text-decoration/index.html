@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5Y58TXJ0TX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-5Y58TXJ0TX');
+    </script>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Markdownの打ち消し線・下線・文字色の書き方【できない装飾の代替手段】 | Markdown Viewer</title>
+    <meta name="description" content="Markdown（マークダウン）の打ち消し線（~~）の書き方と、標準記法にない下線・文字色・文字サイズをHTMLタグで実現する方法を解説。GitHub・Qiita・Zennなどサービスごとに使える装飾の違い、装飾が効かない時の代替手段も紹介します。" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://markdown-viewer.net/guide/markdown-text-decoration/" />
+    <meta property="og:title" content="Markdownの打ち消し線・下線・文字色の書き方【できない装飾の代替手段】" />
+    <meta property="og:description" content="打ち消し線（~~）の書き方と、下線・文字色・サイズをHTMLで実現する方法。サービスごとの対応差も解説。" />
+    <meta property="og:image" content="https://markdown-viewer.net/og-image.png" />
+    <meta property="og:site_name" content="Markdown Viewer" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://markdown-viewer.net/guide/markdown-text-decoration/" />
+    <meta property="twitter:title" content="Markdownの打ち消し線・下線・文字色の書き方【できない装飾の代替手段】" />
+    <meta property="twitter:description" content="打ち消し線（~~）の書き方と、下線・文字色・サイズをHTMLで実現する方法。サービスごとの対応差も解説。" />
+
+    <link rel="canonical" href="https://markdown-viewer.net/guide/markdown-text-decoration/" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9357019958045811" crossorigin="anonymous"></script>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Markdownの打ち消し線・下線・文字色の書き方【できない装飾の代替手段】",
+      "description": "Markdownの打ち消し線（~~）の書き方と、標準記法にない下線・文字色・文字サイズをHTMLタグで実現する方法を解説。サービスごとの対応差、装飾が効かない時の代替手段も紹介。",
+      "image": "https://markdown-viewer.net/og-image.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Markdown Viewer",
+        "url": "https://markdown-viewer.net/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Markdown Viewer",
+        "url": "https://markdown-viewer.net/"
+      },
+      "datePublished": "2026-09-12",
+      "dateModified": "2026-09-12",
+      "mainEntityOfPage": "https://markdown-viewer.net/guide/markdown-text-decoration/"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Markdown Viewer", "item": "https://markdown-viewer.net/" },
+        { "@type": "ListItem", "position": 2, "name": "Markdownの書き方ガイド", "item": "https://markdown-viewer.net/guide/" },
+        { "@type": "ListItem", "position": 3, "name": "打ち消し線・下線・文字色", "item": "https://markdown-viewer.net/guide/markdown-text-decoration/" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Markdownで打ち消し線はどう書きますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "チルダ2つで挟んで ~~テキスト~~ と書きます。GitHub Flavored Markdown（GFM）の拡張記法で、GitHub・Qiita・Zenn・Discordなど主要サービスの多くで使えます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Markdownで文字色は変えられますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "標準記法にはありません。表示先がHTMLのstyle属性を許可していれば <span style=\"color: red;\">テキスト</span> のように書けますが、GitHub・Qiita・Zennなど多くのサービスはセキュリティ上の理由でstyle属性を除去するため使えません。その場合は太字・引用・絵文字などで強調を代替します。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Markdownで下線（アンダーライン）は引けますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "標準記法にはありませんが、HTMLの <u>タグ</u> が使える環境なら下線を引けます。GitHubでは <ins>タグ</ins> も下線として表示されます。ただし下線はリンクと誤認されやすいため、Webの文章では太字での強調が推奨されます。"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="/guide.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a href="/" class="logo">
+          <span class="logo-icon">M</span>
+          <span>Markdown<span class="text-accent">Viewer</span></span>
+        </a>
+        <a href="/" class="header-cta">ビューアーで試す →</a>
+      </div>
+    </header>
+
+    <main>
+      <nav class="breadcrumb" aria-label="パンくずリスト">
+        <a href="/">Markdown Viewer</a> › <a href="/guide/">書き方ガイド</a> › 打ち消し線・下線・文字色
+      </nav>
+
+      <article>
+        <h1>Markdownの打ち消し線・下線・文字色の書き方</h1>
+        <p class="lead">
+          「打ち消し線はどう書く？」「文字を赤くしたいのにできない」— Markdown（マークダウン）の文字装飾は、<strong>標準でできるもの・HTMLの力を借りるもの・環境的に不可能なもの</strong>の3層に分かれます。この整理を知らないと「書いたのに反映されない」で延々ハマります。このページで全部整理しました。表示は<a href="/">無料のMarkdownビューアー</a>で確認できます。
+        </p>
+
+        <div class="table-wrapper">
+          <table>
+            <caption style="text-align:left; font-weight:700; margin-bottom:8px;">文字装飾の対応早見表</caption>
+            <thead>
+              <tr><th>装飾</th><th>書き方</th><th>使える場所</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>太字</td><td><code>**テキスト**</code></td><td>ほぼすべて（標準記法）</td></tr>
+              <tr><td>斜体</td><td><code>*テキスト*</code></td><td>ほぼすべて（標準記法）</td></tr>
+              <tr><td>打ち消し線</td><td><code>~~テキスト~~</code></td><td>GFM対応サービス（GitHub・Qiita・Zenn等）</td></tr>
+              <tr><td>下線</td><td><code>&lt;u&gt;テキスト&lt;/u&gt;</code></td><td>HTMLタグ可のサービス</td></tr>
+              <tr><td>文字色</td><td><code>&lt;span style="color:red"&gt;</code></td><td>style属性可の環境のみ（かなり限られる）</td></tr>
+              <tr><td>文字サイズ</td><td>見出し記法 or CSS</td><td>記法としては存在しない</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <nav class="toc" aria-label="目次">
+          <div class="toc-title">目次</div>
+          <ol>
+            <li><a href="#strike">打ち消し線（~~）の書き方</a></li>
+            <li><a href="#underline">下線（アンダーライン）の書き方</a></li>
+            <li><a href="#color">文字色の変え方と「使えない環境」の現実</a></li>
+            <li><a href="#size">文字サイズを変えたいとき</a></li>
+            <li><a href="#alternative">装飾が使えない環境での代替テクニック</a></li>
+            <li><a href="#faq">よくある質問</a></li>
+          </ol>
+        </nav>
+
+        <h2 id="strike">打ち消し線（~~）の書き方</h2>
+        <p><strong>チルダ2つ（<code>~~</code>）で挟む</strong>と打ち消し線になります。訂正の履歴を残す、旧情報を見せ消しにする、といった用途で使います。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>価格は ~~1,200円~~ **980円** になりました。</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <p style="margin:0;">価格は <del>1,200円</del> <strong>980円</strong> になりました。</p>
+            </div>
+          </div>
+        </div>
+        <div class="note">打ち消し線は<strong>GFM（GitHub Flavored Markdown）の拡張記法</strong>です。GitHub・Qiita・Zenn・Discord・Notionなど主要サービスで使えますが、素のCommonMarkにはないため、一部の変換ツールでは効かないことがあります（Slackは <code>~1つ</code> で挟む独自仕様）。チルダの入力は、JIS配列では <kbd>Shift</kbd>+<kbd>へ</kbd>（^のキー）です。</div>
+
+        <h2 id="underline">下線（アンダーライン)の書き方</h2>
+        <p>下線はMarkdown標準記法に<strong>存在しません</strong>。HTMLタグが使える環境であれば、次のように書きます。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方</div>
+            <pre>ここに &lt;u&gt;下線&lt;/u&gt; を引きます。</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <p style="margin:0;">ここに <u>下線</u> を引きます。</p>
+            </div>
+          </div>
+        </div>
+        <p>ただしWebの文章では、<strong>下線＝リンクという強い慣習</strong>があります。下線付きなのにクリックできないテキストは読者を混乱させるため、強調目的なら太字（<code>**</code>）の方が適切です。下線は「書式として下線が要求される場面」（校正指示の再現など）に限定するのがおすすめです。</p>
+
+        <h2 id="color">文字色の変え方と「使えない環境」の現実</h2>
+        <p>文字色もMarkdown標準記法にはありません。HTMLの <code>style</code> 属性が使える環境でのみ、次の書き方ができます。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-label">書き方（style属性が許可された環境のみ）</div>
+            <pre>&lt;span style="color: #e11d48;"&gt;赤字の注意書き&lt;/span&gt;</pre>
+          </div>
+          <div class="example-result">
+            <div class="example-label">表示結果</div>
+            <div class="example-body">
+              <p style="margin:0;"><span style="color: #e11d48;">赤字の注意書き</span></p>
+            </div>
+          </div>
+        </div>
+        <p>重要なのは、<strong>主要サービスの多くでこれが使えない</strong>ことです。</p>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>サービス</th><th>文字色の変更</th><th>理由・備考</th></tr></thead>
+            <tbody>
+              <tr><td>GitHub</td><td>不可</td><td>セキュリティのためstyle属性を除去</td></tr>
+              <tr><td>Qiita / Zenn</td><td>不可</td><td>同上（サニタイズされる）</td></tr>
+              <tr><td>Notion</td><td>記法では不可</td><td>UIの文字色メニューで変更（Markdownではない）</td></tr>
+              <tr><td>はてなブログ・WordPress</td><td>可</td><td>HTML編集でstyle属性が書ける</td></tr>
+              <tr><td>自サイト・変換ツール</td><td>可</td><td>CSS/HTMLを自分で制御できる</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note">「文字色を変えるMarkdownを書いたのにGitHubで反映されない」のは仕様であり、書き方の問題ではありません。反映されない環境では、次節の代替テクニックを使ってください。</div>
+
+        <h2 id="size">文字サイズを変えたいとき</h2>
+        <p>文字サイズの記法も存在しません。考え方は2通りです。</p>
+        <ul style="padding-left: 24px;">
+          <li><strong>構造で表す</strong> — 大きくしたい理由が「重要な区切りだから」なら、それは見出し（<code>##</code>）の仕事です</li>
+          <li><strong>CSSで表す</strong> — ブログや自サイトなら、見出しや本文のサイズをCSSで一括調整します</li>
+        </ul>
+        <p><a href="/">Markdown Viewer</a>では、H1〜H3・本文それぞれの文字サイズをスライダーで調整して、結果をCSSとしてコピーできます。「本文だけ少し大きくしたい」といったブログの読みやすさ調整に便利です。</p>
+
+        <h2 id="alternative">装飾が使えない環境での代替テクニック</h2>
+        <p>GitHubのREADMEなど「太字・斜体・打ち消し線しか使えない」環境で目立たせたいときの、実用的な代替手段です。</p>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>やりたかったこと</th><th>代替手段</th><th>例</th></tr></thead>
+            <tbody>
+              <tr><td>赤字で警告</td><td>絵文字＋太字</td><td>⚠️ **注意**：この操作は取り消せません</td></tr>
+              <tr><td>色付きの補足ボックス</td><td>GitHubのアラート記法</td><td><code>&gt; [!WARNING]</code>（<a href="/guide/markdown-quote/">引用の記事</a>参照）</td></tr>
+              <tr><td>マーカー（蛍光ペン）</td><td>インラインコード</td><td><code>`重要な語句`</code> は背景色付きで表示される</td></tr>
+              <tr><td>大きな文字</td><td>見出し記法</td><td><code>## セクション名</code></td></tr>
+              <tr><td>バッジ風の装飾</td><td>shields.io等のバッジ画像</td><td>READMEの定番手法</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="cta-box">
+          <p><strong>どの装飾がどう表示されるか、試しませんか？</strong><br>貼り付けるだけで即プレビュー。文字色やサイズはスタイル調整パネルからCSSとして出力できます。</p>
+          <a href="/" class="cta-button">無料のMarkdownビューアーを開く</a>
+        </div>
+
+        <h2 id="faq">よくある質問</h2>
+        <h3>~~を書いたのに打ち消し線にならず、そのまま表示されます</h3>
+        <p>チルダが全角（～）になっているか、表示先がGFM非対応かのどちらかです。半角チルダ2つ（<code>~~</code>）で挟んでいるか確認し、それでもだめなら <code>&lt;del&gt;</code> タグ（<code>&lt;s&gt;</code> でも可）を試してください。</p>
+        <h3>太字と下線を同時に使えますか？</h3>
+        <p>使えます。<code>&lt;u&gt;**重要**&lt;/u&gt;</code> のようにHTMLタグとMarkdown記法は入れ子にできます（HTMLタグ内でMarkdownが効かないパーサーもあるため、その場合は <code>&lt;u&gt;&lt;strong&gt;重要&lt;/strong&gt;&lt;/u&gt;</code> と全部HTMLで書きます）。</p>
+        <h3>ChatGPTの回答に~~が出てきました。これは何ですか？</h3>
+        <p>打ち消し線の記法です。AIの回答はMarkdown形式なので、<a href="/">ビューアー</a>に貼れば意図どおりの見た目（打ち消し線付き）で確認できます。</p>
+        <h3>蛍光マーカーの「==テキスト==」という記法を見かけました</h3>
+        <p>Obsidianなど一部ツールの拡張記法（ハイライト）です。標準記法ではないため、GitHub等では機能しません。互換性が必要な文書では使わない方が安全です。</p>
+
+        <h2>関連ガイド</h2>
+        <ul style="padding-left: 24px;">
+          <li><a href="/guide/markdown-syntax/">Markdown記法一覧【チートシート】</a> — 太字・斜体などの基本装飾</li>
+          <li><a href="/guide/markdown-quote/">引用（&gt;）の書き方</a> — アラート記法もこちら</li>
+          <li><a href="/guide/markdown-code-block/">コードブロック・インラインコードの書き方</a></li>
+          <li><a href="/guide/markdown-to-html/">Markdown→HTML変換の方法まとめ</a></li>
+        </ul>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p><a href="/">Markdown Viewer — インストール不要の無料マークダウンビューアー</a> ｜ <a href="/guide/">書き方ガイド一覧</a></p>
+      <p><a href="/about/">このサイトについて</a> ｜ <a href="/privacy/">プライバシーポリシー・免責事項</a></p>
+      <p>© 2026 Markdown Viewer</p>
+    </footer>
+  </body>
+</html>

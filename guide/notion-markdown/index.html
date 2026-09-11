@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5Y58TXJ0TX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-5Y58TXJ0TX');
+    </script>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NotionとMarkdownの関係まとめ【貼り付け・書き出し・記法の対応表】 | Markdown Viewer</title>
+    <meta name="description" content="Notion（ノーション）でMarkdown（マークダウン）を使う方法を解説。Markdownテキストの貼り付けで自動変換される記法、ページをMarkdownでエクスポートする手順、Notion独自の挙動（改行・表・トグル）との違いと注意点を紹介します。" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://markdown-viewer.net/guide/notion-markdown/" />
+    <meta property="og:title" content="NotionとMarkdownの関係まとめ【貼り付け・書き出し・記法の対応表】" />
+    <meta property="og:description" content="NotionでMarkdownを使う方法。貼り付け時の自動変換、Markdownエクスポート手順、Notion独自の挙動との違いを解説。" />
+    <meta property="og:image" content="https://markdown-viewer.net/og-image.png" />
+    <meta property="og:site_name" content="Markdown Viewer" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://markdown-viewer.net/guide/notion-markdown/" />
+    <meta property="twitter:title" content="NotionとMarkdownの関係まとめ【貼り付け・書き出し・記法の対応表】" />
+    <meta property="twitter:description" content="NotionでMarkdownを使う方法。貼り付け時の自動変換、Markdownエクスポート手順、Notion独自の挙動との違いを解説。" />
+
+    <link rel="canonical" href="https://markdown-viewer.net/guide/notion-markdown/" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9357019958045811" crossorigin="anonymous"></script>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "NotionとMarkdownの関係まとめ【貼り付け・書き出し・記法の対応表】",
+      "description": "NotionでMarkdownを使う方法を解説。貼り付けで自動変換される記法、Markdownエクスポートの手順、Notion独自の挙動との違いと注意点を紹介。",
+      "image": "https://markdown-viewer.net/og-image.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Markdown Viewer",
+        "url": "https://markdown-viewer.net/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Markdown Viewer",
+        "url": "https://markdown-viewer.net/"
+      },
+      "datePublished": "2026-09-12",
+      "dateModified": "2026-09-12",
+      "mainEntityOfPage": "https://markdown-viewer.net/guide/notion-markdown/"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Markdown Viewer", "item": "https://markdown-viewer.net/" },
+        { "@type": "ListItem", "position": 2, "name": "Markdownの書き方ガイド", "item": "https://markdown-viewer.net/guide/" },
+        { "@type": "ListItem", "position": 3, "name": "NotionとMarkdown", "item": "https://markdown-viewer.net/guide/notion-markdown/" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "NotionはMarkdownに対応していますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい。入力時に # や - などのMarkdown記法がブロックに自動変換されるほか、Markdownテキストの貼り付け、ページ全体のMarkdown形式でのエクスポートに対応しています。ただしNotionの内部形式はブロック構造であり、Markdownそのものを保存しているわけではないため、変換で一部の要素は失われます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "NotionのページをMarkdownで書き出すには？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ページ右上の「…」メニューから「エクスポート」を選び、エクスポート形式を「Markdown & CSV」にします。ページ本文は.mdファイル、データベースは.csvファイルとしてZIPでダウンロードされます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ChatGPTの回答をNotionに貼ると書式が崩れるのはなぜですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "コピーの仕方によって、Markdownのまま貼られるか、リッチテキストとして貼られるかが変わるためです。AIチャットのコピーボタンでコピーしたMarkdownをNotionに貼ると、多くの場合は自動でブロックに変換されます。崩れる場合は、いったんプレーンテキストとして貼り付けてから整えるか、Markdownビューアーで内容を確認してから貼り付けてください。"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="/guide.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a href="/" class="logo">
+          <span class="logo-icon">M</span>
+          <span>Markdown<span class="text-accent">Viewer</span></span>
+        </a>
+        <a href="/" class="header-cta">ビューアーで試す →</a>
+      </div>
+    </header>
+
+    <main>
+      <nav class="breadcrumb" aria-label="パンくずリスト">
+        <a href="/">Markdown Viewer</a> › <a href="/guide/">書き方ガイド</a> › NotionとMarkdown
+      </nav>
+
+      <article>
+        <h1>NotionとMarkdownの関係まとめ — 貼り付け・書き出し・記法対応</h1>
+        <p class="lead">
+          Notion（ノーション）はMarkdown（マークダウン）と相性の良いツールですが、「Markdownで書けるアプリ」と思って使うと、改行や表のところで戸惑います。実はNotionの中身は<strong>Markdownではなく独自のブロック構造</strong>で、Markdownは「入力の近道」と「入出力の形式」として使われています。このページでは、その関係と実用テクニックを整理しました。
+        </p>
+
+        <nav class="toc" aria-label="目次">
+          <div class="toc-title">目次</div>
+          <ol>
+            <li><a href="#basic">NotionにおけるMarkdownの位置づけ</a></li>
+            <li><a href="#input">入力時に使えるMarkdown記法（対応表）</a></li>
+            <li><a href="#paste">Markdownテキストの貼り付け</a></li>
+            <li><a href="#export">ページをMarkdownでエクスポートする</a></li>
+            <li><a href="#gotcha">つまずきポイント（改行・表・トグル）</a></li>
+            <li><a href="#faq">よくある質問</a></li>
+          </ol>
+        </nav>
+
+        <h2 id="basic">NotionにおけるMarkdownの位置づけ</h2>
+        <p>Notionのページは「見出しブロック」「テキストブロック」「表ブロック」といった<strong>ブロックの集まり</strong>で構成されます。Markdownが関わるのは次の3場面です。</p>
+        <ul style="padding-left: 24px;">
+          <li><strong>入力ショートカット</strong> — <code># + スペース</code> と打つと見出しブロックに変換される</li>
+          <li><strong>貼り付け</strong> — Markdownテキストを貼ると、対応するブロックに自動変換される</li>
+          <li><strong>エクスポート/インポート</strong> — ページを .md ファイルとして書き出し・読み込みできる</li>
+        </ul>
+        <p>つまり「Notion ⇄ Markdown」は<strong>変換</strong>であって、等価ではありません。変換のたびに、Notion固有の要素（トグル・コールアウト・データベースのプロパティ等）は単純化されたり失われたりします。ここを押さえておくと、後述のつまずきがすべて理解できます。</p>
+
+        <h2 id="input">入力時に使えるMarkdown記法（対応表）</h2>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>入力</th><th>変換されるブロック</th><th>備考</th></tr></thead>
+            <tbody>
+              <tr><td><code># + スペース</code></td><td>見出し1（## で見出し2、### で見出し3）</td><td>見出し4以下はNotionに存在しない</td></tr>
+              <tr><td><code>- + スペース</code></td><td>箇条書きリスト</td><td><code>*</code> <code>+</code> も可</td></tr>
+              <tr><td><code>1. + スペース</code></td><td>番号付きリスト</td><td></td></tr>
+              <tr><td><code>[] + スペース</code></td><td>To-doリスト（チェックボックス）</td><td>Markdown標準の <code>- [ ]</code> とは入力が異なる</td></tr>
+              <tr><td><code>&gt; + スペース</code></td><td>引用ブロック</td><td></td></tr>
+              <tr><td><code>```</code></td><td>コードブロック</td><td>言語はブロック右上で選択</td></tr>
+              <tr><td><code>**太字**</code> / <code>*斜体*</code></td><td>文字装飾</td><td>入力後に即反映</td></tr>
+              <tr><td><code>`コード`</code></td><td>インラインコード</td><td></td></tr>
+              <tr><td><code>---</code></td><td>区切り線</td><td></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note">Notionでは記法が<strong>入力した瞬間にブロックへ変換されて消える</strong>のが特徴です。「あとから記法込みのテキストとして編集する」使い方はできません。記法をテキストのまま扱いたい作業（ブログ原稿の推敲など）は、エディタや<a href="/">Markdownビューアー</a>側で行う方が向いています。</div>
+
+        <h2 id="paste">Markdownテキストの貼り付け</h2>
+        <p>ChatGPTやClaudeの回答、GitHubのREADMEなど、Markdown形式のテキストをNotionに貼り付けると、見出し・リスト・コードブロックなどが<strong>自動でブロックに変換</strong>されます。ドキュメントの移行はこれが一番手軽です。</p>
+        <p>思い通りに変換されないときの選択肢は2つあります。</p>
+        <ul style="padding-left: 24px;">
+          <li><strong>プレーンテキストとして貼る</strong> — <kbd>Cmd/Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd>。記法が文字のまま入るので、後から整えられます</li>
+          <li><strong>.mdファイルとしてインポートする</strong> — サイドバーまたは設定メニューの「インポート」から Markdown を選択。ファイル単位の移行に確実です</li>
+        </ul>
+        <div class="note">貼り付け前に「このMarkdownはどう表示されるのか」を確認したいときは、<a href="/">Markdownビューアー</a>に貼ればプレビューできます。崩れた状態でNotionに入れてから直すより、貼る前に確認する方が早いです。</div>
+
+        <h2 id="export">ページをMarkdownでエクスポートする</h2>
+        <p>Notionのページは次の手順で .md ファイルとして書き出せます。</p>
+        <ol style="padding-left: 24px;">
+          <li>ページ右上の「…」メニューを開く</li>
+          <li>「エクスポート」を選択</li>
+          <li>エクスポート形式で「<strong>Markdown &amp; CSV</strong>」を選んで書き出し</li>
+        </ol>
+        <p>ZIPファイルがダウンロードされ、ページ本文は <code>.md</code>、ページ内の<strong>データベースは <code>.csv</code></strong> として出力されます。サブページを含める設定にすると、フォルダ階層ごと書き出されます。</p>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>Notionの要素</th><th>エクスポート後</th></tr></thead>
+            <tbody>
+              <tr><td>見出し・リスト・引用・コード</td><td>対応するMarkdown記法に変換</td></tr>
+              <tr><td>シンプルテーブル</td><td>Markdownの表（<code>|</code> 区切り）に変換</td></tr>
+              <tr><td>データベース</td><td>CSVファイル（Markdownの表にはならない）</td></tr>
+              <tr><td>トグル</td><td>箇条書き＋インデントに単純化</td></tr>
+              <tr><td>コールアウト</td><td>引用ブロックに単純化</td></tr>
+              <tr><td>画像</td><td>画像ファイル＋相対パスのリンク</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>書き出した .md がどう表示されるかは、ファイルを<a href="/">Markdownビューアー</a>にドラッグ＆ドロップすればすぐ確認できます。データベースをMarkdownの表にしたい場合は、CSVを<a href="/guide/excel-to-markdown/">表の変換方法</a>の手順でテーブル化してください。</p>
+
+        <h2 id="gotcha">つまずきポイント（改行・表・トグル）</h2>
+        <h3>改行の挙動が標準Markdownと違う</h3>
+        <p>Notionでは <kbd>Enter</kbd> で新しいブロック、<kbd>Shift</kbd>+<kbd>Enter</kbd> でブロック内改行になります。標準Markdownの「行末スペース2つ」ルールとは別物です。エクスポートすると、ブロック内改行は環境によって表示が変わることがあります。Markdown側の改行ルールは<a href="/guide/markdown-linebreak/">改行できない時の対処法</a>で整理しています。</p>
+        <h3>表が2種類ある（シンプルテーブルとデータベース）</h3>
+        <p>Notionの「テーブル」には、ただの表である<strong>シンプルテーブル</strong>と、プロパティやビューを持つ<strong>データベース</strong>の2種類があります。Markdownと相互変換できるのはシンプルテーブルだけです。「エクスポートしたら表がCSVになってしまった」ときは、元がデータベースだったということです。</p>
+        <h3>Notion固有ブロックは変換で失われる</h3>
+        <p>トグル・コールアウト・同期ブロック・埋め込みなどはMarkdownに対応物がないため、エクスポート時に単純化されます。「Notionで作ってMarkdownで配布する」運用をするなら、最初から見出し・リスト・表・コードなどの<strong>Markdown互換ブロックだけで構成する</strong>のがコツです。</p>
+
+        <div class="cta-box">
+          <p><strong>Notionから書き出したMarkdown、どう見えるか確認しませんか？</strong><br>.mdファイルをドラッグ＆ドロップするだけ。ブログ用のHTML/CSS出力もできます。</p>
+          <a href="/" class="cta-button">無料のMarkdownビューアーを開く</a>
+        </div>
+
+        <h2 id="faq">よくある質問</h2>
+        <h3>Notionに書いた記事をブログ（WordPress等）に移したい</h3>
+        <p>「Markdown &amp; CSV」でエクスポートし、.md を<a href="/">Markdownビューアー</a>に読み込んで「HTMLコピー」すれば、整形済みHTMLとしてブログに貼り付けられます。画像は別途アップロードが必要です。</p>
+        <h3>見出し4（####）を貼り付けるとどうなりますか？</h3>
+        <p>Notionの見出しは3レベルまでのため、見出し4以下は太字テキストなどに変換されます。構造を保ちたい文書では見出しを3レベルに収めておくと安全です。</p>
+        <h3>NotionのコードブロックはMarkdownと同じですか？</h3>
+        <p>考え方は同じで、```の貼り付け・書き出しにも対応しています。言語指定もエクスポート時に保持されます。コードブロックの記法自体は<a href="/guide/markdown-code-block/">コードブロックの書き方</a>をご覧ください。</p>
+
+        <h2>関連ガイド</h2>
+        <ul style="padding-left: 24px;">
+          <li><a href="/guide/markdown-linebreak/">Markdownで改行できない・されない時の対処法</a></li>
+          <li><a href="/guide/markdown-table/">Markdownの表（テーブル）の書き方</a></li>
+          <li><a href="/guide/excel-to-markdown/">ExcelやWordの表をMarkdownに変換する方法</a></li>
+          <li><a href="/guide/what-is-markdown/">Markdownとは？初心者向け入門</a></li>
+        </ul>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p><a href="/">Markdown Viewer — インストール不要の無料マークダウンビューアー</a> ｜ <a href="/guide/">書き方ガイド一覧</a></p>
+      <p><a href="/about/">このサイトについて</a> ｜ <a href="/privacy/">プライバシーポリシー・免責事項</a></p>
+      <p>© 2026 Markdown Viewer</p>
+    </footer>
+  </body>
+</html>
