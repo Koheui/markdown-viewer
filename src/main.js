@@ -1,5 +1,6 @@
 import './style.css';
 import { marked } from 'marked';
+import DOMPurify from 'dompurify';
 import { 
   createIcons, 
   FileText, 
@@ -566,7 +567,8 @@ function renderMarkdown() {
     .replace(/([^\x00-\x7F])(\*+)/g, '$1\u200b$2')
     .replace(/(\*+)([^\x00-\x7F])/g, '$1\u200b$2');
 
-  outputEl.innerHTML = marked.parse(preprocessedVal);
+  // URL の ?md= などから入った文字も通るため、スクリプトやイベント属性は取り除いてから表示する
+  outputEl.innerHTML = DOMPurify.sanitize(marked.parse(preprocessedVal));
 }
 
 // ==========================================================================
