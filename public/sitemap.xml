@@ -31,7 +31,7 @@
   </url>
   <url>
     <loc>https://markdown-viewer.net/guide/markdown-table/</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -122,6 +122,12 @@
   <url>
     <loc>https://markdown-viewer.net/guide/how-to-write-readme/</loc>
     <lastmod>2026-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://markdown-viewer.net/guide/markdown-table-merge-compare/</loc>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

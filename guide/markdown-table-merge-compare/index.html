@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5Y58TXJ0TX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-5Y58TXJ0TX');
+    </script>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Markdownの表のセル結合はどこで使える？ GitHub・Qiita・Zenn・Notion・noteで実際に試した結果 | Markdown Viewer</title>
+    <meta name="description" content="同じMarkdownの表を6つのサービスに貼って表示を確かめました。セル結合（rowspan・colspan）・セル内改行・左右寄せが使えるかを一覧にし、結合できないZenn・Notion・noteでの代わりの書き方もまとめています。" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://markdown-viewer.net/guide/markdown-table-merge-compare/" />
+    <meta property="og:title" content="Markdownの表のセル結合はどこで使える？ 6つのサービスで実際に試した結果" />
+    <meta property="og:description" content="GitHub・Qiita・Zenn・Notion・noteに同じ表を貼って確かめた、セル結合・セル内改行・左右寄せの対応一覧。" />
+    <meta property="og:image" content="https://markdown-viewer.net/og-image.png" />
+    <meta property="og:site_name" content="Markdown Viewer" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://markdown-viewer.net/guide/markdown-table-merge-compare/" />
+    <meta property="twitter:title" content="Markdownの表のセル結合はどこで使える？ 6つのサービスで実際に試した結果" />
+    <meta property="twitter:description" content="GitHub・Qiita・Zenn・Notion・noteに同じ表を貼って確かめた、セル結合・セル内改行・左右寄せの対応一覧。" />
+
+    <link rel="canonical" href="https://markdown-viewer.net/guide/markdown-table-merge-compare/" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9357019958045811" crossorigin="anonymous"></script>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Markdownの表のセル結合はどこで使える？ GitHub・Qiita・Zenn・Notion・noteで実際に試した結果",
+      "description": "同じMarkdownの表を6つのサービスに貼り、セル結合・セル内改行・左右寄せが使えるかを確かめた結果と、結合できない環境での代わりの書き方。",
+      "image": "https://markdown-viewer.net/og-image.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Markdown Viewer",
+        "url": "https://markdown-viewer.net/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Markdown Viewer",
+        "url": "https://markdown-viewer.net/"
+      },
+      "datePublished": "2026-10-02",
+      "dateModified": "2026-10-02",
+      "mainEntityOfPage": "https://markdown-viewer.net/guide/markdown-table-merge-compare/"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Markdown Viewer", "item": "https://markdown-viewer.net/" },
+        { "@type": "ListItem", "position": 2, "name": "Markdownの書き方ガイド", "item": "https://markdown-viewer.net/guide/" },
+        { "@type": "ListItem", "position": 3, "name": "セル結合の対応状況", "item": "https://markdown-viewer.net/guide/markdown-table-merge-compare/" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Zennで、どうしてもセルを結合したいときは？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Markdownの記法では結合できません。結合したいセルに同じ値をくり返して書くか、表を画像にして貼ってください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Notionに貼ったら、<br>が文字のまま残りました",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Notionの表は、セルの中で改行する書き方を読み取りません。貼ったあとで、Notion上でセルの中をShift+Enterで改行し直してください。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "この結果は今も同じですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "2026年10月2日に試した結果です。各サービスの仕様が変わったら、試し直してページを更新します。"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="/guide.css" />
+    <style>
+      .result-table td, .result-table th { text-align: center; white-space: nowrap; }
+      .result-table td:first-child, .result-table th:first-child { text-align: left; }
+      .result-table .ng { color: #c2410c; font-weight: 700; }
+      @media (max-width: 600px) {
+        .result-table { min-width: 0; font-size: 12px; }
+        .result-table th, .result-table td { padding: 6px 4px; }
+        .result-table td:first-child { white-space: normal; min-width: 7em; }
+        .result-table th { font-size: 10.5px; padding: 6px 2px; white-space: nowrap; }
+        .result-table th:last-child { white-space: normal; }
+      }
+      .shot { margin: 16px 0 24px; }
+      .shot img { display: block; max-width: 100%; height: auto; border: 1px solid #e5e7eb; border-radius: 8px; }
+      .shot figcaption { font-size: 13px; color: #6b7280; margin-top: 6px; }
+      .tested-on { font-size: 13px; color: #6b7280; }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a href="/" class="logo">
+          <span class="logo-icon">M</span>
+          <span>Markdown<span class="text-accent">Viewer</span></span>
+        </a>
+        <a href="/" class="header-cta">ビューアーで試す →</a>
+      </div>
+    </header>
+
+    <main>
+      <nav class="breadcrumb" aria-label="パンくずリスト">
+        <a href="/">Markdown Viewer</a> › <a href="/guide/">書き方ガイド</a> › セル結合の対応状況
+      </nav>
+
+      <article>
+        <h1 style="line-height: 1.3;"><span style="display: inline-block; white-space: nowrap;">Markdownの表のセル結合</span><br><span style="display: inline-block; white-space: nowrap;">6つのサービスで実際に試した結果</span></h1>
+        <p class="tested-on">試した日：2026年10月2日</p>
+        <p class="lead">
+          「Markdownで表のセルを結合したい」と調べると、HTMLの <code>&lt;table&gt;</code> タグで書く方法が出てきます。ただ、それが使えるかどうかは貼り付け先しだいです。そこで、同じ表のサンプルをGitHub・Qiita・Zenn・Notion・note・当ビューアーの6か所に貼り、実際にどう表示されるかを確かめました。
+        </p>
+
+        <nav class="toc" aria-label="目次">
+          <div class="toc-title">目次</div>
+          <ol>
+            <li><a href="#summary">結論の早見表</a></li>
+            <li><a href="#sample">試したサンプル</a></li>
+            <li><a href="#services">サービスごとの結果</a></li>
+            <li><a href="#workaround">結合できないところで表を見せる方法</a></li>
+            <li><a href="#faq">よくある質問</a></li>
+          </ol>
+        </nav>
+
+        <h2 id="summary">結論の早見表</h2>
+        <div class="table-wrapper">
+          <table class="result-table">
+            <thead>
+              <tr><th>書き方</th><th>GitHub</th><th>Qiita</th><th>Zenn</th><th>Notion</th><th>note</th><th>当<wbr>ビューアー</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>基本の表</td><td>○</td><td>○</td><td>○</td><td>○</td><td class="ng">×</td><td>○</td></tr>
+              <tr><td>左・中央・右寄せ</td><td>○</td><td>○</td><td>○</td><td class="ng">×</td><td class="ng">×</td><td>○</td></tr>
+              <tr><td>セル内の改行 <code>&lt;br&gt;</code></td><td>○</td><td>○</td><td>○</td><td class="ng">×</td><td class="ng">×</td><td>○</td></tr>
+              <tr><td>縦結合（rowspan）</td><td>○</td><td>○</td><td class="ng">×</td><td class="ng">×</td><td class="ng">×</td><td>○</td></tr>
+              <tr><td>横結合（colspan）</td><td>○</td><td>○</td><td class="ng">×</td><td class="ng">×</td><td class="ng">×</td><td>○</td></tr>
+              <tr><td>セル内の縦棒 <code>\|</code></td><td>○</td><td>○</td><td>○</td><td>○</td><td class="ng">×</td><td>○</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>セルを結合できたのは、6つのうち<strong>GitHub・Qiita・当ビューアーの3つだけ</strong>でした。Zenn・Notion・noteでは <code>&lt;table&gt;</code> がタグのまま文字で表示されます。</p>
+
+        <h2 id="sample">試したサンプル</h2>
+        <p>次のMarkdownを、各サービスの編集画面にそのまま貼り付けました。ボタンを押すと、当ビューアーで同じ表示を確かめられます。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-header">
+              <span class="example-label">試したMarkdown</span>
+              <button type="button" class="btn-try-viewer" onclick="tryInViewer(this)">🚀 ビューアーで試す</button>
+            </div>
+            <pre>## A 基本の表と寄せ
+
+| 項目 | 単価 | 数量 |
+| :--- | ---: | :---: |
+| ノート | 220円 | 3 |
+
+## B セル内の改行
+
+| プラン | 内容 |
+| --- | --- |
+| 無料 | プレビュー&lt;br&gt;CSS出力 |
+
+## C 縦結合（rowspan）
+
+&lt;table&gt;
+&lt;tr&gt;&lt;th&gt;部署&lt;/th&gt;&lt;th&gt;氏名&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td rowspan="2"&gt;開発部&lt;/td&gt;&lt;td&gt;田中&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;佐藤&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+## D 横結合（colspan）
+
+&lt;table&gt;
+&lt;tr&gt;&lt;th colspan="2"&gt;品名・詳細&lt;/th&gt;&lt;th&gt;金額&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;プラン&lt;/td&gt;&lt;td&gt;年払い&lt;/td&gt;&lt;td&gt;12,000円&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+## E セル内の縦棒
+
+| コマンド | 意味 |
+| --- | --- |
+| A \| B | AまたはB |</pre>
+          </div>
+        </div>
+
+        <h2 id="services">サービスごとの結果</h2>
+
+        <h3>GitHub</h3>
+        <p>Issueの編集画面のプレビューで確かめました。<code>&lt;table&gt;</code> での結合がそのまま効き、寄せとセル内の改行も問題ありません。READMEやプルリクエストも同じ仕組みで表示されます。</p>
+
+        <h3>Qiita</h3>
+        <p>GitHubと同じく、すべて期待どおりに表示されました。</p>
+        <figure class="shot">
+          <img src="/img/table-merge/qiita.jpg" width="351" height="549" loading="lazy" alt="Qiitaのプレビュー。縦結合・横結合を含むすべての表が正しく表示されている">
+          <figcaption>Qiitaのプレビュー。結合したセルも正しく表示された</figcaption>
+        </figure>
+
+        <h3>Zenn</h3>
+        <p>普通の表とセル内の <code>&lt;br&gt;</code> は使えますが、<code>&lt;table&gt;</code> で書いた結合は<strong>タグがそのまま文字で表示されます</strong>。Zennは記事の中のHTMLをほとんど受け付けず、今回の結果では <code>&lt;br&gt;</code> だけが例外でした。</p>
+        <figure class="shot">
+          <img src="/img/table-merge/zenn.jpg" width="607" height="706" loading="lazy" alt="Zennのプレビュー。縦結合と横結合のtableタグが文字のまま表示されている">
+          <figcaption>Zennのプレビュー。C・Dの &lt;table&gt; がタグのまま出ている</figcaption>
+        </figure>
+
+        <h3>Notion</h3>
+        <p>Markdownの表を新しいページに貼り付けると、Notionの表に変わります。ただし次の3つは効きません。</p>
+        <ul style="padding-left: 24px;">
+          <li>左右の寄せは消えます（Notionの表に寄せの設定が無いため）</li>
+          <li><code>&lt;br&gt;</code> は改行にならず、文字のまま残ります</li>
+          <li><code>&lt;table&gt;</code> はタグが文字のまま貼られます</li>
+        </ul>
+        <figure class="shot">
+          <img src="/img/table-merge/notion.jpg" width="521" height="830" loading="lazy" alt="Notionに貼り付けた結果。表は表になるが、brタグとtableタグが文字のまま残っている">
+          <figcaption>Notionに貼り付けた結果。表は変換されるが &lt;br&gt; と &lt;table&gt; は文字のまま</figcaption>
+        </figure>
+
+        <h3>note</h3>
+        <p>見出し（<code>##</code>）は見出しに変わりましたが、表の書き方はすべて文字のまま貼られました。noteの記事では、Markdownで表を作ることはできません。</p>
+        <figure class="shot">
+          <img src="/img/table-merge/note.jpg" width="504" height="846" loading="lazy" alt="noteに貼り付けた結果。見出しは変換されるが、表はすべて文字のまま">
+          <figcaption>noteに貼り付けた結果。見出し以外はすべて文字のまま</figcaption>
+        </figure>
+
+        <h3>当ビューアー</h3>
+        <p>本番の markdown-viewer.net に同じMarkdownを貼り、すべての書き方が表示されることを確かめました。表には罫線が付くので、結合したセルの範囲がひと目でわかります。</p>
+
+        <div class="cta-box">
+          <p><strong>貼り付ける前に、表の崩れを確かめませんか。</strong><br>ブラウザに貼るだけで、セル結合を含む表をその場で表示できます。インストールも登録も要りません。</p>
+          <a href="/" class="cta-button">無料のMarkdownビューアーを開く</a>
+        </div>
+
+        <h2 id="workaround">結合できないところで表を見せる方法</h2>
+        <h3>1. 同じ値をくり返す</h3>
+        <p>結合したいセルに、同じ内容をもう一度書きます。いちばん崩れにくい方法で、どのサービスでも使えます（noteを除く）。</p>
+        <div class="example">
+          <div class="example-code">
+            <div class="example-header">
+              <span class="example-label">書き方</span>
+              <button type="button" class="btn-try-viewer" onclick="tryInViewer(this)">🚀 ビューアーで試す</button>
+            </div>
+            <pre>| 部署 | 氏名 |
+| --- | --- |
+| 開発部 | 田中 |
+| 開発部 | 佐藤 |</pre>
+          </div>
+        </div>
+        <h3>2. 「〃」や「同上」を入れる</h3>
+        <p>見た目を結合に近づけたいときは、2行目以降に「〃」を入れます。くり返しが多い表でも読みやすくなります。</p>
+        <h3>3. 画像にする</h3>
+        <p>noteのように表そのものが作れない場所では、表を画像にして貼るのが確実です。当ビューアーで表を表示して、画面を切り取る方法が手軽です。</p>
+
+        <h2 id="faq">よくある質問</h2>
+        <h3>Zennで、どうしてもセルを結合したいときは？</h3>
+        <p>Markdownの記法では結合できません。上の「同じ値をくり返す」か、表を画像にしてください。</p>
+        <h3>Notionに貼ったら、&lt;br&gt; が文字のまま残りました</h3>
+        <p>Notionの表は、セルの中で改行する書き方を読み取りません。貼ったあとで、Notion上でセルの中を <kbd>Shift</kbd>+<kbd>Enter</kbd> で改行し直してください。</p>
+        <h3>この結果は今も同じですか？</h3>
+        <p>2026年10月2日に試した結果です。各サービスの仕様が変わったら、試し直してこのページを更新します。</p>
+
+        <h2>関連ガイド</h2>
+        <ul style="padding-left: 24px;">
+          <li><a href="/guide/markdown-table/">Markdownの表（テーブル）の書き方 ― セル結合・改行・寄せ</a></li>
+          <li><a href="/guide/markdown-table-width/">表の列幅を調整する方法</a></li>
+          <li><a href="/guide/notion-markdown/">NotionでMarkdownを使う方法</a></li>
+          <li><a href="/guide/markdown-linebreak/">改行できない・されない時の対処法</a></li>
+        </ul>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p><a href="/">Markdown Viewer — インストール不要の無料マークダウンビューアー</a> ｜ <a href="/guide/">書き方ガイド一覧</a></p>
+      <p><a href="/about/">このサイトについて</a> ｜ <a href="/privacy/">プライバシーポリシー・免責事項</a></p>
+      <p>© 2026 Markdown Viewer</p>
+    </footer>
+    <script src="/guide.js"></script>
+  </body>
+</html>

@@ -59,7 +59,7 @@
         "url": "https://markdown-viewer.net/"
       },
       "datePublished": "2026-07-15",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-10-02",
       "mainEntityOfPage": "https://markdown-viewer.net/guide/markdown-table/"
     }
     </script>
@@ -127,6 +127,7 @@
 
       <article>
         <h1 style="line-height: 1.4;"><span style="display: inline-block; white-space: nowrap;">Markdown表のセル結合</span><span style="display: inline-block; white-space: nowrap;">（縦・横結合）と書き方</span><br><span style="display: inline-block; white-space: nowrap;">改行・崩れ防止完全ガイド</span></h1>
+        <p style="font-size: 13px; color: #6b7280; margin-top: 4px;">最終更新：2026年10月2日</p>
         <p class="lead">
           Markdown（マークダウン）の表は、<code>|</code>（パイプ）と <code>-</code>（ハイフン）だけで作れますが、「列がズレて崩れる」「セルの中で改行できない」「セルを縦・横に結合したい」など、つまずきポイントも多い記法です。このページでは、表の基本から応用・セル結合（HTML代替）・トラブル解決までをコピペ可能な実例付きでまとめました。書きながら確認したいときは、各サンプルの「🚀 ビューアーで試す」ボタンを押せば、その場で表をプレビューできます。
         </p>
@@ -424,10 +425,11 @@
           </div>
         </div>
         <div class="note">
-          <strong>主要ツールのHTML table対応状況</strong>：<br>
-          ・<strong>GitHub / Qiita / Zenn / VS Code</strong>：<code>&lt;table&gt;</code> によるセル結合に完全対応しています。<br>
-          ・<strong>Notion</strong>：インラインHTMLタグに非対応のため、上記「標準Markdownでの代替」をご活用ください。<br>
-          ・<strong>当Markdown Viewer</strong>：HTMLの表もMarkdownの表も、ブラウザ上で瞬時に美しくプレビューできます。
+          <strong>主なサービスで実際に試した結果（2026年10月2日）</strong>：<br>
+          ・<strong>GitHub・Qiita</strong>：<code>&lt;table&gt;</code> での結合がそのまま使えます。<br>
+          ・<strong>Zenn・Notion</strong>：<code>&lt;table&gt;</code> はタグが文字のまま表示され、結合できません。上の「同じ値をくり返す」書き方を使ってください。<br>
+          ・<strong>note</strong>：表の書き方そのものが使えません。<br>
+          詳しい結果と画面写真は「<a href="/guide/markdown-table-merge-compare/">セル結合は6つのサービスでどう表示されるか</a>」にまとめています。
         </div>
 
         <h2 id="excel">Excel・スプレッドシートから表を作る</h2>

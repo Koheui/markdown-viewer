@@ -27,6 +27,7 @@ export default defineConfig({
         guideVscodeMarkdownPreview: resolve(__dirname, 'guide/vscode-markdown-preview/index.html'),
         guideMarkdownToHtml: resolve(__dirname, 'guide/markdown-to-html/index.html'),
         guideHowToWriteReadme: resolve(__dirname, 'guide/how-to-write-readme/index.html'),
+        guideMarkdownTableMergeCompare: resolve(__dirname, 'guide/markdown-table-merge-compare/index.html'),
       },
     },
   },

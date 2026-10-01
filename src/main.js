@@ -531,6 +531,26 @@ function generateCSS() {
 }
 `;
 
+  // Table（罫線が無いと結合したセルの範囲が見えないため、本文色を薄めた線を引く）
+  css += `.markdown-body table {
+  border-collapse: collapse;
+  margin-bottom: ${styles.p.marginBottom}px;
+  font-size: ${styles.p.fontSize}px;
+}
+.markdown-body th,
+.markdown-body td {
+  border: 1px solid rgba(128, 128, 128, 0.4);
+  border: 1px solid color-mix(in srgb, currentColor 30%, transparent);
+  padding: 6px 12px;
+  line-height: 1.5;
+}
+.markdown-body th {
+  background-color: rgba(128, 128, 128, 0.12);
+  background-color: color-mix(in srgb, currentColor 8%, transparent);
+  font-weight: 700;
+}
+`;
+
   return css;
 }
 
