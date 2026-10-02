@@ -531,6 +531,13 @@ function generateCSS() {
 }
 `;
 
+  // Image（大きな画像がプレビュー枠からはみ出さないようにする）
+  css += `.markdown-body img {
+  max-width: 100%;
+  height: auto;
+}
+`;
+
   // Table（罫線が無いと結合したセルの範囲が見えないため、本文色を薄めた線を引く）
   css += `.markdown-body table {
   border-collapse: collapse;
