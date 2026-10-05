@@ -274,3 +274,22 @@
         color: var(--text-muted);
       }
       .site-footer a { color: var(--accent); text-decoration: none; }
+
+/* In-article AdSense */
+.adsense-container.article-ad {
+  margin: 36px 0;
+  text-align: center;
+}
+.adsense-container.article-ad .ad-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+/* 広告が配信されない間（審査中・在庫なし）は枠ごと非表示にする */
+.adsense-container.article-ad:has(ins[data-ad-status="unfilled"]),
+.adsense-container.article-ad:has(ins:not([data-ad-status])) {
+  display: none;
+}
